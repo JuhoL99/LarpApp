@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardSO : ScriptableObject
 {
     public string cardName;
+    public string imageName;
     public int cardId;
     public Sprite cardTopSprite;
     public Sprite cardBottomSprite;

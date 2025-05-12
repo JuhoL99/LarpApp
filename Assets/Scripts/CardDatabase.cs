@@ -21,4 +21,11 @@ public class CardDatabase : ScriptableObject
         }
         return null;
     }
+    public void NamesFromImageFile()
+    {
+        foreach (CardSO card in cards)
+        {
+            card.imageName = card.cardTopSprite.name;
+        }
+    }
 }

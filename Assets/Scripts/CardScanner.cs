@@ -1,4 +1,6 @@
 using easyar;
+using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,14 +11,17 @@ public class CardScanner : MonoBehaviour
     [SerializeField] private ARSession session;
     [Header("Image target testing")]
     [SerializeField] private ImageTargetController[] cardTargetArray;
+    [SerializeField] private List<ImageTargetController> cardTargetList = new List<ImageTargetController>();
     [Header("Debug texts")]
     [SerializeField] private TMP_Text targetInfo;
     [Header("Other")]
+    [SerializeField] private TextAsset text; //test
     public UnityEvent<bool> onScanToggled;
     public UnityEvent<CardSO> onCardScanned;
     private ImageTrackerFrameFilter imageTracker;
     private CameraDeviceFrameSource cameraDevice;
     private bool isScanning;
+    [SerializeField] private bool generateImageTargets = false; //turn to prefab, unpack, delete from folder
 
     private void Awake()
     {
@@ -27,8 +32,29 @@ public class CardScanner : MonoBehaviour
             AddTargetControllerEvents(card);
         }
     }
-    private void GenerateImageTargetsFromFolder()
+    private void Start()
     {
+        if (!generateImageTargets) return;
+        var info = new DirectoryInfo(Application.streamingAssetsPath);
+        var fileInfo = info.GetFiles();
+        foreach(var file in fileInfo)
+        {
+            if (file.Name.Contains(".meta")) continue;
+            if (!file.Name.Contains(".jpg") || !file.Name.Contains(".png")) continue;
+            GenerateImageTargetsFromFolder(file.Name); //only works in editor
+        }
+    }
+    private void GenerateImageTargetsFromFolder(string cardName) 
+    {
+        GameObject go = new GameObject();
+        go.name = $"Image Target - {cardName}";
+        ImageTargetController controller = go.AddComponent<ImageTargetController>();
+        controller.Tracker = imageTracker;
+        controller.ImageFileSource.Path = cardName;
+        controller.ImageFileSource.Name = cardName.Substring(0,cardName.LastIndexOf('.'));
+        controller.ImageFileSource.Scale = 0.1f;
+        //cardTargetList.Add(controller);
+        //AddTargetControllerEvents(controller);
 
     }
     public void EnableScanning()
