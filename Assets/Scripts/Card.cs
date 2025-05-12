@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour
 {
     [SerializeField] private Sprite[] sprites;
-    [SerializeField] private CardScanner scanner;
     private CardSO currentCard;
     private Image img;
     private Button switchCardButton;
@@ -23,17 +22,17 @@ public class Card : MonoBehaviour
     }
     private void AllowSwitch()
     {
-        scanner.EnableScanning();
-        scanner.onCardScanned.AddListener(GetScannedCard);
+        GameManager.instance.cardScanner.EnableScanning();
+        GameManager.instance.cardScanner.onCardScanned.AddListener(GetScannedCard);
     }
     public void CancelSwitch()
     {
-        scanner.DisableScanning();
-        scanner.onCardScanned.RemoveListener(GetScannedCard);
+        GameManager.instance.cardScanner.DisableScanning();
+        GameManager.instance.cardScanner.onCardScanned.RemoveListener(GetScannedCard);
     }
     private void GetScannedCard(CardSO card)
     {
-        scanner.onCardScanned.RemoveListener(GetScannedCard);
+        GameManager.instance.cardScanner.onCardScanned.RemoveListener(GetScannedCard);
         currentCard = card;
         UpdateCardVisuals();
     }

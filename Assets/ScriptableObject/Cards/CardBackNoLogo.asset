@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f03982ad141640647962c00dee14187c, type: 3}
-  m_Name: Catalyst
+  m_Name: CardBackNoLogo
   m_EditorClassIdentifier: 
-  cardName: Archetype Card Deck_page-0005
-  cardId: 2
-  cardTopSprite: {fileID: 21300000, guid: d281d40095fb91e4bb8ae36304d87d0f, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: bb8d4a0bd7fd26c478e6ec2a08560f0d, type: 3}
+  cardName: Archetype Card Deck_page-0112
+  cardId: 6
+  cardTopSprite: {fileID: 21300000, guid: a7a7cb4f2b6eb614e9d109d45ccd438d, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: a7a7cb4f2b6eb614e9d109d45ccd438d, type: 3}

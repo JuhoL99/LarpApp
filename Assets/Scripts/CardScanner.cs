@@ -12,8 +12,8 @@ public class CardScanner : MonoBehaviour
     [Header("Debug texts")]
     [SerializeField] private TMP_Text targetInfo;
     [Header("Other")]
+    public UnityEvent<bool> onScanToggled;
     public UnityEvent<CardSO> onCardScanned;
-    [SerializeField] private GameObject scanningPanel;
     private ImageTrackerFrameFilter imageTracker;
     private CameraDeviceFrameSource cameraDevice;
     private bool isScanning;
@@ -22,21 +22,26 @@ public class CardScanner : MonoBehaviour
     {
         imageTracker = session.GetComponentInChildren<ImageTrackerFrameFilter>();
         cameraDevice = session.GetComponentInChildren<CameraDeviceFrameSource>();
-        scanningPanel.SetActive(false);
         foreach(var card in cardTargetArray)
         {
             AddTargetControllerEvents(card);
         }
     }
+    private void GenerateImageTargetsFromFolder()
+    {
+
+    }
     public void EnableScanning()
     {
+        imageTracker.enabled = true;
         isScanning = true;
-        scanningPanel.SetActive(true);
+        onScanToggled?.Invoke(true);
     }
     public void DisableScanning()
     {
+        imageTracker.enabled = false;
         isScanning = false;
-        scanningPanel.SetActive(false);
+        onScanToggled?.Invoke(false);
     }
     private void AddTargetControllerEvents(ImageTargetController controller)
     {
@@ -51,5 +56,4 @@ public class CardScanner : MonoBehaviour
             DisableScanning();
         }
     }
-
 }
