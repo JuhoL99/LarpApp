@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-
+    //temporary until proper menu toggling
     [Header("Visuals")]
     [SerializeField] private Image cardRenderer;
     [SerializeField] private GameObject cardButton;
