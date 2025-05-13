@@ -65,6 +65,7 @@ public class CardScanner : MonoBehaviour
         controller.ImageFileSource.Scale = 0.1f;
         cardTargetList.Add(controller);
         AddTargetControllerEvents(controller);
+        imageTracker.LoadTarget(controller);
     }
     public void EnableScanning()
     {
