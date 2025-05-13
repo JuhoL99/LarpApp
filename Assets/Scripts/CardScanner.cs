@@ -16,6 +16,7 @@ public class CardScanner : MonoBehaviour
     [SerializeField] private TMP_Text targetInfo;
     [Header("Other")]
     [SerializeField] private TextAsset text; //test
+    [SerializeField] private Transform imageTargetParent;
     public UnityEvent<bool> onScanToggled;
     public UnityEvent<CardSO> onCardScanned;
     private ImageTrackerFrameFilter imageTracker;
@@ -27,7 +28,8 @@ public class CardScanner : MonoBehaviour
     {
         imageTracker = session.GetComponentInChildren<ImageTrackerFrameFilter>();
         cameraDevice = session.GetComponentInChildren<CameraDeviceFrameSource>();
-        foreach(var card in cardTargetArray)
+        cardTargetArray = imageTargetParent.GetComponentsInChildren<ImageTargetController>();
+        foreach (var card in cardTargetArray)
         {
             AddTargetControllerEvents(card);
         }
@@ -35,39 +37,50 @@ public class CardScanner : MonoBehaviour
     private void Start()
     {
         if (!generateImageTargets) return;
-        var info = new DirectoryInfo(Application.streamingAssetsPath);
+        DirectoryInfo info;
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+        info = new DirectoryInfo(Application.streamingAssetsPath);
+#elif UNITY_ANDROID
+        info = new DirectoryInfo($"jar:file://{Application.streamingAssetsPath}"); //doesnt work need to use unity webrequest
+#endif
+        if (info == null) return;
         var fileInfo = info.GetFiles();
         foreach(var file in fileInfo)
         {
             if (file.Name.Contains(".meta")) continue;
-            if (!file.Name.Contains(".jpg") || !file.Name.Contains(".png")) continue;
+            //if (!file.Name.Contains(".jpg") || !file.Name.Contains(".png")) continue;
             GenerateImageTargetsFromFolder(file.Name); //only works in editor
         }
+        
     }
     private void GenerateImageTargetsFromFolder(string cardName) 
     {
         GameObject go = new GameObject();
+        go.transform.parent = transform;
         go.name = $"Image Target - {cardName}";
         ImageTargetController controller = go.AddComponent<ImageTargetController>();
         controller.Tracker = imageTracker;
         controller.ImageFileSource.Path = cardName;
         controller.ImageFileSource.Name = cardName.Substring(0,cardName.LastIndexOf('.'));
         controller.ImageFileSource.Scale = 0.1f;
-        //cardTargetList.Add(controller);
-        //AddTargetControllerEvents(controller);
-
+        cardTargetList.Add(controller);
+        AddTargetControllerEvents(controller);
     }
     public void EnableScanning()
     {
-        imageTracker.enabled = true;
+        ToggleTracking(true);
         isScanning = true;
         onScanToggled?.Invoke(true);
     }
     public void DisableScanning()
     {
-        imageTracker.enabled = false;
+        ToggleTracking(false);
         isScanning = false;
         onScanToggled?.Invoke(false);
+    }
+    public void ToggleTracking(bool val)
+    {
+        imageTracker.enabled = val;
     }
     private void AddTargetControllerEvents(ImageTargetController controller)
     {
