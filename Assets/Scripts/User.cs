@@ -8,7 +8,7 @@ public class User
     public CardSO[] userArchetypeCards { get; private set; }
 
     public List<User> userAddedRelations { get; private set; }
-    public Dictionary<int, string[]> userRelationNotes { get; private set; }
+    public Dictionary<int, string[]> userRelationNotes { get; private set; } //use other user id for key, start from 1 not 0
     public string[] userNotes { get; private set; }
 
     public User(string name, int id, List<User> addedRelations = null, Dictionary<int, string[]> relationNotes = null)
@@ -24,10 +24,18 @@ public class User
     {
         userArchetypeCards[slot] = card;
     }
+    public void SetUserCards(CardSO[] userCards)
+    {
+        userArchetypeCards = userCards;
+    }
     public void AddRelationToUser(User userToAdd)
     {
         if(userToAdd == this) return;
         userAddedRelations.Add(userToAdd);
+    }
+    public void SetRelationNotes(Dictionary<int, string[]> relationNotes)
+    {
+        userRelationNotes = relationNotes;
     }
     public void RemoveRelationFromUser(User userToRemove)
     {
@@ -41,4 +49,5 @@ public class User
     {
         user.userName = newName;
     }
+    
 }
