@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Saint
   imageName: Saint
   cardId: 0
-  cardTopSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: f4b7c49a80aa93b4284f3dd96f002210, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}

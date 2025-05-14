@@ -14,4 +14,14 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
         if(generateNamesForScriptableObjects) cardDatabase.NamesFromImageFile(); //remove l8r
     }
+    private void Start()
+    {
+        //temp
+        player = new User("Player", 0);
+        for(int i = 0; i < 10; i++)
+        {
+            User user = new User($"user {i + 1}", i + 1);
+            player.AddRelationToUser(user);
+        }
+    }
 }

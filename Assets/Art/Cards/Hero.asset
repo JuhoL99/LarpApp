@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Hero
   imageName: Hero
   cardId: 0
-  cardTopSprite: {fileID: 21300000, guid: 23d05b6aa7f57cd4b83ae840c6579edc, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 4afa55ac3b275104cb617713257bab9a, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 23d05b6aa7f57cd4b83ae840c6579edc, type: 3}

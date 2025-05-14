@@ -65,16 +65,27 @@ public class CardScanner : MonoBehaviour
         controller.ImageFileSource.Scale = 0.1f;
         cardTargetList.Add(controller);
         AddTargetControllerEvents(controller);
-        imageTracker.LoadTarget(controller);
     }
     public void EnableScanning()
     {
+        //test
+        foreach (var card in cardTargetArray)
+        {
+            imageTracker.LoadTarget(card);
+        }
+        //test
         ToggleTracking(true);
         isScanning = true;
         onScanToggled?.Invoke(true);
     }
     public void DisableScanning()
     {
+        //test
+        foreach (var card in cardTargetArray)
+        {
+            imageTracker.UnloadTarget(card);
+        }
+        //test
         ToggleTracking(false);
         isScanning = false;
         onScanToggled?.Invoke(false);

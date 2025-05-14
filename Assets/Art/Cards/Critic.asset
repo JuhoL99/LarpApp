@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Critic
   imageName: Critic
   cardId: 0
-  cardTopSprite: {fileID: 21300000, guid: d70d88afbde3b0647b6965a129ce381c, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: f260a6572788d3f4fa0af29fbbac607c, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: d70d88afbde3b0647b6965a129ce381c, type: 3}

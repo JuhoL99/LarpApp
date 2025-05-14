@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Enthusiast
   imageName: Enthusiast
   cardId: 0
-  cardTopSprite: {fileID: 21300000, guid: cddae0252cc6a3c409785ed41f9e0932, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: b83726c43407a2e4fae8dda8557911d5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: cddae0252cc6a3c409785ed41f9e0932, type: 3}

@@ -11,10 +11,14 @@ public class User
     public Dictionary<int, string[]> userRelationNotes { get; private set; }
     public string[] userNotes { get; private set; }
 
-    public User(string name, int id)
+    public User(string name, int id, List<User> addedRelations = null, Dictionary<int, string[]> relationNotes = null)
     {
         userName = name;
         userID = id;
+        if(addedRelations == null) userAddedRelations = new List<User>();
+        else userAddedRelations = addedRelations;
+        if(relationNotes == null) userRelationNotes = new Dictionary<int, string[]>();
+        else userRelationNotes = relationNotes;
     }
     public void AddCardToUser(CardSO card, int slot)
     {

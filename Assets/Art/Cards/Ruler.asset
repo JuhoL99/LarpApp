@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Ruler
   imageName: Ruler
   cardId: 0
-  cardTopSprite: {fileID: 21300000, guid: 5a2ad7a734d74d943822e9ec7c477cd2, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 5a2ad7a734d74d943822e9ec7c477cd2, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 37c003ed019c31f42a6a5538134b8be0, type: 3}
+  cardBottomSprite: {fileID: 0}
