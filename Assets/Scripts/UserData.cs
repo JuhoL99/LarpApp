@@ -1,0 +1,42 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class UserData
+{
+    public int userID;
+    public string userName;
+    public CardSO[] userArchetypeCards;
+    public List<string> notesAboutUser;
+    private int maxCardAmount = 2;
+
+    public UserData(int id, string name, CardSO[] cards = null, List<string> notes = null)
+    {
+        userID = id;
+        userName = name;
+        userArchetypeCards = cards == null ? new CardSO[maxCardAmount] : cards;
+        notesAboutUser = notes == null ? new List<string>() : notes;
+    }
+    public void ChangeUserName(string newName)
+    {
+        if(userName != newName)
+        {
+            userName = newName;
+        }
+    }
+    public void AddCardToUser(CardSO card, int index)
+    {
+        if (userArchetypeCards != null && index <= maxCardAmount)
+        {
+            userArchetypeCards[index] = card;
+        }
+    }
+    public void AddNoteToUser(string note)
+    {
+        if(notesAboutUser != null)
+        {
+            notesAboutUser.Add(note);
+        }
+    }
+
+
+}

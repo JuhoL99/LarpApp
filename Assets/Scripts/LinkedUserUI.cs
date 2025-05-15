@@ -33,7 +33,7 @@ public class LinkedUserUI : MonoBehaviour
     }
     private void LoadLinkedUsers()
     {
-        if(linkedUserObjects.Count != 0)
+        if (linkedUserObjects.Count != 0)
         {
             foreach(GameObject obj in linkedUserObjects) Destroy(obj);
             linkedUserObjects.Clear();

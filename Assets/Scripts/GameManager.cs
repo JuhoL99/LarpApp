@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
     public CardDatabase cardDatabase;
     public CardScanner cardScanner;
     public User player;
+    private HashSet<int> usedUniqueIds = new HashSet<int>();
     [SerializeField] private bool generateNamesForScriptableObjects = false; //temporary
 
     private void Awake()
