@@ -42,4 +42,37 @@ public class PlayerData
             playerArchetypeCards[index] = card;
         }
     }
+    public string GetUserCardsString()
+    {
+        string s = string.Empty;
+        for (int i = 0; i < maxCardAmount; i++)
+        {
+            if (playerArchetypeCards[i] == null) s += "-1|";
+            else s += $"{playerArchetypeCards[i].cardId}|";
+        }
+        return s = s.Substring(0, s.Length - 1);
+    }
+    public string GetUserRelationsString()
+    {
+        string s = string.Empty;
+
+        foreach(UserData user in playerAddedRelations)
+        {
+            s += $"{user.userID}:{user.userName},";
+        }
+        return s = s.Substring(0, s.Length-1);
+    }
+    public List<UserData> LoadUsersFromString(string loadData)
+    {
+        List<UserData> users = new List<UserData>();
+        string[] data = loadData.Split(",");
+        foreach (var element in data)
+        {
+            string[] parts = element.Split(":");
+            UserData user = new UserData(parts[1]);
+            this.AddUserToRelations(user);
+        }
+        return users;
+
+    }
 }
