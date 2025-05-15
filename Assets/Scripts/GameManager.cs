@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         //temp
         player = new User("Player", 0);
+        return;
         for(int i = 0; i < 10; i++)
         {
             User user = new User($"user {i + 1}", i + 1);

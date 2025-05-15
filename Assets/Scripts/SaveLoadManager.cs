@@ -17,6 +17,10 @@ public class SaveLoadManager : MonoBehaviour
     {
         player = GameManager.instance.player;
     }
+    public void ClearAllData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     public void Save()
     {
         SavePlayerPrefs();
@@ -27,18 +31,19 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void SavePlayerPrefs()
     {
+        if (player == null) return;
         string playerName = player.userName;
         string playerCards = CardsToCSV(player.userArchetypeCards);
         string linkedNames = RelationsToCSV(player.userAddedRelations, 0);
         string linkedIDs = RelationsToCSV(player.userAddedRelations,1);
         string linkedCards = RelationsToCSV(player.userAddedRelations, 2);
-        string linkedNotes = RelationsToCSV(player.userAddedRelations, 3);
+        //string linkedNotes = RelationsToCSV(player.userAddedRelations, 3);
         PlayerPrefs.SetString("playerName", playerName);
         PlayerPrefs.SetString("playerCards", playerCards);
         PlayerPrefs.SetString("linkedNames", linkedNames);
         PlayerPrefs.SetString("linkedIDs", linkedIDs);
         PlayerPrefs.SetString("linkedCards", linkedCards);
-        PlayerPrefs.SetString("linkedNotes", linkedNotes);
+        //PlayerPrefs.SetString("linkedNotes", linkedNotes);
         onGameSaved?.Invoke();
     }
     private void LoadPlayerPrefs()
@@ -142,6 +147,7 @@ public class SaveLoadManager : MonoBehaviour
                 csv += "-1,";
             }
         }
+        Debug.Log(csv);
         return csv.Substring(0, csv.Length - 1);
     }
     private string RelationsToCSV(List<User> linkedUsers, int type) //0 = names, 1 = ids, 2 = cards, 3 = notes
@@ -166,6 +172,7 @@ public class SaveLoadManager : MonoBehaviour
                 csv = UserNotesToCSV();
             }
         }
+        Debug.Log(csv);
         return csv.Substring(0, csv.Length - 1);
     }
     private string RelationCardsToCSV()

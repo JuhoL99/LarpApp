@@ -15,6 +15,7 @@ public class User
     {
         userName = name;
         userID = id;
+        userArchetypeCards = new CardSO[2];
         if(addedRelations == null) userAddedRelations = new List<User>();
         else userAddedRelations = addedRelations;
         if(relationNotes == null) userRelationNotes = new Dictionary<int, string[]>();
@@ -40,10 +41,11 @@ public class User
     public void RemoveRelationFromUser(User userToRemove)
     {
         if(userToRemove == this) return;
-        foreach (var user in userAddedRelations)
+        userAddedRelations.Remove(userToRemove);
+        /*foreach (var user in userAddedRelations)
         {
             if (user.userID == userToRemove.userID) userAddedRelations.Remove(userToRemove);
-        }
+        }*/
     }
     public void ChangeUserName(User user, string newName)
     {

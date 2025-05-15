@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.IO.Pipes;
 using System.Linq;
 using System;
 
-public class AddUserUI : MonoBehaviour
+public class LinkedUserUI : MonoBehaviour
 {
     [SerializeField] private GameObject userPanel;
     [SerializeField] private RectTransform contentParent;
@@ -19,6 +18,35 @@ public class AddUserUI : MonoBehaviour
         contentHeight = contentParent.sizeDelta.y;
         userPanelHeight = userPanel.GetComponent<RectTransform>().sizeDelta.y;
         linkedUserObjects = new List<GameObject>();
+        SaveLoadManager.instance.onGameLoaded.AddListener(LoadData);
+    }
+    public void RemoveLinkedUser(GameObject objectToRemove)
+    {
+        User userToRemove = objectToRemove.GetComponent<LinkedUserPanel>().thisPanelUser;
+        GameManager.instance.player.RemoveRelationFromUser(userToRemove);
+        linkedUserObjects.Remove(objectToRemove);
+        Destroy(objectToRemove);
+    }
+    private void LoadData()
+    {
+        LoadLinkedUsers();
+    }
+    private void LoadLinkedUsers()
+    {
+        if(linkedUserObjects.Count != 0)
+        {
+            foreach(GameObject obj in linkedUserObjects) Destroy(obj);
+            linkedUserObjects.Clear();
+        }
+        foreach(User user in GameManager.instance.player.userAddedRelations)
+        {
+            GameObject go = Instantiate(userPanel, contentParent);
+            LinkedUserPanel lp = go.AddComponent<LinkedUserPanel>();
+            lp.thisPanelUser = user;
+            lp.linkedUserUI = this;
+            linkedUserObjects.Add(go);
+        }
+        
     }
     public void AddLinkedUser()
     {
@@ -28,6 +56,7 @@ public class AddUserUI : MonoBehaviour
         GameObject go = Instantiate(userPanel, contentParent);
         LinkedUserPanel lp = go.AddComponent<LinkedUserPanel>();
         lp.thisPanelUser = linkedUser;
+        lp.linkedUserUI = this;
         linkedUserObjects.Add(go);
     }
     public void SaveTest()
