@@ -44,6 +44,7 @@ public class UserPanel : MonoBehaviour
         string noteText = noteInputField.text;
         if(noteText == string.Empty) return;
         panelUser.notesAboutUser.Add(noteText);
+        noteInputField.text = string.Empty;
         UpdatePanelText();
     }
     private void RemoveUser()

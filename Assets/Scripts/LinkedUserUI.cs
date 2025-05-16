@@ -24,7 +24,7 @@ public class LinkedUserUI : MonoBehaviour
     public void RemoveLinkedUser(GameObject objectToRemove)
     {
         User userToRemove = objectToRemove.GetComponent<LinkedUserPanel>().thisPanelUser;
-        GameManager.instance.player.RemoveRelationFromUser(userToRemove);
+        //GameManager.instance.player.RemoveRelationFromUser(userToRemove);
         linkedUserObjects.Remove(objectToRemove);
         Destroy(objectToRemove);
     }
@@ -39,17 +39,17 @@ public class LinkedUserUI : MonoBehaviour
             foreach(GameObject obj in linkedUserObjects) Destroy(obj);
             linkedUserObjects.Clear();
         }
-        foreach(User user in GameManager.instance.player.userAddedRelations)
+        /*foreach(User user in GameManager.instance.player.userAddedRelations)
         {
             GameObject go = Instantiate(userPanel, contentParent);
             LinkedUserPanel lp = go.AddComponent<LinkedUserPanel>();
             lp.thisPanelUser = user;
             lp.linkedUserUI = this;
             linkedUserObjects.Add(go);
-        }
+        }*/
         
     }
-    public void AddLinkedUser()
+    /*public void AddLinkedUser()
     {
         int newUserID = GameManager.instance.player.userAddedRelations.Count + 1;
         User linkedUser = new User("Name", newUserID);
@@ -59,7 +59,7 @@ public class LinkedUserUI : MonoBehaviour
         lp.thisPanelUser = linkedUser;
         lp.linkedUserUI = this;
         linkedUserObjects.Add(go);
-    }
+    }*/
     public void SaveTest()
     {
         ShittyCSVConverter();

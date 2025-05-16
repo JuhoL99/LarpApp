@@ -71,7 +71,7 @@ public class UserManager : MonoBehaviour
     private void CreatePlayerUser()
     {
         if (verificationPopup.activeSelf) verificationPopup.SetActive(false);
-        GameManager.instance.player = new User(userNameInputField.text, 0); ;
+        //GameManager.instance.player = new User(userNameInputField.text, 0); ;
         DisableListeners();
         userCreationPanel.SetActive(false);
     }

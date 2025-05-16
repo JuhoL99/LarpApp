@@ -35,8 +35,9 @@ public class UserPanelManager : MonoBehaviour
     }
     private void LoadExistingUserPanels()
     {
-        if(GameManager.instance.p.playerAddedRelations != null && GameManager.instance.p.playerAddedRelations.Count > 0)
-        foreach(UserData user in GameManager.instance.p.playerAddedRelations)
+        ClearAndDestroyPanels();
+        if(GameManager.instance.player.playerAddedRelations != null && GameManager.instance.player.playerAddedRelations.Count > 0)
+        foreach(UserData user in GameManager.instance.player.playerAddedRelations)
         {
             InstantiateUserPanel(user);
         }
@@ -51,13 +52,20 @@ public class UserPanelManager : MonoBehaviour
     private UserData CreateNewUser(string nameInput)
     {
         UserData newUser = new UserData(nameInput);
-        GameManager.instance.p.AddUserToRelations(newUser);
+        GameManager.instance.player.AddUserToRelations(newUser);
         return newUser;
     }
     public void RemoveUser(UserData user, GameObject panel)
     {
-        GameManager.instance.p.RemoveUserFromRelations(user);
+        GameManager.instance.player.RemoveUserFromRelations(user);
         allInstantiatedUserPanels.Remove(panel);
         Destroy(panel);
+    }
+    private void ClearAndDestroyPanels()
+    {
+        foreach(GameObject panel in allInstantiatedUserPanels)
+        {
+            Destroy(panel);
+        }
     }
 }
