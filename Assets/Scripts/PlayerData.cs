@@ -68,7 +68,7 @@ public class PlayerData
         }
         return s = s.Substring(0, s.Length -1);
     }
-    public string GetPlayerNotesString()
+    public string GetUserNotesString()
     {
         AllNoteWrapper allNotes = new AllNoteWrapper();
         allNotes.allNotesList = new List<NoteWrapper>();

@@ -7,7 +7,8 @@ public class SaveLoadManager : MonoBehaviour
     public static SaveLoadManager instance;
     public UnityEvent onGameSaved;
     public UnityEvent onGameLoaded;
-    private User player;
+    private User oldPlayer;
+    private PlayerData playerData;
     private void Awake()
     {
         if(instance == null) instance = this;
@@ -15,7 +16,7 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void Start()
     {
-        player = GameManager.instance.player;
+        oldPlayer = GameManager.instance.player;
     }
     public void ClearAllData()
     {
@@ -31,22 +32,39 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void SavePlayerPrefs()
     {
-        if (player == null) return;
-        string playerName = player.userName;
-        string playerCards = CardsToCSV(player.userArchetypeCards);
-        string linkedNames = RelationsToCSV(player.userAddedRelations, 0);
-        string linkedIDs = RelationsToCSV(player.userAddedRelations,1);
-        string linkedCards = RelationsToCSV(player.userAddedRelations, 2);
-        //string linkedNotes = RelationsToCSV(player.userAddedRelations, 3);
+        PlayerPrefs.SetString("playerName", playerData.playerName);
+        PlayerPrefs.SetString("playerCards", playerData.GetPlayerCardString());
+        PlayerPrefs.SetString("linkedUserNames", playerData.GetUserRelationsString());
+        PlayerPrefs.SetString("linkedUserCards", playerData.GetUserCardString());
+        PlayerPrefs.SetString("linkedUserNotes", playerData.GetUserNotesString());
+    }
+    private void LoadPlayerPrefs()
+    {
+        playerData = new PlayerData(playerData.playerName);
+        playerData.LoadUserCardsFromString(PlayerPrefs.GetString("playerCards"));
+        playerData.LoadUsersFromString(PlayerPrefs.GetString("linkedUserNames"));
+        playerData.LoadUserCardsFromString(PlayerPrefs.GetString("linkedUserCards"));
+        playerData.LoadUserNotesFromString(PlayerPrefs.GetString("linkedUserNotes"));
+        GameManager.instance.p = playerData;
+    }
+    private void SavePlayerPrefsOld()
+    {
+        if (oldPlayer == null) return;
+        string playerName = oldPlayer.userName;
+        string playerCards = CardsToCSV(oldPlayer.userArchetypeCards);
+        string linkedNames = RelationsToCSV(oldPlayer.userAddedRelations, 0);
+        string linkedIDs = RelationsToCSV(oldPlayer.userAddedRelations,1);
+        string linkedCards = RelationsToCSV(oldPlayer.userAddedRelations, 2);
+        string linkedNotes = RelationsToCSV(oldPlayer.userAddedRelations, 3);
         PlayerPrefs.SetString("playerName", playerName);
         PlayerPrefs.SetString("playerCards", playerCards);
         PlayerPrefs.SetString("linkedNames", linkedNames);
         PlayerPrefs.SetString("linkedIDs", linkedIDs);
         PlayerPrefs.SetString("linkedCards", linkedCards);
-        //PlayerPrefs.SetString("linkedNotes", linkedNotes);
+        PlayerPrefs.SetString("linkedNotes", linkedNotes);
         onGameSaved?.Invoke();
     }
-    private void LoadPlayerPrefs()
+    private void LoadPlayerPrefsOld()
     {
         string playerName = PlayerPrefs.GetString("playerName", "Player");
         string playerCardsData = PlayerPrefs.GetString("playerCards", "");
@@ -128,7 +146,7 @@ public class SaveLoadManager : MonoBehaviour
         loadedPlayer.SetRelationNotes(relationNotes);
 
         GameManager.instance.player = loadedPlayer;
-        player = loadedPlayer;
+        oldPlayer = loadedPlayer;
         onGameLoaded?.Invoke();
     }
 
@@ -178,7 +196,7 @@ public class SaveLoadManager : MonoBehaviour
     private string RelationCardsToCSV()
     {
         string csv = "";
-        foreach (User user in player.userAddedRelations)
+        foreach (User user in oldPlayer.userAddedRelations)
         {
             if (!string.IsNullOrEmpty(csv)) csv += "|";
             for (int i = 0; i < 2; i++)
@@ -197,7 +215,7 @@ public class SaveLoadManager : MonoBehaviour
     }
     private string UserNotesToCSV()
     {
-        Dictionary<int, string[]> relationNotes = player.userRelationNotes;
+        Dictionary<int, string[]> relationNotes = oldPlayer.userRelationNotes;
         if (relationNotes == null || relationNotes.Count == 0)
             return "";
 
