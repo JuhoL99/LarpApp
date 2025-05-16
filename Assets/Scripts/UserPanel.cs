@@ -10,11 +10,13 @@ public class UserPanel : MonoBehaviour
     private TMP_Text panelUserNotesText;
     private Button addNoteButton;
     private Button removeUserButton;
+    private TMP_InputField noteInputField;
 
     private void Start()
     {
         addNoteButton = transform.GetChild(2).GetComponent<Button>();
         removeUserButton = transform.GetChild(3).GetComponent<Button>();
+        noteInputField = transform.GetChild(4).GetComponent<TMP_InputField>();
         addNoteButton.onClick.AddListener(AddNoteToUser);
         removeUserButton.onClick.AddListener(RemoveUser);
     }
@@ -28,7 +30,6 @@ public class UserPanel : MonoBehaviour
     }
     private void UpdatePanelText()
     {
-        if (panelUser == null) return;
         panelUserNameText.text = panelUser.userName;
         string noteText = string.Empty;
         foreach(string note in panelUser.notesAboutUser)
@@ -40,11 +41,13 @@ public class UserPanel : MonoBehaviour
     }
     private void AddNoteToUser()
     {
-
+        string noteText = noteInputField.text;
+        if(noteText == string.Empty) return;
+        panelUser.notesAboutUser.Add(noteText);
+        UpdatePanelText();
     }
     private void RemoveUser()
     {
-        if(panelUser == null) return;
         manager.RemoveUser(panelUser, this.gameObject);
     }
 
