@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerData
@@ -6,7 +7,7 @@ public class PlayerData
     public string playerName;
     public CardSO[] playerArchetypeCards;
     public List<UserData> playerAddedRelations;
-    private int maxCardAmount = 2;
+    public int maxCardAmount = 2;
 
     public PlayerData(string name = null, CardSO[] cards = null, List<UserData> addedRelations = null)
     {
@@ -42,7 +43,7 @@ public class PlayerData
             playerArchetypeCards[index] = card;
         }
     }
-    public string GetUserCardsString()
+    public string GetPlayerCardString()
     {
         string s = string.Empty;
         for (int i = 0; i < maxCardAmount; i++)
@@ -52,7 +53,22 @@ public class PlayerData
         }
         return s = s.Substring(0, s.Length - 1);
     }
-    public string GetUserRelationsString()
+    public string GetUserCardString() //format 10|23,-1|9,8|54 ...
+    {
+        string s = string.Empty;
+        foreach(UserData user in playerAddedRelations)
+        {
+            for(int i = 0; i < user.maxCardAmount; i++)
+            {
+                if (user.userArchetypeCards[i] == null) s += "-1|";
+                else s += $"{user.userArchetypeCards[i].cardId}|";
+            }
+            s = s.Substring(0, s.Length - 1);
+            s += ",";
+        }
+        return s = s.Substring(0, s.Length -1);
+    }
+    public string GetUserRelationsString() //format guid:name,guid:name,guid:name ...
     {
         string s = string.Empty;
 
@@ -69,10 +85,37 @@ public class PlayerData
         foreach (var element in data)
         {
             string[] parts = element.Split(":");
-            UserData user = new UserData(parts[1]);
+            UserData user = new UserData(parts[1], Guid.Parse(parts[0]));
             this.AddUserToRelations(user);
         }
         return users;
-
+    }
+    public void LoadPlayerCardsFromString(string loadData)
+    {
+        string s = string.Empty;
+        string[] data = loadData.Split("|");
+        int i = 0;
+        foreach (string element in data)
+        {
+            playerArchetypeCards[i] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(element));
+            i++;
+        }
+    }
+    public void LoadUserCardsFromString(string loadData)
+    {
+        string s = string.Empty;
+        string[] data = loadData.Split(",");
+        int i = 0;
+        foreach(UserData user in playerAddedRelations)
+        {
+            string[] parts = data[i].Split("|");
+            int j = 0;
+            foreach(string part in parts)
+            {
+                user.userArchetypeCards[i] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(part));
+                j++;
+            }
+            i++;
+        }
     }
 }
