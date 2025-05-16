@@ -38,7 +38,7 @@ public class PlayerData
     }
     public void AddCardToPlayer(CardSO card, int index)
     {
-        if(playerArchetypeCards != null && index <= maxCardAmount)
+        if(playerArchetypeCards != null && index < maxCardAmount)
         {
             playerArchetypeCards[index] = card;
         }
@@ -51,7 +51,7 @@ public class PlayerData
             if (playerArchetypeCards[i] == null) s += "-1|";
             else s += $"{playerArchetypeCards[i].cardId}|";
         }
-        return s = s.Substring(0, s.Length - 1);
+        return s.Length > 0 ? s.Substring(0, s.Length - 1) : string.Empty;
     }
     public string GetUserCardString() //format 10|23,-1|9,8|54 ...
     {
@@ -66,7 +66,7 @@ public class PlayerData
             s = s.Substring(0, s.Length - 1);
             s += ",";
         }
-        return s = s.Substring(0, s.Length -1);
+        return s.Length > 0 ? s.Substring(0, s.Length -1) : string.Empty;
     }
     public string GetUserNotesString()
     {
@@ -89,10 +89,11 @@ public class PlayerData
         {
             s += $"{user.userID}:{user.userName},";
         }
-        return s = s.Substring(0, s.Length-1);
+        return s.Length > 0 ? s.Substring(0, s.Length-1) : string.Empty;
     }
     public void LoadPlayerCardsFromString(string loadData)
     {
+        if (string.IsNullOrEmpty(loadData)) return;
         string s = string.Empty;
         string[] data = loadData.Split("|");
         int i = 0;
@@ -104,6 +105,7 @@ public class PlayerData
     }
     public void LoadUsersFromString(string loadData)
     {
+        if(string.IsNullOrEmpty(loadData)) return;
         List<UserData> users = new List<UserData>();
         string[] data = loadData.Split(",");
         foreach (var element in data)
@@ -115,6 +117,7 @@ public class PlayerData
     }
     public void LoadUserCardsFromString(string loadData)
     {
+        if (string.IsNullOrEmpty(loadData)) return;
         string s = string.Empty;
         string[] data = loadData.Split(",");
         int i = 0;
@@ -132,6 +135,7 @@ public class PlayerData
     }
     public void LoadUserNotesFromString(string loadData)
     {
+        if (string.IsNullOrEmpty(loadData)) return;
         AllNoteWrapper data = JsonUtility.FromJson<AllNoteWrapper>(loadData);
         int i = 0;
         foreach(NoteWrapper notes in data.allNotesList)

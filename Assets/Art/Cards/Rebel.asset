@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Rebel
   imageName: Rebel
-  cardId: 0
+  cardId: 52
   cardTopSprite: {fileID: 21300000, guid: e6a0f2f7248f5e5438ae745b1a758ec6, type: 3}
   cardBottomSprite: {fileID: 0}

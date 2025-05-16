@@ -14,17 +14,27 @@ public class UserPanel : MonoBehaviour
     [SerializeField] private Button removeUserButton;
     [Header("Note Input Field")]
     [SerializeField] private TMP_InputField noteInputField;
+    [Header("Cards")]
+    [SerializeField] private Card[] cards;
 
     private void Start()
     {
         addNoteButton.onClick.AddListener(AddNoteToUser);
         removeUserButton.onClick.AddListener(RemoveUser);
+        foreach(Card card in cards)
+        {
+            card.onCardSwitched.AddListener(AddCardToUser);
+        }
     }
     public void SetupUserPanel(UserData user, ConnectionsPanelManager mgr)
     {
         panelUser = user;
         manager = mgr;
         UpdatePanelText();
+        for(int i = 0; i < cards.Length; i++)
+        {
+            cards[i].SetCurrentCard(panelUser.userArchetypeCards[i]);
+        }
     }
     private void UpdatePanelText()
     {
@@ -36,6 +46,11 @@ public class UserPanel : MonoBehaviour
             noteText += $"{note} \n";
         }
         panelUserNotesText.text = noteText;
+    }
+    private void AddCardToUser(int index)
+    {
+        CardSO card = cards[index].GetCurrentCard();
+        panelUser.AddCardToUser(card, index);
     }
     private void AddNoteToUser()
     {

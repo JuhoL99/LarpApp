@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Everyman
   imageName: Everyman
-  cardId: 0
+  cardId: 22
   cardTopSprite: {fileID: 21300000, guid: 89d490b3dc7a85e41acc12a79e79cb14, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 619ec3265d407db49866b56c86922e63, type: 3}

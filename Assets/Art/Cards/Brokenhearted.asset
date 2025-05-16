@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Brokenhearted
   imageName: Brokenhearted
-  cardId: 0
+  cardId: 2
   cardTopSprite: {fileID: 21300000, guid: aa383407965d54d4bbc41227e5b75d8a, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 9b766f82c4cce6c4199ad8df826bcacd, type: 3}

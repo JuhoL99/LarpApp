@@ -1,16 +1,20 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Card : MonoBehaviour
 {
+    [Header("Card base visuals")]
     [SerializeField] private Sprite[] sprites;
+    [Header("Card order in hierarchy")]
+    [SerializeField] private int cardIndex;
     private CardSO currentCard;
     private Image img;
     private Button switchCardButton;
     private bool isEmpty;
     private bool facingTop = true;
-
+    public UnityEvent<int> onCardSwitched;
     private void Start()
     {
         img = GetComponent<Image>();
@@ -32,6 +36,17 @@ public class Card : MonoBehaviour
     private void GetScannedCard(CardSO card)
     {
         GameManager.instance.cardScanner.onCardScanned.RemoveListener(GetScannedCard);
+        onCardSwitched?.Invoke(cardIndex);
+        currentCard = card;
+        UpdateCardVisuals();
+    }
+    public CardSO GetCurrentCard()
+    {
+        return currentCard;
+    }
+    public void SetCurrentCard(CardSO card)
+    {
+        if(img == null) img = GetComponent<Image>();
         currentCard = card;
         UpdateCardVisuals();
     }

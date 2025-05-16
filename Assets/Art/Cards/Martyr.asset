@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Martyr
   imageName: Martyr
-  cardId: 0
+  cardId: 42
   cardTopSprite: {fileID: 21300000, guid: 34008e4893255fa4ba59f8ea7008cab2, type: 3}
   cardBottomSprite: {fileID: 0}

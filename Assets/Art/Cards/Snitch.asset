@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Snitch
   imageName: Snitch
-  cardId: 0
+  cardId: 61
   cardTopSprite: {fileID: 21300000, guid: 51459bbbda26d1d4e90c9ad046e2d5d2, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}

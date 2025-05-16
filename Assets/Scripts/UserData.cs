@@ -26,7 +26,7 @@ public class UserData
     }
     public void AddCardToUser(CardSO card, int index)
     {
-        if (userArchetypeCards != null && index <= maxCardAmount)
+        if (userArchetypeCards != null && index < maxCardAmount)
         {
             userArchetypeCards[index] = card;
         }

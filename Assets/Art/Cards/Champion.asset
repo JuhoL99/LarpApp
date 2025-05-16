@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Champion
   imageName: Champion
-  cardId: 0
+  cardId: 6
   cardTopSprite: {fileID: 21300000, guid: 2627098701076734bb17acee33d55b86, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 25cf1cda9689d7246b94836fc93c082f, type: 3}

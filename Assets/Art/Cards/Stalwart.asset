@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Stalwart
   imageName: Stalwart
-  cardId: 0
+  cardId: 63
   cardTopSprite: {fileID: 21300000, guid: cb307e222ad17dd4c8d2cb17575c14e3, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}

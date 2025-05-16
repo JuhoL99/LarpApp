@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Revolutionary
   imageName: Revolutionary
-  cardId: 0
+  cardId: 54
   cardTopSprite: {fileID: 21300000, guid: 9b8bcaf60c16c71498c81d245f3e0395, type: 3}
   cardBottomSprite: {fileID: 0}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Caregiver
   imageName: Caregiver
-  cardId: 0
+  cardId: 4
   cardTopSprite: {fileID: 21300000, guid: f000f0abb90c3534bbbe94491eec8c07, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 25cf1cda9689d7246b94836fc93c082f, type: 3}

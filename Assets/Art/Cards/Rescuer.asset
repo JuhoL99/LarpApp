@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Rescuer
   imageName: Rescuer
-  cardId: 0
+  cardId: 53
   cardTopSprite: {fileID: 21300000, guid: 78043fd269b15164ca9218c38c4eb4a0, type: 3}
   cardBottomSprite: {fileID: 0}

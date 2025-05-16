@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Teacher
   imageName: Teacher
-  cardId: 0
+  cardId: 65
   cardTopSprite: {fileID: 21300000, guid: 6093780e4de51194b8961ed3d4f3b8bd, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
