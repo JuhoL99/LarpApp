@@ -24,6 +24,7 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void Save()
     {
+        //use file instead of playerprefs later
         SavePlayerPrefs();
     }
     public void Load()
@@ -38,6 +39,7 @@ public class SaveLoadManager : MonoBehaviour
         PlayerPrefs.SetString("linkedUserNames", playerData.GetUserRelationsString());
         PlayerPrefs.SetString("linkedUserCards", playerData.GetUserCardString());
         PlayerPrefs.SetString("linkedUserNotes", playerData.GetUserNotesString());
+        onGameSaved?.Invoke();
     }
     private void LoadPlayerPrefs()
     {
@@ -49,6 +51,7 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUserCardsFromString(PlayerPrefs.GetString("linkedUserCards"));
         playerData.LoadUserNotesFromString(PlayerPrefs.GetString("linkedUserNotes"));
         GameManager.instance.p = playerData;
+        onGameLoaded?.Invoke();
     }
     private void SavePlayerPrefsOld()
     {

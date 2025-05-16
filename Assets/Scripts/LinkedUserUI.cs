@@ -15,6 +15,7 @@ public class LinkedUserUI : MonoBehaviour
     private string csvID;
     private void Start()
     {
+        return;
         contentHeight = contentParent.sizeDelta.y;
         userPanelHeight = userPanel.GetComponent<RectTransform>().sizeDelta.y;
         linkedUserObjects = new List<GameObject>();
