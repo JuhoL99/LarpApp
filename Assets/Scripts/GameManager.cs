@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        //SaveLoadManager.instance.ClearAllData();
         p = new PlayerData("playername");
         /*for (int i = 0; i < 10; i++)
         {

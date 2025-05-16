@@ -32,6 +32,7 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void SavePlayerPrefs()
     {
+        if (playerData == null) playerData = GameManager.instance.p;
         PlayerPrefs.SetString("playerName", playerData.playerName);
         PlayerPrefs.SetString("playerCards", playerData.GetPlayerCardString());
         PlayerPrefs.SetString("linkedUserNames", playerData.GetUserRelationsString());
@@ -40,9 +41,11 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void LoadPlayerPrefs()
     {
-        playerData = new PlayerData(playerData.playerName);
+        playerData = new PlayerData(PlayerPrefs.GetString("playerName"));
         playerData.LoadUserCardsFromString(PlayerPrefs.GetString("playerCards"));
+        Debug.Log(PlayerPrefs.GetString("linkedUserNames"));
         playerData.LoadUsersFromString(PlayerPrefs.GetString("linkedUserNames"));
+        Debug.Log(PlayerPrefs.GetString("linkedUserCards"));
         playerData.LoadUserCardsFromString(PlayerPrefs.GetString("linkedUserCards"));
         playerData.LoadUserNotesFromString(PlayerPrefs.GetString("linkedUserNotes"));
         GameManager.instance.p = playerData;

@@ -124,7 +124,7 @@ public class PlayerData
             int j = 0;
             foreach(string part in parts)
             {
-                user.userArchetypeCards[i] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(part));
+                user.userArchetypeCards[j] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(part));
                 j++;
             }
             i++;
