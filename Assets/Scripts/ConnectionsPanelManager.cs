@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UserPanelManager : MonoBehaviour
+public class ConnectionsPanelManager : MonoBehaviour
 {
     [Header("Scroll view content object")]
     [SerializeField] private Transform scrollContentTransform;
@@ -13,6 +13,8 @@ public class UserPanelManager : MonoBehaviour
     [SerializeField] private Button addUserButton;
     [Header("Username Input Field")]
     [SerializeField] private TMP_InputField nameInputField;
+    [Header("Name Warning Text")]
+    [SerializeField] private TMP_Text nameWarningText;
     private List<GameObject> allInstantiatedUserPanels;
 
     private void Start()
@@ -20,11 +22,23 @@ public class UserPanelManager : MonoBehaviour
         SaveLoadManager.instance.onGameLoaded.AddListener(LoadExistingUserPanels);
         addUserButton.onClick.AddListener(CheckInputFieldName);
         allInstantiatedUserPanels = new List<GameObject>();
+        nameInputField.onValueChanged.AddListener(OnInputFieldChanged);
+        LoadExistingUserPanels();
+    }
+    private void OnInputFieldChanged(string txt)
+    {
+        if (string.IsNullOrWhiteSpace(txt)) nameWarningText.text = "Name empty";
+        else if (txt.Length < 1) nameWarningText.text = "Name too short";
+        else if (txt.Length > 20) nameWarningText.text = "Name too long";
+        else if (txt.Contains(",") || txt.Contains(":")) nameWarningText.text = "Name can't contain characters ',' and ':'";
+        else nameWarningText.text = string.Empty;
     }
     private void CheckInputFieldName()
     {
+        if (string.IsNullOrWhiteSpace(nameInputField.text)) return;
         if (nameInputField.text.Length == 0) return;
         if (nameInputField.text.Length > 20) return;
+        if (nameInputField.text.Contains(",") || nameInputField.text.Contains(":")) return; //dividers for storing data so wont work in current implementation
         AddUserPanel(nameInputField.text);
         nameInputField.text = string.Empty;
     }
@@ -45,7 +59,7 @@ public class UserPanelManager : MonoBehaviour
     private void InstantiateUserPanel(UserData user)
     {
         GameObject userPanelObject = Instantiate(userPanelPrefab, scrollContentTransform);
-        UserPanel panelScript = userPanelObject.AddComponent<UserPanel>();
+        UserPanel panelScript = userPanelObject.GetComponent<UserPanel>();
         panelScript.SetupUserPanel(user, this);
         allInstantiatedUserPanels.Add(userPanelObject);
     }
@@ -63,6 +77,7 @@ public class UserPanelManager : MonoBehaviour
     }
     private void ClearAndDestroyPanels()
     {
+        if(allInstantiatedUserPanels.Count == 0) return;
         foreach(GameObject panel in allInstantiatedUserPanels)
         {
             Destroy(panel);

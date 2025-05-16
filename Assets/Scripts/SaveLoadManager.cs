@@ -15,7 +15,7 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void Start()
     {
-
+        Load();
     }
     public void ClearAllData()
     {

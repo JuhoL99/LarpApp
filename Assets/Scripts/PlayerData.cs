@@ -110,7 +110,7 @@ public class PlayerData
         {
             string[] parts = element.Split(":");
             UserData user = new UserData(parts[1], Guid.Parse(parts[0]));
-            this.AddUserToRelations(user);
+            AddUserToRelations(user);
         }
     }
     public void LoadUserCardsFromString(string loadData)

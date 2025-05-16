@@ -1132,6 +1132,7 @@ GameObject:
   - component: {fileID: 6169804014187348275}
   - component: {fileID: 3007283072735067538}
   - component: {fileID: 5781840462241159529}
+  - component: {fileID: -1595566893908261455}
   m_Layer: 5
   m_Name: UserPanel
   m_TagString: Untagged
@@ -1201,6 +1202,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-1595566893908261455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959142710953337627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f608cd005e702468a2a8145a0929cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelUserNameText: {fileID: 2975400127812680634}
+  panelUserNotesText: {fileID: 5384668254279676660}
+  addNoteButton: {fileID: 9129695647562061217}
+  removeUserButton: {fileID: 4430938414258795979}
+  noteInputField: {fileID: 50536157011642700}
 --- !u!1 &8890889967747928325
 GameObject:
   m_ObjectHideFlags: 0

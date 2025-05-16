@@ -5,25 +5,23 @@ using UnityEngine.UI;
 public class UserPanel : MonoBehaviour
 {
     private UserData panelUser;
-    private UserPanelManager manager;
-    private TMP_Text panelUserNameText;
-    private TMP_Text panelUserNotesText;
-    private Button addNoteButton;
-    private Button removeUserButton;
-    private TMP_InputField noteInputField;
+    private ConnectionsPanelManager manager;
+    [Header("Text Components")]
+    [SerializeField] private TMP_Text panelUserNameText;
+    [SerializeField] private TMP_Text panelUserNotesText;
+    [Header("Buttons")]
+    [SerializeField] private Button addNoteButton;
+    [SerializeField] private Button removeUserButton;
+    [Header("Note Input Field")]
+    [SerializeField] private TMP_InputField noteInputField;
 
     private void Start()
     {
-        addNoteButton = transform.GetChild(2).GetComponent<Button>();
-        removeUserButton = transform.GetChild(3).GetComponent<Button>();
-        noteInputField = transform.GetChild(4).GetComponent<TMP_InputField>();
         addNoteButton.onClick.AddListener(AddNoteToUser);
         removeUserButton.onClick.AddListener(RemoveUser);
     }
-    public void SetupUserPanel(UserData user, UserPanelManager mgr)
+    public void SetupUserPanel(UserData user, ConnectionsPanelManager mgr)
     {
-        panelUserNameText = transform.GetChild(0).GetComponent<TMP_Text>();
-        panelUserNotesText = transform.GetChild(1).GetComponent<TMP_Text>();
         panelUser = user;
         manager = mgr;
         UpdatePanelText();
