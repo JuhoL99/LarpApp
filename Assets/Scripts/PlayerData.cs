@@ -68,6 +68,19 @@ public class PlayerData
         }
         return s = s.Substring(0, s.Length -1);
     }
+    public string GetPlayerNotesString()
+    {
+        AllNoteWrapper allNotes = new AllNoteWrapper();
+        allNotes.allNotesList = new List<NoteWrapper>();
+        foreach (UserData user in playerAddedRelations)
+        {
+            NoteWrapper note = new NoteWrapper();
+            note.noteList = user.notesAboutUser;
+            allNotes.allNotesList.Add(note);
+        }
+        string data = JsonUtility.ToJson(allNotes);
+        return data;
+    }
     public string GetUserRelationsString() //format guid:name,guid:name,guid:name ...
     {
         string s = string.Empty;
@@ -78,18 +91,6 @@ public class PlayerData
         }
         return s = s.Substring(0, s.Length-1);
     }
-    public List<UserData> LoadUsersFromString(string loadData)
-    {
-        List<UserData> users = new List<UserData>();
-        string[] data = loadData.Split(",");
-        foreach (var element in data)
-        {
-            string[] parts = element.Split(":");
-            UserData user = new UserData(parts[1], Guid.Parse(parts[0]));
-            this.AddUserToRelations(user);
-        }
-        return users;
-    }
     public void LoadPlayerCardsFromString(string loadData)
     {
         string s = string.Empty;
@@ -99,6 +100,17 @@ public class PlayerData
         {
             playerArchetypeCards[i] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(element));
             i++;
+        }
+    }
+    public void LoadUsersFromString(string loadData)
+    {
+        List<UserData> users = new List<UserData>();
+        string[] data = loadData.Split(",");
+        foreach (var element in data)
+        {
+            string[] parts = element.Split(":");
+            UserData user = new UserData(parts[1], Guid.Parse(parts[0]));
+            this.AddUserToRelations(user);
         }
     }
     public void LoadUserCardsFromString(string loadData)
@@ -114,6 +126,19 @@ public class PlayerData
             {
                 user.userArchetypeCards[i] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(part));
                 j++;
+            }
+            i++;
+        }
+    }
+    public void LoadUserNotesFromString(string loadData)
+    {
+        AllNoteWrapper data = JsonUtility.FromJson<AllNoteWrapper>(loadData);
+        int i = 0;
+        foreach(NoteWrapper notes in data.allNotesList)
+        {
+            foreach(string note in notes.noteList)
+            {
+                playerAddedRelations[i].AddNoteToUser(note);
             }
             i++;
         }
