@@ -23,6 +23,7 @@ public class CardScanner : MonoBehaviour
     private CameraDeviceFrameSource cameraDevice;
     private bool isScanning;
     [SerializeField] private bool generateImageTargets = false; //turn to prefab, unpack, delete from folder
+    [SerializeField] private CardSO currentSelectedCard;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class CardScanner : MonoBehaviour
     }
     private void Start()
     {
+        onCardScanned.AddListener(SetCurrentSelectedCard);
         if (!generateImageTargets) return;
         DirectoryInfo info;
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
@@ -68,24 +70,13 @@ public class CardScanner : MonoBehaviour
     }
     public void EnableScanning()
     {
-        //test
-        foreach (var card in cardTargetArray)
-        {
-            imageTracker.LoadTarget(card);
-        }
-        //test
+        currentSelectedCard = null;
         ToggleTracking(true);
         isScanning = true;
         onScanToggled?.Invoke(true);
     }
     public void DisableScanning()
     {
-        //test
-        foreach (var card in cardTargetArray)
-        {
-            imageTracker.UnloadTarget(card);
-        }
-        //test
         ToggleTracking(false);
         isScanning = false;
         onScanToggled?.Invoke(false);
@@ -97,6 +88,10 @@ public class CardScanner : MonoBehaviour
     private void AddTargetControllerEvents(ImageTargetController controller)
     {
         controller.TargetFound += () => TargetFound(controller.ImageFileSource.Name);
+    }
+    private void SetCurrentSelectedCard(CardSO card)
+    {
+        currentSelectedCard = card;
     }
     private void TargetFound(string targetID)
     {

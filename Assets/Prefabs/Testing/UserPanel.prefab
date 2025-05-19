@@ -286,8 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 094287df09e7f994083e2299a7573980, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
+  - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
   cardIndex: 1
   onCardSwitched:
     m_PersistentCalls:
@@ -1197,8 +1197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 094287df09e7f994083e2299a7573980, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
+  - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
   cardIndex: 0
   onCardSwitched:
     m_PersistentCalls:

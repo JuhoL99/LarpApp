@@ -55,7 +55,7 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void LoadFromFile()
     {
-        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json"); //add check if file exists later
         string text;
         using(StreamReader reader = new StreamReader(savePath))
         {
@@ -100,5 +100,6 @@ public class SaveLoadManager : MonoBehaviour
     private void CreateDefaultPlayer()
     {
         playerData = new PlayerData("Player");
+        GameManager.instance.player = playerData;
     }
 }

@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
@@ -12,14 +13,17 @@ public class Card : MonoBehaviour
     private CardSO currentCard;
     private Image img;
     private Button switchCardButton;
+    private TMP_Text buttonText;
     private bool isEmpty;
     private bool facingTop = true;
     public UnityEvent<int> onCardSwitched;
     private void Start()
     {
         img = GetComponent<Image>();
-        currentCard = GameManager.instance.cardDatabase.GetCardByID(0);
+        currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
         switchCardButton = transform.parent.GetChild(0).GetComponent<Button>();
+        buttonText = switchCardButton.transform.GetComponentInChildren<TMP_Text>();
+        buttonText.text = "Scan Card";
         switchCardButton.onClick.AddListener(AllowSwitch);
         if(sprites != null) img.sprite = sprites[0];
     }
@@ -36,8 +40,8 @@ public class Card : MonoBehaviour
     private void GetScannedCard(CardSO card)
     {
         GameManager.instance.cardScanner.onCardScanned.RemoveListener(GetScannedCard);
-        onCardSwitched?.Invoke(cardIndex);
         currentCard = card;
+        onCardSwitched?.Invoke(cardIndex);
         UpdateCardVisuals();
     }
     public CardSO GetCurrentCard()

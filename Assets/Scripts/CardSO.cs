@@ -12,7 +12,6 @@ public class CardSO : ScriptableObject
 
     public Sprite[] GetCardVisual()
     {
-        Debug.Log("in card visual");
         return new Sprite[] { cardTopSprite, cardBottomSprite };
     }
 }

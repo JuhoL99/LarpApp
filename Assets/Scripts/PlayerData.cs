@@ -83,13 +83,20 @@ public class PlayerData
     }
     public string GetUserRelationsString() //format guid:name,guid:name,guid:name ...
     {
-        string s = string.Empty;
-
+        UserRelationsWrapper userRelations = new UserRelationsWrapper();
+        userRelations.users = new List<UserIdPair>();
+        foreach (UserData user in playerAddedRelations)
+        {
+            userRelations.users.Add(new UserIdPair(user.userName,user.userID));
+        }
+        string data = JsonUtility.ToJson(userRelations);
+        return data;
+        /*string s = string.Empty;
         foreach(UserData user in playerAddedRelations)
         {
             s += $"{user.userID}:{user.userName},";
         }
-        return s.Length > 0 ? s.Substring(0, s.Length-1) : string.Empty;
+        return s.Length > 0 ? s.Substring(0, s.Length-1) : string.Empty;*/
     }
     public void LoadPlayerCardsFromString(string loadData)
     {
@@ -106,6 +113,15 @@ public class PlayerData
     public void LoadUsersFromString(string loadData)
     {
         if(string.IsNullOrEmpty(loadData)) return;
+        UserRelationsWrapper userData = JsonUtility.FromJson<UserRelationsWrapper>(loadData);
+        List<UserIdPair> data = userData.users;
+        foreach(UserIdPair item in data)
+        {
+            UserData user = new UserData(item.userName,item.userID);
+            AddUserToRelations(user);
+        }
+        
+        /*if(string.IsNullOrEmpty(loadData)) return;
         List<UserData> users = new List<UserData>();
         string[] data = loadData.Split(",");
         foreach (var element in data)
@@ -113,7 +129,7 @@ public class PlayerData
             string[] parts = element.Split(":");
             UserData user = new UserData(parts[1], Guid.Parse(parts[0]));
             AddUserToRelations(user);
-        }
+        }*/
     }
     public void LoadUserCardsFromString(string loadData)
     {
@@ -124,6 +140,7 @@ public class PlayerData
         foreach(UserData user in playerAddedRelations)
         {
             string[] parts = data[i].Split("|");
+            Debug.Log(parts[1] + " " + parts[0]);
             int j = 0;
             foreach(string part in parts)
             {

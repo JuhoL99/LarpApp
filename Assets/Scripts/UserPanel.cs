@@ -50,6 +50,7 @@ public class UserPanel : MonoBehaviour
     private void AddCardToUser(int index)
     {
         CardSO card = cards[index].GetCurrentCard();
+        Debug.Log(card.cardName + " added to user");
         panelUser.AddCardToUser(card, index);
     }
     private void AddNoteToUser()
