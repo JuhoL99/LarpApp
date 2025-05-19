@@ -50,7 +50,7 @@ public class ConnectionsPanelManager : MonoBehaviour
     private void LoadExistingUserPanels()
     {
         ClearAndDestroyPanels();
-        if(GameManager.instance.player.playerAddedRelations != null && GameManager.instance.player.playerAddedRelations.Count > 0)
+        if (GameManager.instance.player == null) return;
         foreach(UserData user in GameManager.instance.player.playerAddedRelations)
         {
             InstantiateUserPanel(user);

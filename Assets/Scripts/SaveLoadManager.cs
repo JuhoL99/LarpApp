@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.Events;
+using System.IO;
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -19,16 +21,61 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void ClearAllData()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+        StreamWriter writer = new StreamWriter(savePath);
+        writer.Write(string.Empty);
+        writer.Close();
+
     }
     public void Save()
     {
-        //use file instead of playerprefs later
-        SavePlayerPrefs();
+        SaveToFile();
     }
     public void Load()
     {
-        LoadPlayerPrefs();
+        LoadFromFile();
+    }
+    private void SaveToFile()
+    {
+        if (playerData == null) playerData = GameManager.instance.player;
+        Save save = new Save(
+            playerData.playerName,
+            playerData.GetPlayerCardString(),
+            playerData.GetUserRelationsString(),
+            playerData.GetUserCardString(),
+            playerData.GetUserNotesString()
+            );
+        string text = JsonUtility.ToJson(save);
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+        using(StreamWriter write = new StreamWriter(savePath))
+        {
+            write.Write(text);
+        }
+    }
+    private void LoadFromFile()
+    {
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+        string text;
+        using(StreamReader reader = new StreamReader(savePath))
+        {
+            text = reader.ReadToEnd();
+        }
+        if (string.IsNullOrEmpty(text))
+        { 
+            CreateDefaultPlayer();
+            onGameLoaded?.Invoke(); 
+            return;
+        }
+        Save save = JsonUtility.FromJson<Save>(text);
+        playerData = new PlayerData(save.playerName);
+        playerData.LoadUserCardsFromString(save.playerCards);
+        playerData.LoadUsersFromString(save.linkedUserNames);
+        playerData.LoadUserCardsFromString(save.linkedUserCards);
+        playerData.LoadUserNotesFromString(save.linkedUserNotes);
+        GameManager.instance.player = playerData;
+        onGameLoaded?.Invoke();
+
     }
     private void SavePlayerPrefs()
     {
@@ -44,12 +91,14 @@ public class SaveLoadManager : MonoBehaviour
     {
         playerData = new PlayerData(PlayerPrefs.GetString("playerName"));
         playerData.LoadUserCardsFromString(PlayerPrefs.GetString("playerCards"));
-        Debug.Log(PlayerPrefs.GetString("linkedUserNames"));
         playerData.LoadUsersFromString(PlayerPrefs.GetString("linkedUserNames"));
-        Debug.Log(PlayerPrefs.GetString("linkedUserCards"));
         playerData.LoadUserCardsFromString(PlayerPrefs.GetString("linkedUserCards"));
         playerData.LoadUserNotesFromString(PlayerPrefs.GetString("linkedUserNotes"));
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
+    }
+    private void CreateDefaultPlayer()
+    {
+        playerData = new PlayerData("Player");
     }
 }

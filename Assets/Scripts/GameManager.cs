@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-        if(generateNamesForScriptableObjects) cardDatabase.NamesFromImageFile(); //remove l8r
-        player = new PlayerData("Player name");
+        if(generateNamesForScriptableObjects) cardDatabase.NamesFromImageFile();
+        //player = new PlayerData("Player");
     }
 }
