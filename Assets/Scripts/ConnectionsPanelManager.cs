@@ -30,7 +30,7 @@ public class ConnectionsPanelManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(txt)) nameWarningText.text = "Name empty";
         else if (txt.Length < 1) nameWarningText.text = "Name too short";
         else if (txt.Length > 20) nameWarningText.text = "Name too long";
-        else if (txt.Contains(",") || txt.Contains(":")) nameWarningText.text = "Name can't contain characters ',' and ':'";
+        //else if (txt.Contains(",") || txt.Contains(":")) nameWarningText.text = "Name can't contain characters ',' and ':'";
         else nameWarningText.text = string.Empty;
     }
     private void CheckInputFieldName()
@@ -38,7 +38,7 @@ public class ConnectionsPanelManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(nameInputField.text)) return;
         if (nameInputField.text.Length == 0) return;
         if (nameInputField.text.Length > 20) return;
-        if (nameInputField.text.Contains(",") || nameInputField.text.Contains(":")) return; //dividers for storing data so wont work in current implementation
+        // (nameInputField.text.Contains(",") || nameInputField.text.Contains(":")) return; //dividers for storing data so wont work in current implementation
         AddUserPanel(nameInputField.text);
         nameInputField.text = string.Empty;
     }

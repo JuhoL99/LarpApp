@@ -21,12 +21,12 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void ClearAllData()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
-        StreamWriter writer = new StreamWriter(savePath);
-        writer.Write(string.Empty);
-        writer.Close();
-
+        using(StreamWriter sw = new StreamWriter(savePath))
+        {
+            sw.Write(string.Empty);
+        }
     }
     public void Save()
     {
@@ -55,7 +55,14 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void LoadFromFile()
     {
-        string savePath = Path.Combine(Application.persistentDataPath, "save.json"); //add check if file exists later
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+        if(!File.Exists(savePath))
+        {
+            using(StreamWriter writer = new StreamWriter(savePath))
+            {
+                writer.WriteLine(string.Empty);
+            }
+        }
         string text;
         using(StreamReader reader = new StreamReader(savePath))
         {
