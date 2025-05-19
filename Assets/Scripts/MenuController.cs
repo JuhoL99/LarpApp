@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
-using AllSamplesLauncher;
 using System.Collections.Generic;
 
 public class MenuController : MonoBehaviour
@@ -32,6 +31,8 @@ public class MenuController : MonoBehaviour
     // Input System action reference for back button
     private InputAction backAction;
 
+    public ARCameraManager arCameraManager;
+
     void Awake()
     {
         // Enable enhanced touch support
@@ -54,6 +55,8 @@ public class MenuController : MonoBehaviour
         menuPanel.anchoredPosition = new Vector2(-menuWidth, 0);
 
         scrollBlocker.SetActive(false);
+
+        arCameraManager = FindAnyObjectByType<ARCameraManager>();
     }
 
     void Update()

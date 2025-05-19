@@ -3574,6 +3574,7 @@ MonoBehaviour:
   - {fileID: 249063624}
   headerPanel: {fileID: 205643148}
   sidePanel: {fileID: 85132580}
+  arCameraManager: {fileID: 1706934922}
 --- !u!114 &1025855297
 MonoBehaviour:
   m_ObjectHideFlags: 0
