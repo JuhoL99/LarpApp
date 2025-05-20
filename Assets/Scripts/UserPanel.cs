@@ -43,7 +43,7 @@ public class UserPanel : MonoBehaviour
         //save text straight into input field instead of multiple notes?
         foreach(string note in panelUser.notesAboutUser)
         {
-            Debug.Log($"{panelUser.userName} notes {note}");
+            //Debug.Log($"{panelUser.userName} notes {note}");
             noteText += $"{note} \n";
         }
         panelUserNotesText.text = noteText;
@@ -51,7 +51,7 @@ public class UserPanel : MonoBehaviour
     private void AddCardToUser(int index)
     {
         CardSO card = cards[index].GetCurrentCard();
-        Debug.Log(card.cardName + " added to user");
+        //Debug.Log(card.cardName + " added to user");
         panelUser.AddCardToUser(card, index);
     }
     private void AddNoteToUser()

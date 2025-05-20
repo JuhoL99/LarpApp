@@ -112,6 +112,10 @@ public class CardScanner : MonoBehaviour
     {
         currentSelectedCard = card;
     }
+    public CardSO GetCurrentSelectedCard()
+    {
+        return currentSelectedCard;
+    }
     private void TargetFound(string targetID)
     {
         if (!isScanning) return;

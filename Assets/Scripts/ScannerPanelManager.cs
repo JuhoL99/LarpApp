@@ -1,5 +1,5 @@
 using TMPro;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ScannerPanelManager : MonoBehaviour
@@ -10,10 +10,11 @@ public class ScannerPanelManager : MonoBehaviour
     [SerializeField] private GameObject scanPanel;
     [Header("Assigning Menu")]
     [SerializeField] private GameObject assignPanel;
-    [Header("Assing Dropdown")]
+    [Header("Assign Dropdown")]
     [SerializeField] private TMP_Dropdown dropdown; //temp
     private void Start()
     {
+        dropdown.onValueChanged.AddListener(DropdownSelection);
         mainPanel.SetActive(false);
         scanPanel.SetActive(false);
         assignPanel.SetActive(false);
@@ -26,6 +27,10 @@ public class ScannerPanelManager : MonoBehaviour
     }
     private void ScanStarted()
     {
+        SetUpDropdownMenu();
+        //
+        assignPanel.SetActive(true);//
+        //
         mainPanel.SetActive(true);
         scanPanel.SetActive(true);
     }
@@ -33,10 +38,24 @@ public class ScannerPanelManager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         scanPanel.SetActive(false);
-        assignPanel.SetActive(true);
+        assignPanel.SetActive(false);
+        //assignPanel.SetActive(true);
     }
     private void SetUpDropdownMenu()
     {
-
+        dropdown.options.Clear();
+        List<UserData> addedUsers = GameManager.instance.player.playerAddedRelations;
+        List<string> test = new List<string>();
+        foreach (UserData user in addedUsers)
+        {
+            test.Add(user.userName);
+        }
+        dropdown.AddOptions(test);
+    }
+    private void DropdownSelection(int value)
+    {
+        Debug.Log($"value from event: {value}, dropdown value: {dropdown.value}");
+        Debug.Log(GameManager.instance.player.playerAddedRelations[value].userName);
+        ScanFinished();
     }
 }
