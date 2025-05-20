@@ -27,6 +27,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private List<GameObject> otherScreens = new List<GameObject>();
     [SerializeField] private GameObject headerPanel;
     [SerializeField] private GameObject sidePanel;
+    [SerializeField] private GameObject scannerPanel;
 
     // Input System action reference for back button
     private InputAction backAction;
@@ -54,6 +55,7 @@ public class MenuController : MonoBehaviour
         menuWidth = menuPanel.rect.width;
         menuPanel.anchoredPosition = new Vector2(-menuWidth, 0);
 
+        // Disable the scroll blocker on start 
         scrollBlocker.SetActive(false);
 
         arCameraManager = FindAnyObjectByType<ARCameraManager>();
@@ -71,19 +73,34 @@ public class MenuController : MonoBehaviour
 
         // Process swipe detection
         DetectSwipe();
+
+        // Set scroll blocker active when needed
+        SetScrollBlocker();
+
+        // Set camera active when needed
+        SetCamera();
     }
 
     // Method to handle back button functionality
     private void HandleBackButtonPress()
     {
-        // If a screen other than main is active, go back to main screen
-        if (!IsMainScreenActive())
+        // If the side menu is open, close it
+        if (isMenuOpen) 
         {
-            ShowMainScreen();
+            ToggleSideMenu();
         }
         else
         {
-            ExitMobileApp();
+            // If a screen other than main is active, go back to main screen
+            // If main screen is active, minimize the app
+            if (!IsMainScreenActive())
+            {
+                ShowMainScreen();
+            }
+            else
+            {
+                ExitMobileApp();
+            }
         }
     }
 
@@ -114,14 +131,12 @@ public class MenuController : MonoBehaviour
                 {
                     Debug.Log("Right edge swipe detected - Opening menu");
                     isMenuOpen = true;
-                    scrollBlocker.SetActive(true);
                 }
                 // Left swipe to close
                 else if (swipeDistance < -swipeThreshold && isMenuOpen)
                 {
                     Debug.Log("Left swipe detected - Closing menu");
                     isMenuOpen = false;
-                    scrollBlocker.SetActive(false);
                 }
 
                 isDragging = false;
@@ -132,7 +147,6 @@ public class MenuController : MonoBehaviour
     public void ToggleSideMenu()
     {
         isMenuOpen = !isMenuOpen;
-        scrollBlocker.SetActive(true);
     }
 
     public bool IsMainScreenActive()
@@ -152,18 +166,10 @@ public class MenuController : MonoBehaviour
 
     public void ShowMainScreen()
     {
-        // Close menu if it's open when returning to main screen
-        if (isMenuOpen)
-        {
-            isMenuOpen = false;
-            scrollBlocker.SetActive(false);
-        }
-
         // Activate main screen and deactivate all others
         mainScreen.SetActive(true);
         headerPanel.SetActive(true);
         sidePanel.SetActive(true);
-        scrollBlocker.SetActive(false);
 
         foreach (GameObject screen in otherScreens)
         {
@@ -186,6 +192,31 @@ public class MenuController : MonoBehaviour
         foreach (GameObject otherScreen in otherScreens)
         {
             otherScreen.SetActive(otherScreen == screen);
+        }
+    }
+
+    void SetCamera()
+    {
+        if (scannerPanel.activeSelf)
+        {
+            arCameraManager.EnableCamera(true);
+        }
+        else
+        {
+            arCameraManager.EnableCamera(false);
+        }
+    }
+
+    void SetScrollBlocker()
+    {
+        // If main screen is active and the menu is open, enable scroll blocker
+        if ((mainScreen.activeSelf) && (isMenuOpen))
+        {
+            scrollBlocker.SetActive(true);
+        }
+        else
+        {
+            scrollBlocker.SetActive(false);
         }
     }
 

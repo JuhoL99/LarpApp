@@ -6,18 +6,18 @@ using UnityEngine.UI;
 public class ARCameraManager : MonoBehaviour
 {
     private CameraDeviceFrameSource cameraDevice;
-    public ARSession Session;
+    public ARSession session;
 
     private void Start()
     {
         // Disable camera at startup
-        cameraDevice = Session.GetComponentInChildren<CameraDeviceFrameSource>();
+        cameraDevice = session.GetComponentInChildren<CameraDeviceFrameSource>();
         EnableCamera(false);
     }
 
     private void Update()
     {
-
+        
     }
 
     public void EnableCamera(bool enable)
