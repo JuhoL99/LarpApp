@@ -24,6 +24,7 @@ public class CardScanner : MonoBehaviour
     private bool isScanning;
     [SerializeField] private bool generateImageTargets = false; //turn to prefab, unpack, delete from folder
     [SerializeField] private CardSO currentSelectedCard;
+    [SerializeField] private List<CardSO> scannedCards;
 
     private void Awake()
     {
@@ -33,10 +34,12 @@ public class CardScanner : MonoBehaviour
         foreach (var card in cardTargetArray)
         {
             AddTargetControllerEvents(card);
+            
         }
     }
     private void Start()
     {
+        scannedCards = new List<CardSO>();
         onCardScanned.AddListener(SetCurrentSelectedCard);
         if (!generateImageTargets) return;
         DirectoryInfo info;
@@ -53,10 +56,10 @@ public class CardScanner : MonoBehaviour
             //if (!file.Name.Contains(".jpg") || !file.Name.Contains(".png")) continue;
             GenerateImageTargetsFromFolder(file.Name); //only works in editor
         }
-        
     }
     private void GenerateImageTargetsFromFolder(string cardName) 
     {
+        
         GameObject go = new GameObject();
         go.transform.parent = transform;
         go.name = $"Image Target - {cardName}";
@@ -70,6 +73,16 @@ public class CardScanner : MonoBehaviour
     }
     public void EnableScanning()
     {
+        //test
+        foreach(ImageTargetController controller in cardTargetList)
+        {
+            controller.gameObject.SetActive(true);
+            controller.gameObject.SetActive(false);
+        }
+        /*foreach (var card in cardTargetArray)
+        {
+            imageTracker.LoadTarget(card);
+        }*/
         currentSelectedCard = null;
         ToggleTracking(true);
         isScanning = true;
@@ -77,17 +90,23 @@ public class CardScanner : MonoBehaviour
     }
     public void DisableScanning()
     {
+        /*foreach (var card in cardTargetArray)
+        {
+            imageTracker.UnloadTarget(card);
+        }*/
         ToggleTracking(false);
         isScanning = false;
         onScanToggled?.Invoke(false);
     }
     public void ToggleTracking(bool val)
     {
+        //val = true;
         imageTracker.enabled = val;
     }
     private void AddTargetControllerEvents(ImageTargetController controller)
     {
         controller.TargetFound += () => TargetFound(controller.ImageFileSource.Name);
+        //controller.TargetAvailable += () => TargetFound(controller.ImageFileSource.Name);
     }
     private void SetCurrentSelectedCard(CardSO card)
     {
@@ -98,8 +117,35 @@ public class CardScanner : MonoBehaviour
         if (!isScanning) return;
         else
         {
+            //testing
+            AddTargetToList(GameManager.instance.cardDatabase.GetCardByName(targetID)); //somehow adding this makes scanner work even though it doesnt do anything
             onCardScanned?.Invoke(GameManager.instance.cardDatabase.GetCardByName(targetID));
             DisableScanning();
         }
+    }
+    private void AddTargetToList(CardSO card)
+    {
+        scannedCards.Add(card);
+        if (scannedCards.Count > 10)
+        {
+            string listToString = string.Empty;
+            foreach(CardSO crd in scannedCards)
+            {
+                listToString += $"{crd.cardName}, ";
+            }
+            scannedCards.Clear();
+            Debug.Log(listToString);
+            DisableScanning();
+            return;
+        }
+    }
+    private void AssignCardToUserOrPlayer(PlayerData player, int index, UserData userToAssignTo = null)
+    {
+        if(userToAssignTo == null)
+        {
+            player.AddCardToPlayer(currentSelectedCard, index);
+            return;
+        }
+        userToAssignTo.AddCardToUser(currentSelectedCard, index);
     }
 }
