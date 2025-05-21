@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public class MenuController : MonoBehaviour
 {
+    // References to the side menu panel
     public RectTransform menuPanel;
     public ScrollRect menuScrollRect;
     public GameObject scrollBlocker;
@@ -16,11 +17,14 @@ public class MenuController : MonoBehaviour
     [Header("Swipe Settings")]
     public float swipeThreshold = 50f;
     public float edgeSwipeArea = 0.15f; // Percentage of screen width that counts as edge
+    public float snapThreshold = 0.5f;  // Threshold for snapping (0.5 = 50% of menu width)
 
     private bool isMenuOpen = false;
     private float menuWidth;
     private Vector2 startTouchPosition;
     private bool isDragging = false;
+    private bool isSwipingFromEdge = false;
+    private float initialMenuPosition;
 
     [Header("Screen Settings")]
     [SerializeField] private GameObject mainScreen;
@@ -52,7 +56,7 @@ public class MenuController : MonoBehaviour
         ShowMainScreen();
 
         // Initialize swipe menu in closed position
-        menuWidth = menuPanel.rect.width;
+        menuWidth = menuPanel.rect.width / 2;
         menuPanel.anchoredPosition = new Vector2(-menuWidth, 0);
 
         // Disable the scroll blocker on start 
@@ -63,16 +67,14 @@ public class MenuController : MonoBehaviour
 
     void Update()
     {
-        // Handle menu animation
-        float targetX = isMenuOpen ? 0 : -menuWidth;
-        menuPanel.anchoredPosition = Vector2.Lerp(
-            menuPanel.anchoredPosition,
-            new Vector2(targetX, 0),
-            Time.deltaTime * slideSpeed
-        );
+        // Handle menu animation when not dragging
+        if (!isDragging)
+        {
+            AnimateMenuToTargetPosition();
+        }
 
-        // Process swipe detection
-        DetectSwipe();
+        // Process touch input for dragging
+        HandleTouchInput();
 
         // Set scroll blocker active when needed
         SetScrollBlocker();
@@ -81,11 +83,61 @@ public class MenuController : MonoBehaviour
         SetCamera();
     }
 
+    private void HandleTouchInput()
+    {
+        if (Touch.activeTouches.Count > 0)
+        {
+            Touch touch = Touch.activeTouches[0];
+            float edgeWidth = Screen.width * edgeSwipeArea;
+
+            // Touch began
+            if (touch.phase == TouchPhase.Began)
+            {
+                startTouchPosition = touch.screenPosition;
+                initialMenuPosition = menuPanel.anchoredPosition.x;
+
+                // Check if touch started from edge or if menu is already partly open
+                isSwipingFromEdge = startTouchPosition.x < edgeWidth || menuPanel.anchoredPosition.x > -menuWidth;
+
+                if (isSwipingFromEdge)
+                {
+                    isDragging = true;
+                }
+            }
+            // Touch moved
+            else if (touch.phase == TouchPhase.Moved && isDragging && isSwipingFromEdge)
+            {
+                // Calculate drag distance
+                float dragDistance = touch.screenPosition.x - startTouchPosition.x;
+
+                // Apply drag to menu position
+                float newX = Mathf.Clamp(initialMenuPosition + dragDistance, -menuWidth, 0);
+                menuPanel.anchoredPosition = new Vector2(newX, 0);
+            }
+            // Touch ended
+            else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && isDragging)
+            {
+                // Determine if menu should snap open or closed based on position
+                float menuOpenPercentage = (menuPanel.anchoredPosition.x + menuWidth) / menuWidth;
+                isMenuOpen = menuOpenPercentage > snapThreshold;
+
+                isDragging = false;
+                isSwipingFromEdge = false;
+            }
+        }
+    }
+
+    private void AnimateMenuToTargetPosition()
+    {
+        float targetX = isMenuOpen ? 0 : -menuWidth;
+        menuPanel.anchoredPosition = Vector2.Lerp(menuPanel.anchoredPosition, new Vector2(targetX, 0), Time.deltaTime * slideSpeed);
+    }
+
     // Method to handle back button functionality
     private void HandleBackButtonPress()
     {
         // If the side menu is open, close it
-        if (isMenuOpen) 
+        if (isMenuOpen)
         {
             ToggleSideMenu();
         }
@@ -100,46 +152,6 @@ public class MenuController : MonoBehaviour
             else
             {
                 ExitMobileApp();
-            }
-        }
-    }
-
-    void DetectSwipe()
-    {
-        // Handle touch input on mobile using EnhancedTouch
-        if (Touch.activeTouches.Count > 0)
-        {
-            Touch touch = Touch.activeTouches[0];
-            float edgeWidth = Screen.width * edgeSwipeArea;
-
-            // Touch began
-            if (touch.phase == TouchPhase.Began)
-            {
-                startTouchPosition = touch.screenPosition;
-                isDragging = true;
-                Debug.Log("Touch began at: " + startTouchPosition);
-            }
-            // Touch ended
-            else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && isDragging)
-            {
-                float swipeDistance = touch.screenPosition.x - startTouchPosition.x;
-
-                Debug.Log("Touch ended. Swipe distance: " + swipeDistance + ", Started at X: " + startTouchPosition.x + ", Edge width: " + edgeWidth);
-
-                // Right swipe from left edge to open
-                if (swipeDistance > swipeThreshold && startTouchPosition.x < edgeWidth)
-                {
-                    Debug.Log("Right edge swipe detected - Opening menu");
-                    isMenuOpen = true;
-                }
-                // Left swipe to close
-                else if (swipeDistance < -swipeThreshold && isMenuOpen)
-                {
-                    Debug.Log("Left swipe detected - Closing menu");
-                    isMenuOpen = false;
-                }
-
-                isDragging = false;
             }
         }
     }
@@ -180,6 +192,8 @@ public class MenuController : MonoBehaviour
     // Public methods to be called from UI buttons
     public void ShowScreen(GameObject screen)
     {
+        ToggleSideMenu();
+
         if (screen == mainScreen)
         {
             ShowMainScreen();
@@ -210,7 +224,7 @@ public class MenuController : MonoBehaviour
     void SetScrollBlocker()
     {
         // If main screen is active and the menu is open, enable scroll blocker
-        if ((mainScreen.activeSelf) && (isMenuOpen))
+        if ((isMenuOpen) || (isDragging))
         {
             scrollBlocker.SetActive(true);
         }
