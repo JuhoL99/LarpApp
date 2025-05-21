@@ -327,6 +327,9 @@ MonoBehaviour:
   addUserButton: {fileID: 1302679133}
   nameInputField: {fileID: 364233332}
   nameWarningText: {fileID: 503476421}
+  someoneAddedCard:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &76579615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,6 +1266,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardDatabase: {fileID: 11400000, guid: e7ad2bcf59b68d446905c8fda07d1ead, type: 2}
   cardScanner: {fileID: 14529577}
+  connectionPanelManager: {fileID: 0}
+  isLookingForCardToSelect: 0
+  currentScannedCard: {fileID: 0}
   generateNamesForScriptableObjects: 0
   generateUsersFromStart: 0
 --- !u!4 &334159498
@@ -2887,7 +2893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Scan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4958,7 +4964,7 @@ GameObject:
   - component: {fileID: 1287027177}
   - component: {fileID: 1287027176}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ScanButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6957,7 +6963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Scan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

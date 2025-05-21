@@ -11,7 +11,7 @@ public class ScannerPanelManager : MonoBehaviour
     [Header("Assigning Menu")]
     [SerializeField] private GameObject assignPanel;
     [Header("Assign Dropdown")]
-    [SerializeField] private TMP_Dropdown dropdown; //temp
+    [SerializeField] private TMP_Dropdown dropdown;
     private void Start()
     {
         dropdown.onValueChanged.AddListener(DropdownSelection);
@@ -29,7 +29,7 @@ public class ScannerPanelManager : MonoBehaviour
     {
         SetUpDropdownMenu();
         //
-        assignPanel.SetActive(true);//
+        //assignPanel.SetActive(true);
         //
         mainPanel.SetActive(true);
         scanPanel.SetActive(true);
@@ -38,9 +38,10 @@ public class ScannerPanelManager : MonoBehaviour
     {
         mainPanel.SetActive(false);
         scanPanel.SetActive(false);
-        assignPanel.SetActive(false);
         //assignPanel.SetActive(true);
     }
+    // > select card from button > card scan result from gamemanager
+    //remove >
     private void SetUpDropdownMenu()
     {
         dropdown.options.Clear();

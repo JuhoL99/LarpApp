@@ -1,14 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using System.Collections;
 using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
+    [Header("Scripts")]
     public static GameManager instance;
     public CardDatabase cardDatabase;
     public CardScanner cardScanner;
     public PlayerData player;
+    public ConnectionsPanelManager connectionPanelManager;
+    [Header("Flags")]
+    public bool isLookingForCardToSelect = false;
+    [Header("Info")]
+    public CardSO currentScannedCard;
     [Header("Testing")]
     [SerializeField] private bool generateNamesForScriptableObjects = false; //temporary
     [SerializeField] private bool generateUsersFromStart = false;
@@ -16,12 +21,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
-        else Destroy(gameObject);
         if(generateNamesForScriptableObjects) cardDatabase.NamesFromImageFile();
     }
     private void Start()
     {
-       if(generateUsersFromStart) StartCoroutine(LateStart());
+        cardScanner.onCardScanned.AddListener(LookingForCardToSelect);
+        connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
+        if(generateUsersFromStart) StartCoroutine(LateStart());
     }
     private IEnumerator LateStart()
     {
@@ -41,5 +47,10 @@ public class GameManager : MonoBehaviour
                 );
             player.AddUserToRelations(user);
         }
+    }
+    private void LookingForCardToSelect(CardSO card)
+    {
+        isLookingForCardToSelect = true;
+        currentScannedCard = card;
     }
 }

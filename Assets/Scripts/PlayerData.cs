@@ -124,7 +124,6 @@ public class PlayerData
         foreach(UserData user in playerAddedRelations)
         {
             string[] parts = data[i].Split("|");
-            //Debug.Log(parts[1] + " " + parts[0]);
             int j = 0;
             foreach(string part in parts)
             {

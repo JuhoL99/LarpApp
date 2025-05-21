@@ -52,8 +52,7 @@ public class CardScanner : MonoBehaviour
         var fileInfo = info.GetFiles();
         foreach(var file in fileInfo)
         {
-            if (file.Name.Contains(".meta")) continue;
-            //if (!file.Name.Contains(".jpg") || !file.Name.Contains(".png")) continue;
+            if (!file.Name.Contains(".jpg") && !file.Name.Contains(".png")) continue;
             GenerateImageTargetsFromFolder(file.Name); //only works in editor
         }
     }
@@ -73,16 +72,6 @@ public class CardScanner : MonoBehaviour
     }
     public void EnableScanning()
     {
-        //test
-        foreach(ImageTargetController controller in cardTargetList)
-        {
-            controller.gameObject.SetActive(true);
-            controller.gameObject.SetActive(false);
-        }
-        /*foreach (var card in cardTargetArray)
-        {
-            imageTracker.LoadTarget(card);
-        }*/
         currentSelectedCard = null;
         ToggleTracking(true);
         isScanning = true;
@@ -90,23 +79,17 @@ public class CardScanner : MonoBehaviour
     }
     public void DisableScanning()
     {
-        /*foreach (var card in cardTargetArray)
-        {
-            imageTracker.UnloadTarget(card);
-        }*/
         ToggleTracking(false);
         isScanning = false;
         onScanToggled?.Invoke(false);
     }
     public void ToggleTracking(bool val)
     {
-        //val = true;
         imageTracker.enabled = val;
     }
     private void AddTargetControllerEvents(ImageTargetController controller)
     {
         controller.TargetFound += () => TargetFound(controller.ImageFileSource.Name);
-        //controller.TargetAvailable += () => TargetFound(controller.ImageFileSource.Name);
     }
     private void SetCurrentSelectedCard(CardSO card)
     {
@@ -122,7 +105,8 @@ public class CardScanner : MonoBehaviour
         else
         {
             //testing
-            AddTargetToList(GameManager.instance.cardDatabase.GetCardByName(targetID)); //somehow adding this makes scanner work even though it doesnt do anything
+            AddTargetToList(GameManager.instance.cardDatabase.GetCardByName(targetID));
+            //
             onCardScanned?.Invoke(GameManager.instance.cardDatabase.GetCardByName(targetID));
             DisableScanning();
         }
@@ -139,17 +123,15 @@ public class CardScanner : MonoBehaviour
             }
             scannedCards.Clear();
             Debug.Log(listToString);
-            DisableScanning();
             return;
         }
     }
-    private void AssignCardToUserOrPlayer(PlayerData player, int index, UserData userToAssignTo = null)
+    private void AssignCardToUserOrPlayer(PlayerData player, int index)
     {
-        if(userToAssignTo == null)
-        {
-            player.AddCardToPlayer(currentSelectedCard, index);
-            return;
-        }
-        userToAssignTo.AddCardToUser(currentSelectedCard, index);
+        player.AddCardToPlayer(currentSelectedCard, index);
+    }
+    private void AssignCardToUserOrPlayer(UserData user, int index)
+    {
+        user.AddCardToUser(currentSelectedCard, index);
     }
 }

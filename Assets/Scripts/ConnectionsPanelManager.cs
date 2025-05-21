@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ConnectionsPanelManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class ConnectionsPanelManager : MonoBehaviour
     [Header("Name Warning Text")]
     [SerializeField] private TMP_Text nameWarningText;
     private List<GameObject> allInstantiatedUserPanels;
+    [Header("Events")]
+    public UnityEvent someoneAddedCard;
 
     private void Start()
     {
@@ -30,7 +33,6 @@ public class ConnectionsPanelManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(txt)) nameWarningText.text = "Name empty";
         else if (txt.Length < 1) nameWarningText.text = "Name too short";
         else if (txt.Length > 20) nameWarningText.text = "Name too long";
-        //else if (txt.Contains(",") || txt.Contains(":")) nameWarningText.text = "Name can't contain characters ',' and ':'";
         else nameWarningText.text = string.Empty;
     }
     private void CheckInputFieldName()
@@ -38,7 +40,6 @@ public class ConnectionsPanelManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(nameInputField.text)) return;
         if (nameInputField.text.Length == 0) return;
         if (nameInputField.text.Length > 20) return;
-        // (nameInputField.text.Contains(",") || nameInputField.text.Contains(":")) return; //dividers for storing data so wont work in current implementation
         AddUserPanel(nameInputField.text);
         nameInputField.text = string.Empty;
     }
