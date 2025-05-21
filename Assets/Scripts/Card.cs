@@ -21,10 +21,10 @@ public class Card : MonoBehaviour
     {
         img = GetComponent<Image>();
         currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
-        switchCardButton = transform.parent.GetChild(0).GetComponent<Button>();
-        buttonText = switchCardButton.transform.GetComponentInChildren<TMP_Text>();
-        buttonText.text = "Scan Card";
-        switchCardButton.onClick.AddListener(AllowSwitch);
+        //switchCardButton = transform.parent.GetChild(0).GetComponent<Button>();
+        //buttonText = switchCardButton.transform.GetComponentInChildren<TMP_Text>();
+        //buttonText.text = "Scan Card";
+        //switchCardButton.onClick.AddListener(AllowSwitch);
         if(sprites != null) img.sprite = sprites[0];
     }
     private void AllowSwitch()
@@ -56,6 +56,14 @@ public class Card : MonoBehaviour
     }
     public void Flip()
     {
+        //move elsewhere >
+        if(GameManager.instance.isLookingForCardToSelect)
+        {
+            currentCard = GameManager.instance.currentScannedCard;
+            onCardSwitched?.Invoke(cardIndex);
+            UpdateCardVisuals();
+            return;
+        }
         if (facingTop) img.sprite = sprites[0];
         else img.sprite = sprites[1];
         transform.DOScaleX(0, 0.25f).onComplete = Flop;

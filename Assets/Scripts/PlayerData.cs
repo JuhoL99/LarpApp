@@ -68,6 +68,19 @@ public class PlayerData
         }
         return s.Length > 0 ? s.Substring(0, s.Length -1) : string.Empty;
     }
+    //save new note data
+    public string GetUserNoteString()
+    {
+        NoteWrapper wrapper = new NoteWrapper();
+        wrapper.noteList = new List<string>();
+        foreach(UserData user in playerAddedRelations)
+        {
+            string note = user.userNotes;
+            wrapper.noteList.Add(note);
+        }
+        string data = JsonUtility.ToJson(wrapper);
+        return data;
+    }
     public string GetUserNotesString()
     {
         AllNoteWrapper allNotes = new AllNoteWrapper();
@@ -130,6 +143,19 @@ public class PlayerData
                 user.userArchetypeCards[j] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(part));
                 j++;
             }
+            i++;
+        }
+    }
+    //load new notes
+    public void LoadUserNoteFromString(string loadData)
+    {
+        //add id check
+        if(string.IsNullOrEmpty(loadData)) return;
+        NoteWrapper data = JsonUtility.FromJson<NoteWrapper>(loadData);
+        int i = 0;
+        foreach(string note in data.noteList)
+        {
+            playerAddedRelations[i].AddUserNotes(note);
             i++;
         }
     }

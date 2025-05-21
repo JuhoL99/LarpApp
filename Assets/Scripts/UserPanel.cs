@@ -16,6 +16,8 @@ public class UserPanel : MonoBehaviour
     [SerializeField] private TMP_InputField noteInputField;
     [Header("Cards")]
     [SerializeField] private Card[] cards;
+    [Header("User Notes")]
+    [SerializeField] private InputFieldNotes noteField;
 
     private void Start()
     {
@@ -30,6 +32,7 @@ public class UserPanel : MonoBehaviour
     {
         panelUser = user;
         manager = mgr;
+        noteField.AssignUserToNotes(panelUser);
         UpdatePanelText();
         for(int i = 0; i < cards.Length; i++)
         {
@@ -47,10 +50,12 @@ public class UserPanel : MonoBehaviour
         }
         panelUserNotesText.text = noteText;
     }
+    //rewrite a bit
     private void AddCardToUser(int index)
     {
-        CardSO card = cards[index].GetCurrentCard();
+        CardSO card = cards[index].GetCurrentCard(); //not necessary anymore
         panelUser.AddCardToUser(card, index);
+        manager.someoneAddedCard?.Invoke();
     }
     private void AddNoteToUser()
     {

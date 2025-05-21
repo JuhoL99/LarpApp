@@ -44,7 +44,8 @@ public class SaveLoadManager : MonoBehaviour
             playerData.GetPlayerCardString(),
             playerData.GetUserRelationsString(),
             playerData.GetUserCardString(),
-            playerData.GetUserNotesString()
+            playerData.GetUserNotesString(),
+            playerData.GetUserNoteString() //remove old later
             );
         string text = JsonUtility.ToJson(save);
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
@@ -80,6 +81,7 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUsersFromString(save.linkedUserNames);
         playerData.LoadUserCardsFromString(save.linkedUserCards);
         playerData.LoadUserNotesFromString(save.linkedUserNotes);
+        playerData.LoadUserNoteFromString(save.linkedUserNotesNew);
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
 

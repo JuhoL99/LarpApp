@@ -8,6 +8,7 @@ public class UserData
     public string userName;
     public CardSO[] userArchetypeCards;
     public List<string> notesAboutUser;
+    public string userNotes;
     public int maxCardAmount = 2;
 
     public UserData(string name, Guid? id = null, CardSO[] cards = null, List<string> notes = null)
@@ -30,6 +31,10 @@ public class UserData
         {
             userArchetypeCards[index] = card;
         }
+    }
+    public void AddUserNotes(string notes)
+    {
+        userNotes = notes;
     }
     public void AddNoteToUser(string note)
     {
