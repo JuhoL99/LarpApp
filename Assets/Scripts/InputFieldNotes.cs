@@ -11,10 +11,12 @@ public class InputFieldNotes : MonoBehaviour
     [Header("User Connected To Panel")]
     [SerializeField] private UserData linkedUser;
     private TMP_InputField inputField;
+
     private void Awake()
     {
         inputField = GetComponent<TMP_InputField>();
         inputField.interactable = false;
+        inputField.customCaretColor = true;
     }
     private void OnEnable()
     {
@@ -41,18 +43,20 @@ public class InputFieldNotes : MonoBehaviour
             return;
         }
         inputField.interactable = true;
+        ToggleCaret(true);
         inputField.Select();
+        inputField.caretPosition = inputField.text.Length;
     }
     private void StopTextEdit(string text = null)
     {
         Debug.Log("this counts as end edit");
         if (linkedUser != null) linkedUser.userNotes = text;
+        ToggleCaret(false);
         StartCoroutine(DisableInputNextFrame()); //otherwise you get annoying error in log
     }
     private void LoadText()
     {
         if(linkedUser != null) inputField.text = linkedUser.userNotes;
-        TestFunction();
     }
     private IEnumerator DisableInputNextFrame()
     {
@@ -63,6 +67,15 @@ public class InputFieldNotes : MonoBehaviour
     {
         linkedUser = user;
         LoadText();
+    }
+    private void ToggleCaret(bool toggle)
+    {
+        if(!toggle)
+        {
+            inputField.caretColor = new Color(0,0,0,0);
+            return;
+        }
+        inputField.caretColor = new Color(0, 0, 0, 1);
     }
     private void TestFunction()
     {

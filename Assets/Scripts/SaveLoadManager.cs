@@ -44,8 +44,7 @@ public class SaveLoadManager : MonoBehaviour
             playerData.GetPlayerCardString(),
             playerData.GetUserRelationsString(),
             playerData.GetUserCardString(),
-            playerData.GetUserNotesString(),
-            playerData.GetUserNoteString() //remove old later
+            playerData.GetUserNoteString()
             );
         string text = JsonUtility.ToJson(save);
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
@@ -80,7 +79,6 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUserCardsFromString(save.playerCards);
         playerData.LoadUsersFromString(save.linkedUserNames);
         playerData.LoadUserCardsFromString(save.linkedUserCards);
-        playerData.LoadUserNotesFromString(save.linkedUserNotes);
         playerData.LoadUserNoteFromString(save.linkedUserNotesNew);
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
@@ -93,7 +91,6 @@ public class SaveLoadManager : MonoBehaviour
         PlayerPrefs.SetString("playerCards", playerData.GetPlayerCardString());
         PlayerPrefs.SetString("linkedUserNames", playerData.GetUserRelationsString());
         PlayerPrefs.SetString("linkedUserCards", playerData.GetUserCardString());
-        PlayerPrefs.SetString("linkedUserNotes", playerData.GetUserNotesString());
         onGameSaved?.Invoke();
     }
     private void LoadPlayerPrefs()
@@ -102,7 +99,6 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUserCardsFromString(PlayerPrefs.GetString("playerCards"));
         playerData.LoadUsersFromString(PlayerPrefs.GetString("linkedUserNames"));
         playerData.LoadUserCardsFromString(PlayerPrefs.GetString("linkedUserCards"));
-        playerData.LoadUserNotesFromString(PlayerPrefs.GetString("linkedUserNotes"));
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
     }

@@ -37,14 +37,7 @@ public class GameManager : MonoBehaviour
             UserData user = new UserData($"name{i}");
             user.AddCardToUser(cardDatabase.GetCardByID(Random.Range(0, 69)), 0);
             user.AddCardToUser(cardDatabase.GetCardByID(Random.Range(0, 69)), 1);
-            user.AddNoteToUser(
-                "jfakjkהההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה" +
-                "הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה" +
-                "צצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצצ" +
-                "6&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" +
-                ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,," +
-                "...................................................................."
-                );
+            user.AddUserNotes("notenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenote");
             player.AddUserToRelations(user);
         }
     }

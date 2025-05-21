@@ -68,7 +68,6 @@ public class PlayerData
         }
         return s.Length > 0 ? s.Substring(0, s.Length -1) : string.Empty;
     }
-    //save new note data
     public string GetUserNoteString()
     {
         NoteWrapper wrapper = new NoteWrapper();
@@ -79,19 +78,6 @@ public class PlayerData
             wrapper.noteList.Add(note);
         }
         string data = JsonUtility.ToJson(wrapper);
-        return data;
-    }
-    public string GetUserNotesString()
-    {
-        AllNoteWrapper allNotes = new AllNoteWrapper();
-        allNotes.allNotesList = new List<NoteWrapper>();
-        foreach (UserData user in playerAddedRelations)
-        {
-            NoteWrapper note = new NoteWrapper();
-            note.noteList = user.notesAboutUser;
-            allNotes.allNotesList.Add(note);
-        }
-        string data = JsonUtility.ToJson(allNotes);
         return data;
     }
     public string GetUserRelationsString()
@@ -146,7 +132,6 @@ public class PlayerData
             i++;
         }
     }
-    //load new notes
     public void LoadUserNoteFromString(string loadData)
     {
         //add id check
@@ -156,20 +141,6 @@ public class PlayerData
         foreach(string note in data.noteList)
         {
             playerAddedRelations[i].AddUserNotes(note);
-            i++;
-        }
-    }
-    public void LoadUserNotesFromString(string loadData)
-    {
-        if (string.IsNullOrEmpty(loadData)) return;
-        AllNoteWrapper data = JsonUtility.FromJson<AllNoteWrapper>(loadData);
-        int i = 0;
-        foreach(NoteWrapper notes in data.allNotesList)
-        {
-            foreach(string note in notes.noteList)
-            {
-                playerAddedRelations[i].AddNoteToUser(note);
-            }
             i++;
         }
     }

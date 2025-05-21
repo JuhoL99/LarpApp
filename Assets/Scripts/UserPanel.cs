@@ -44,10 +44,10 @@ public class UserPanel : MonoBehaviour
         panelUserNameText.text = panelUser.userName;
         string noteText = string.Empty;
         //save text straight into input field instead of multiple notes?
-        foreach(string note in panelUser.notesAboutUser)
+        /*foreach(string note in panelUser.notesAboutUser)
         {
             noteText += $"{note} \n";
-        }
+        }*/
         panelUserNotesText.text = noteText;
     }
     //rewrite a bit
@@ -61,7 +61,7 @@ public class UserPanel : MonoBehaviour
     {
         string noteText = noteInputField.text;
         if(noteText == string.Empty) return;
-        panelUser.notesAboutUser.Add(noteText);
+        //panelUser.notesAboutUser.Add(noteText);
         noteInputField.text = string.Empty;
         UpdatePanelText();
     }
