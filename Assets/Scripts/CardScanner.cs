@@ -31,11 +31,16 @@ public class CardScanner : MonoBehaviour
         imageTracker = session.GetComponentInChildren<ImageTrackerFrameFilter>();
         cameraDevice = session.GetComponentInChildren<CameraDeviceFrameSource>();
         cardTargetArray = imageTargetParent.GetComponentsInChildren<ImageTargetController>();
-        foreach (var card in cardTargetArray)
+        foreach (var cardTarget in cardTargetArray)
         {
-            AddTargetControllerEvents(card);
-            
+            imageTracker.LoadTarget(cardTarget);
+            cardTarget.TargetLoad += TargetLoadedCheck;
+            AddTargetControllerEvents(cardTarget);
         }
+    }
+    private void TargetLoadedCheck(easyar.Target trg, bool val)
+    {
+        Debug.Log($"Target: {trg.name()}, Value: {val}");
     }
     private void Start()
     {
@@ -113,6 +118,7 @@ public class CardScanner : MonoBehaviour
     }
     private void AddTargetToList(CardSO card)
     {
+        Debug.Log(card.name);
         scannedCards.Add(card);
         if (scannedCards.Count > 10)
         {

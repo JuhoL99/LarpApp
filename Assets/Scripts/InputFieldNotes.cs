@@ -10,11 +10,14 @@ public class InputFieldNotes : MonoBehaviour
     [SerializeField] private Button editTextButton;
     [Header("User Connected To Panel")]
     [SerializeField] private UserData linkedUser;
+    [Header("Scroll")]
+    [SerializeField] private ScrollRect scrollRect;
     private TMP_InputField inputField;
 
     private void Awake()
     {
         inputField = GetComponent<TMP_InputField>();
+        scrollRect = GetComponent<ScrollRect>();
         inputField.interactable = false;
         inputField.customCaretColor = true;
     }
