@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 public class ConnectionsPanelManager : MonoBehaviour
 {
@@ -16,17 +17,25 @@ public class ConnectionsPanelManager : MonoBehaviour
     [SerializeField] private TMP_InputField nameInputField;
     [Header("Name Warning Text")]
     [SerializeField] private TMP_Text nameWarningText;
+    private ScannerPanelManager scannerPanelManager;
     private List<GameObject> allInstantiatedUserPanels;
-    [Header("Events")]
     public UnityEvent someoneAddedCard;
 
     private void Start()
     {
         SaveLoadManager.instance.onGameLoaded.AddListener(LoadExistingUserPanels);
+        scannerPanelManager = GetComponent<ScannerPanelManager>();
+        scannerPanelManager.onCardAssignRequestToNewUser.AddListener(AddUserPanel);
+        scannerPanelManager.onCardAssignRequestToExisitingUser.AddListener(EnableCardAssigning);
         addUserButton.onClick.AddListener(CheckInputFieldName);
         allInstantiatedUserPanels = new List<GameObject>();
         nameInputField.onValueChanged.AddListener(OnInputFieldChanged);
         LoadExistingUserPanels();
+    }
+    private void EnableCardAssigning(CardSO card)
+    {
+        Debug.Log("enabled card assigning");
+        GameManager.instance.LookingForCardToSelect(card);
     }
     private void OnInputFieldChanged(string txt)
     {
@@ -42,6 +51,11 @@ public class ConnectionsPanelManager : MonoBehaviour
         if (nameInputField.text.Length > 20) return;
         AddUserPanel(nameInputField.text);
         nameInputField.text = string.Empty;
+    }
+    private void AddUserPanel(CardSO card)
+    {
+        UserData user = CreateNewUser("New connection", card);
+        InstantiateUserPanel(user);
     }
     private void AddUserPanel(string nameInput = "")
     {
@@ -64,9 +78,10 @@ public class ConnectionsPanelManager : MonoBehaviour
         panelScript.SetupUserPanel(user, this);
         allInstantiatedUserPanels.Add(userPanelObject);
     }
-    private UserData CreateNewUser(string nameInput)
+    private UserData CreateNewUser(string nameInput, CardSO card = null)
     {
         UserData newUser = new UserData(nameInput);
+        if (card != null) newUser.AddCardToUser(card, 0);
         GameManager.instance.player.AddUserToRelations(newUser);
         return newUser;
     }

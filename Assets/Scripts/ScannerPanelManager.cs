@@ -1,6 +1,9 @@
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using System;
 
 public class ScannerPanelManager : MonoBehaviour
 {
@@ -8,55 +11,94 @@ public class ScannerPanelManager : MonoBehaviour
     [SerializeField] private GameObject mainPanel;
     [Header("Scan Frame")]
     [SerializeField] private GameObject scanPanel;
-    [Header("Assigning Menu")]
-    [SerializeField] private GameObject assignPanel;
-    [Header("Assign Dropdown")]
-    [SerializeField] private TMP_Dropdown dropdown;
+    [Header("Selection Menu")]
+    [SerializeField] private GameObject selectionPanel;
+    [Header("Buttons")]
+    [SerializeField] private Button assignToSelfButton;
+    [SerializeField] private Button assignToExistingButton;
+    [SerializeField] private Button assignToNewButton;
+    [Header("Events")]
+    public UnityEvent<CardSO> onCardAssignRequestToNewUser;
+    public UnityEvent<CardSO> onCardAssignRequestToExisitingUser;
+    public UnityEvent<CardSO> onCardAssignRequestToPlayer;
+    public UnityEvent onMapCardScanned;
+    private CardSO currentScannedCard;
+
     private void Start()
     {
-        dropdown.onValueChanged.AddListener(DropdownSelection);
-        mainPanel.SetActive(false);
+        GameManager.instance.cardScanner.onCardScanned.AddListener(HandleCardScanned);
         scanPanel.SetActive(false);
-        assignPanel.SetActive(false);
-        GameManager.instance.cardScanner.onScanToggled.AddListener(HandleScanModeChange);
+        selectionPanel.SetActive(false);
     }
-    private void HandleScanModeChange(bool val)
+    private void HandleCardScanned(CardSO card)
     {
-        if(val) ScanStarted();
-        else ScanFinished();
+        Debug.Log("Card scanned");
+        currentScannedCard = card;
+        scanPanel.SetActive(false);
+        MarkerType marker = CheckScannedMarkerType();
+        
+        switch(marker)
+        {
+            case(MarkerType.Archetype):
+                OpenSelectionPanel();
+                break;
+            case(MarkerType.Map):
+                //open map
+                break;
+            case (MarkerType.Fate):
+                //just in case we want to scan later?
+                break;
+            case(MarkerType.Info):
+                //idk
+                break;
+            default:
+                break;
+        }
     }
-    private void ScanStarted()
+    public void EnableScanPanel()
     {
-        SetUpDropdownMenu();
-        //
-        //assignPanel.SetActive(true);
-        //
-        mainPanel.SetActive(true);
         scanPanel.SetActive(true);
     }
-    private void ScanFinished()
+    private void OpenSelectionPanel()
     {
-        mainPanel.SetActive(false);
-        scanPanel.SetActive(false);
-        //assignPanel.SetActive(true);
+        selectionPanel.SetActive(true);
+        AddButtonListeners();
     }
-    // > select card from button > card scan result from gamemanager
-    //remove >
-    private void SetUpDropdownMenu()
+    private void AddButtonListeners()
     {
-        dropdown.options.Clear();
-        List<UserData> addedUsers = GameManager.instance.player.playerAddedRelations;
-        List<string> test = new List<string>();
-        foreach (UserData user in addedUsers)
-        {
-            test.Add(user.userName);
-        }
-        dropdown.AddOptions(test);
+        assignToSelfButton.onClick.AddListener(AssignToSelf);
+        assignToExistingButton.onClick.AddListener(AssignToExistingUser);
+        assignToNewButton.onClick.AddListener(AssignToNewUser);
     }
-    private void DropdownSelection(int value)
+    private void RemoveButtonListeners()
     {
-        Debug.Log($"value from event: {value}, dropdown value: {dropdown.value}");
-        Debug.Log(GameManager.instance.player.playerAddedRelations[value].userName);
-        ScanFinished();
+        assignToSelfButton.onClick.RemoveListener(AssignToSelf);
+        assignToExistingButton.onClick.RemoveListener(AssignToExistingUser);
+        assignToNewButton.onClick.RemoveListener(AssignToNewUser);
+    }
+    private void HideSelectionPanel()
+    {
+        RemoveButtonListeners();
+        currentScannedCard = null;
+        selectionPanel.SetActive(false);
+    }
+    public void AssignToSelf()
+    {
+        onCardAssignRequestToPlayer?.Invoke(currentScannedCard);
+        HideSelectionPanel();
+    }
+    public void AssignToExistingUser()
+    {
+        onCardAssignRequestToExisitingUser?.Invoke(currentScannedCard);
+        HideSelectionPanel();
+    }
+    public void AssignToNewUser()
+    {
+        onCardAssignRequestToNewUser?.Invoke(currentScannedCard);
+        HideSelectionPanel();
+    }
+    private MarkerType CheckScannedMarkerType()
+    {
+        return MarkerType.Archetype; //for now
     }
 }

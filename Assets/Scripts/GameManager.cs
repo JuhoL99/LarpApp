@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public CardDatabase cardDatabase;
     public CardScanner cardScanner;
+    public WindowManager windowManager;
     public PlayerData player;
     public ConnectionsPanelManager connectionPanelManager;
     [Header("Flags")]
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        cardScanner.onCardScanned.AddListener(LookingForCardToSelect);
+        //cardScanner.onCardScanned.AddListener(LookingForCardToSelect);
         connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
         if(generateUsersFromStart) StartCoroutine(LateStart());
     }
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
             player.AddUserToRelations(user);
         }
     }
-    private void LookingForCardToSelect(CardSO card)
+    public void LookingForCardToSelect(CardSO card)
     {
         isLookingForCardToSelect = true;
         currentScannedCard = card;

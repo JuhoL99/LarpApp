@@ -17,11 +17,12 @@ public class UserPanel : MonoBehaviour
     [Header("Cards")]
     [SerializeField] private Card[] cards;
     [Header("User Notes")]
-    [SerializeField] private InputFieldNotes noteField;
+    [SerializeField] private CustomInputFieldNotes noteField;
+    [Header("User Name")]
+    [SerializeField] private CustomInputFieldName nameField;
 
     private void Start()
     {
-        addNoteButton.onClick.AddListener(AddNoteToUser);
         removeUserButton.onClick.AddListener(RemoveUser);
         foreach(Card card in cards)
         {
@@ -32,7 +33,8 @@ public class UserPanel : MonoBehaviour
     {
         panelUser = user;
         manager = mgr;
-        noteField.AssignUserToNotes(panelUser);
+        nameField.AssignUser(panelUser);
+        noteField.AssignUser(panelUser);
         UpdatePanelText();
         for(int i = 0; i < cards.Length; i++)
         {
@@ -43,12 +45,7 @@ public class UserPanel : MonoBehaviour
     {
         panelUserNameText.text = panelUser.userName;
         string noteText = string.Empty;
-        //save text straight into input field instead of multiple notes?
-        /*foreach(string note in panelUser.notesAboutUser)
-        {
-            noteText += $"{note} \n";
-        }*/
-        panelUserNotesText.text = noteText;
+        //panelUserNotesText.text = noteText;
     }
     //rewrite a bit
     private void AddCardToUser(int index)
@@ -61,7 +58,6 @@ public class UserPanel : MonoBehaviour
     {
         string noteText = noteInputField.text;
         if(noteText == string.Empty) return;
-        //panelUser.notesAboutUser.Add(noteText);
         noteInputField.text = string.Empty;
         UpdatePanelText();
     }
