@@ -463,7 +463,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 15, y: -15}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 600.84, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1585025992340015361
 CanvasRenderer:
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -551,14 +551,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -617,7 +617,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   editFieldButton: {fileID: 2061588247152350728}
-  inputField: {fileID: 0}
+  editingColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0.3137255}
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1716955060723991373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,7 +1541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   editFieldButton: {fileID: 7228665325706846124}
-  inputField: {fileID: 0}
+  editingColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.47058824}
+  normalColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 0.47058824}
 --- !u!1 &4628963725705712914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,8 +2447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f608cd005e702468a2a8145a0929cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelUserNameText: {fileID: 2975400127812680634}
-  panelUserNotesText: {fileID: 0}
   addNoteButton: {fileID: 0}
   removeUserButton: {fileID: 4430938414258795979}
   noteInputField: {fileID: 4358446999663762495}
@@ -2631,7 +2631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 189.9, y: 0}
+  m_AnchoredPosition: {x: -257, y: -40}
   m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4657210068289719369

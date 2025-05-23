@@ -30,6 +30,7 @@ public class CardScanner : MonoBehaviour
         foreach (var cardTarget in cardTargetArray)
         {
             imageTracker.LoadTarget(cardTarget);
+            cardTarget.Tracker = imageTracker;
             if(printLogInfo) cardTarget.TargetLoad += TargetLoadedCheck;
             AddTargetControllerEvents(cardTarget);
         }

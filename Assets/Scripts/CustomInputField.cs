@@ -6,16 +6,26 @@ using UnityEngine.UI;
 public abstract class CustomInputField : MonoBehaviour
 {
     public Button editFieldButton;
-    public UserData linkedUser;
-    public TMP_InputField inputField;
+    protected UserData linkedUser;
+    protected TMP_InputField inputField;
+    public Color editingColor;
+    public Color normalColor;
+    protected Image img;
     public virtual void Awake()
     {
         inputField = GetComponent<TMP_InputField>();
+        img = GetComponent<Image>();
+        img.color = normalColor;
         inputField.interactable = false;
         inputField.customCaretColor = true;
+        inputField.onFocusSelectAll = false;
+        inputField.resetOnDeActivation = false;
+        inputField.shouldHideMobileInput = true;
+        inputField.restoreOriginalTextOnEscape = false;
     }
     public virtual void OnEnable()
     {
+        img.color = normalColor;
         inputField.onDeselect.AddListener(StopTextEdit);
         editFieldButton.onClick.AddListener(EnableTextEdit);
     }
@@ -42,12 +52,14 @@ public abstract class CustomInputField : MonoBehaviour
             return;
         }
         inputField.interactable = true;
+        img.color = editingColor;
         ToggleCaret(true);
         inputField.Select();
         inputField.caretPosition = inputField.text.Length;
     }
     public virtual void StopTextEdit(string text = null)
     {
+        img.color = normalColor;
         ToggleCaret(false);
         StartCoroutine(DisableInputNextFrame());
     }

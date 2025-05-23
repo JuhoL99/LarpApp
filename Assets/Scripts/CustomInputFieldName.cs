@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class CustomInputFieldName : CustomInputField
 {
+    public override void Awake()
+    {
+        base.Awake();
+        inputField.contentType = TMPro.TMP_InputField.ContentType.Standard;
+        inputField.characterLimit = 28;
+    }
     public override void OnEnable()
     {
         base.OnEnable();
