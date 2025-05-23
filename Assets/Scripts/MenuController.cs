@@ -97,7 +97,7 @@ public class MenuController : MonoBehaviour
                 initialMenuPosition = menuPanel.anchoredPosition.x;
 
                 // Check if touch started from edge or if menu is already partly open
-                isSwipingFromEdge = startTouchPosition.x < edgeWidth || menuPanel.anchoredPosition.x > -menuWidth;
+                isSwipingFromEdge = startTouchPosition.x < edgeWidth || (isMenuOpen && menuPanel.anchoredPosition.x > -menuWidth);
 
                 if (isSwipingFromEdge)
                 {
@@ -192,7 +192,9 @@ public class MenuController : MonoBehaviour
     // Public methods to be called from UI buttons
     public void ShowScreen(GameObject screen)
     {
-        ToggleSideMenu();
+        // Close the menu directly instead of toggling
+        isMenuOpen = false;
+        isDragging = false;
 
         if (screen == mainScreen)
         {
