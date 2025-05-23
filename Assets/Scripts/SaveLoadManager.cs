@@ -7,6 +7,11 @@ using System.IO;
 public class SaveLoadManager : MonoBehaviour
 {
     public static SaveLoadManager instance;
+    [Header("Save on application quit")]
+    [SerializeField] private bool saveOnQuit;
+    [Header("Autosave")] //just in case?
+    [SerializeField] private bool autoSave;
+    [SerializeField] private float autoSaveFreq;
     public UnityEvent onGameSaved;
     public UnityEvent onGameLoaded;
     private PlayerData playerData;
@@ -18,6 +23,11 @@ public class SaveLoadManager : MonoBehaviour
     private void Start()
     {
         Load();
+        if(autoSave) InvokeRepeating("Save", autoSaveFreq, autoSaveFreq);
+    }
+    private void OnApplicationQuit()
+    {
+        if(saveOnQuit) Save();
     }
     public void ClearAllData()
     {
@@ -80,25 +90,6 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUsersFromString(save.linkedUserNames);
         playerData.LoadUserCardsFromString(save.linkedUserCards);
         playerData.LoadUserNoteFromString(save.linkedUserNotesNew);
-        GameManager.instance.player = playerData;
-        onGameLoaded?.Invoke();
-
-    }
-    private void SavePlayerPrefs()
-    {
-        if (playerData == null) playerData = GameManager.instance.player;
-        PlayerPrefs.SetString("playerName", playerData.playerName);
-        PlayerPrefs.SetString("playerCards", playerData.GetPlayerCardString());
-        PlayerPrefs.SetString("linkedUserNames", playerData.GetUserRelationsString());
-        PlayerPrefs.SetString("linkedUserCards", playerData.GetUserCardString());
-        onGameSaved?.Invoke();
-    }
-    private void LoadPlayerPrefs()
-    {
-        playerData = new PlayerData(PlayerPrefs.GetString("playerName"));
-        playerData.LoadUserCardsFromString(PlayerPrefs.GetString("playerCards"));
-        playerData.LoadUsersFromString(PlayerPrefs.GetString("linkedUserNames"));
-        playerData.LoadUserCardsFromString(PlayerPrefs.GetString("linkedUserCards"));
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
     }

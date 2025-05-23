@@ -12,19 +12,15 @@ public class CardScanner : MonoBehaviour
     [Header("Image target testing")]
     [SerializeField] private ImageTargetController[] cardTargetArray;
     [SerializeField] private List<ImageTargetController> cardTargetList = new List<ImageTargetController>();
-    [Header("Debug texts")]
-    [SerializeField] private TMP_Text targetInfo;
     [Header("Other")]
-    [SerializeField] private TextAsset text; //test
     [SerializeField] private Transform imageTargetParent;
+    [SerializeField] private bool printLogInfo;
     public UnityEvent<bool> onScanToggled;
     public UnityEvent<CardSO> onCardScanned;
     private ImageTrackerFrameFilter imageTracker;
     private CameraDeviceFrameSource cameraDevice;
     private bool isScanning;
-    [SerializeField] private bool generateImageTargets = false; //turn to prefab, unpack, delete from folder
-    [SerializeField] private CardSO currentSelectedCard;
-    [SerializeField] private List<CardSO> scannedCards;
+    private CardSO currentSelectedCard;
 
     private void Awake()
     {
@@ -34,7 +30,7 @@ public class CardScanner : MonoBehaviour
         foreach (var cardTarget in cardTargetArray)
         {
             imageTracker.LoadTarget(cardTarget);
-            cardTarget.TargetLoad += TargetLoadedCheck;
+            if(printLogInfo) cardTarget.TargetLoad += TargetLoadedCheck;
             AddTargetControllerEvents(cardTarget);
         }
     }
@@ -44,36 +40,7 @@ public class CardScanner : MonoBehaviour
     }
     private void Start()
     {
-        scannedCards = new List<CardSO>();
         onCardScanned.AddListener(SetCurrentSelectedCard);
-        if (!generateImageTargets) return;
-        DirectoryInfo info;
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
-        info = new DirectoryInfo(Application.streamingAssetsPath);
-#elif UNITY_ANDROID
-        info = new DirectoryInfo($"jar:file://{Application.streamingAssetsPath}"); //doesnt work need to use unity webrequest
-#endif
-        if (info == null) return;
-        var fileInfo = info.GetFiles();
-        foreach(var file in fileInfo)
-        {
-            if (!file.Name.Contains(".jpg") && !file.Name.Contains(".png")) continue;
-            GenerateImageTargetsFromFolder(file.Name); //only works in editor
-        }
-    }
-    private void GenerateImageTargetsFromFolder(string cardName) 
-    {
-        
-        GameObject go = new GameObject();
-        go.transform.parent = transform;
-        go.name = $"Image Target - {cardName}";
-        ImageTargetController controller = go.AddComponent<ImageTargetController>();
-        controller.Tracker = imageTracker;
-        controller.ImageFileSource.Path = cardName;
-        controller.ImageFileSource.Name = cardName.Substring(0,cardName.LastIndexOf('.'));
-        controller.ImageFileSource.Scale = 0.1f;
-        cardTargetList.Add(controller);
-        AddTargetControllerEvents(controller);
     }
     public void EnableScanning()
     {
@@ -109,27 +76,8 @@ public class CardScanner : MonoBehaviour
         if (!isScanning) return;
         else
         {
-            //testing
-            AddTargetToList(GameManager.instance.cardDatabase.GetCardByName(targetID));
-            //
             onCardScanned?.Invoke(GameManager.instance.cardDatabase.GetCardByName(targetID));
             DisableScanning();
-        }
-    }
-    private void AddTargetToList(CardSO card)
-    {
-        Debug.Log(card.name);
-        scannedCards.Add(card);
-        if (scannedCards.Count > 10)
-        {
-            string listToString = string.Empty;
-            foreach(CardSO crd in scannedCards)
-            {
-                listToString += $"{crd.cardName}, ";
-            }
-            scannedCards.Clear();
-            Debug.Log(listToString);
-            return;
         }
     }
     private void AssignCardToUserOrPlayer(PlayerData player, int index)

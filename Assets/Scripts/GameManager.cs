@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //cardScanner.onCardScanned.AddListener(LookingForCardToSelect);
         connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
         if(generateUsersFromStart) StartCoroutine(LateStart());
     }

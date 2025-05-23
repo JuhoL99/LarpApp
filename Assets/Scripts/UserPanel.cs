@@ -6,9 +6,6 @@ public class UserPanel : MonoBehaviour
 {
     private UserData panelUser;
     private ConnectionsPanelManager manager;
-    [Header("Text Components")]
-    [SerializeField] private TMP_Text panelUserNameText;
-    [SerializeField] private TMP_Text panelUserNotesText;
     [Header("Buttons")]
     [SerializeField] private Button addNoteButton;
     [SerializeField] private Button removeUserButton;
@@ -35,31 +32,17 @@ public class UserPanel : MonoBehaviour
         manager = mgr;
         nameField.AssignUser(panelUser);
         noteField.AssignUser(panelUser);
-        UpdatePanelText();
         for(int i = 0; i < cards.Length; i++)
         {
             cards[i].SetCurrentCard(panelUser.userArchetypeCards[i]);
         }
     }
-    private void UpdatePanelText()
-    {
-        panelUserNameText.text = panelUser.userName;
-        string noteText = string.Empty;
-        //panelUserNotesText.text = noteText;
-    }
     //rewrite a bit
     private void AddCardToUser(int index)
     {
-        CardSO card = cards[index].GetCurrentCard(); //not necessary anymore
+        CardSO card = cards[index].GetCurrentCard();
         panelUser.AddCardToUser(card, index);
         manager.someoneAddedCard?.Invoke();
-    }
-    private void AddNoteToUser()
-    {
-        string noteText = noteInputField.text;
-        if(noteText == string.Empty) return;
-        noteInputField.text = string.Empty;
-        UpdatePanelText();
     }
     private void RemoveUser()
     {
