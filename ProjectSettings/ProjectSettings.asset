@@ -67,7 +67,7 @@ PlayerSettings:
   use32BitDisplayBuffer: 1
   preserveFramebufferAlpha: 0
   disableDepthAndStencilBuffers: 0
-  androidStartInFullscreen: 1
+  androidStartInFullscreen: 0
   androidRenderOutsideSafeArea: 1
   androidUseSwappy: 0
   androidBlitType: 0
@@ -76,7 +76,7 @@ PlayerSettings:
   androidDefaultWindowHeight: 1080
   androidMinimumWindowWidth: 400
   androidMinimumWindowHeight: 300
-  androidFullscreenMode: 1
+  androidFullscreenMode: 3
   androidAutoRotationBehavior: 1
   androidPredictiveBackSupport: 1
   androidApplicationEntry: 2
@@ -555,6 +555,9 @@ PlayerSettings:
   m_BuildTargetDefaultTextureCompressionFormat:
   - serializedVersion: 3
     m_BuildTarget: Android
+    m_Formats: 03000000
+  - serializedVersion: 3
+    m_BuildTarget: iOS
     m_Formats: 03000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
