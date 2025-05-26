@@ -1,7 +1,25 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class CustomInputFieldNotes : CustomInputField
+public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] protected TMP_Text dragText;
+    [SerializeField] protected ScrollRect scrollRect;
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        dragText.text = $"drag start";
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        dragText.text = $"dragging: {eventData.dragging}";
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        dragText.text = $"drag over";
+    }
     public override void OnEnable()
     {
         base.OnEnable();
@@ -9,6 +27,10 @@ public class CustomInputFieldNotes : CustomInputField
         {
             inputField.text = linkedUser.userNotes;
         }
+    }
+    public override void EnableTextEdit()
+    {
+        base.EnableTextEdit();
     }
     public override void OnDisable()
     {
