@@ -1,19 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class MapTouchController : MonoBehaviour
 {
     [Header("Map Settings")]
-    public RectTransform mapTransform; // The UI Image RectTransform
+    public List<Image> mapImages; // List of all floor images
+    public RectTransform mapTransform; // The UI Image RectTransform (container for all floors)
     public float minZoom = 0.5f;
     public float maxZoom = 3f;
     public float zoomSpeed = 1f;
     public float rotationSpeed = 1f;
 
     [Header("Pan Settings")]
-    private bool enablePanning = true;
+    public bool enablePanning = true;
     public float panSpeed = 2f;
+    public bool enableBoundaries = true;
+    public float boundaryPadding = 0f; // Extra padding from screen edges
+
+    [Header("Floor Management")]
+    public int currentFloorIndex = 0; // Which floor is currently active
 
     [Header("Gesture Detection")]
     public float movementThreshold = 20f; // Minimum movement to start detecting gestures
@@ -36,6 +43,10 @@ public class MapTouchController : MonoBehaviour
     // Input System references
     private Touchscreen touchscreen;
 
+    // Boundary calculation cache
+    private Canvas parentCanvas;
+    private RectTransform canvasRectTransform;
+
     void Start()
     {
         if (mapTransform == null)
@@ -46,11 +57,43 @@ public class MapTouchController : MonoBehaviour
 
         // Get input devices
         touchscreen = Touchscreen.current;
+
+        // Get canvas references for boundary calculations
+        parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas != null)
+        {
+            canvasRectTransform = parentCanvas.GetComponent<RectTransform>();
+        }
+
+        // Initialize floor display
+        if (mapImages != null && mapImages.Count > 0)
+        {
+            ShowFloor(currentFloorIndex);
+        }
     }
 
     void Update()
     {
         HandleInput();
+    }
+
+    // Public method to switch floors - call this from button OnClick events (first floor = index 0)
+    public void SwitchToFloor(int floorIndex)
+    {
+        currentFloorIndex = floorIndex;
+        ShowFloor(currentFloorIndex);
+    }
+
+    private void ShowFloor(int floorIndex)
+    {
+        // Hide all floor images
+        for (int i = 0; i < mapImages.Count; i++)
+        {
+            if (mapImages[i] != null)
+            {
+                mapImages[i].gameObject.SetActive(i == floorIndex);
+            }
+        }
     }
 
     void HandleInput()
@@ -103,7 +146,15 @@ public class MapTouchController : MonoBehaviour
             else if (phase == UnityEngine.InputSystem.TouchPhase.Moved && isPanning)
             {
                 Vector2 deltaPosition = (touchPosition - lastTouchPosition) * panSpeed;
-                mapTransform.anchoredPosition += deltaPosition;
+                Vector2 newPosition = mapTransform.anchoredPosition + deltaPosition;
+
+                // Apply boundary constraints
+                if (enableBoundaries)
+                {
+                    newPosition = ConstrainToBoundaries(newPosition);
+                }
+
+                mapTransform.anchoredPosition = newPosition;
                 lastTouchPosition = touchPosition;
             }
             else if (phase == UnityEngine.InputSystem.TouchPhase.Ended ||
@@ -241,6 +292,12 @@ public class MapTouchController : MonoBehaviour
             newScale = Vector3.Max(Vector3.one * minZoom, Vector3.Min(Vector3.one * maxZoom, newScale));
 
             mapTransform.localScale = newScale;
+
+            // After zooming, check if we need to adjust position to stay within boundaries
+            if (enableBoundaries)
+            {
+                mapTransform.anchoredPosition = ConstrainToBoundaries(mapTransform.anchoredPosition);
+            }
         }
     }
 
@@ -264,9 +321,9 @@ public class MapTouchController : MonoBehaviour
         return null;
     }
 
-    private System.Collections.Generic.List<UnityEngine.InputSystem.Controls.TouchControl> GetActiveTouches()
+    private List<UnityEngine.InputSystem.Controls.TouchControl> GetActiveTouches()
     {
-        var activeTouches = new System.Collections.Generic.List<UnityEngine.InputSystem.Controls.TouchControl>();
+        var activeTouches = new List<UnityEngine.InputSystem.Controls.TouchControl>();
 
         if (touchscreen == null) return activeTouches;
 
@@ -277,5 +334,63 @@ public class MapTouchController : MonoBehaviour
                 activeTouches.Add(touches[i]);
         }
         return activeTouches;
+    }
+
+    // Boundary constraint methods
+    private Vector2 ConstrainToBoundaries(Vector2 proposedPosition)
+    {
+        if (canvasRectTransform == null || mapTransform == null)
+            return proposedPosition;
+
+        // Get the current scaled size of the map
+        Vector2 mapSize = mapTransform.rect.size * mapTransform.localScale.x;
+        Vector2 canvasSize = canvasRectTransform.rect.size;
+
+        // Calculate the boundaries
+        Vector2 minBounds = CalculateMinBounds(mapSize, canvasSize);
+        Vector2 maxBounds = CalculateMaxBounds(mapSize, canvasSize);
+
+        // Constrain the position
+        Vector2 constrainedPosition = new Vector2(
+            Mathf.Clamp(proposedPosition.x, minBounds.x, maxBounds.x),
+            Mathf.Clamp(proposedPosition.y, minBounds.y, maxBounds.y)
+        );
+
+        return constrainedPosition;
+    }
+
+    private Vector2 CalculateMinBounds(Vector2 mapSize, Vector2 canvasSize)
+    {
+        // Calculate minimum bounds (how far left/down the map can go)
+        float minX = -(mapSize.x - canvasSize.x) * 0.5f - boundaryPadding;
+        float minY = -(mapSize.y - canvasSize.y) * 0.5f - boundaryPadding;
+
+        // If map is smaller than canvas, center it
+        if (mapSize.x <= canvasSize.x) minX = 0;
+        if (mapSize.y <= canvasSize.y) minY = 0;
+
+        return new Vector2(minX, minY);
+    }
+
+    private Vector2 CalculateMaxBounds(Vector2 mapSize, Vector2 canvasSize)
+    {
+        // Calculate maximum bounds (how far right/up the map can go)
+        float maxX = (mapSize.x - canvasSize.x) * 0.5f + boundaryPadding;
+        float maxY = (mapSize.y - canvasSize.y) * 0.5f + boundaryPadding;
+
+        // If map is smaller than canvas, center it
+        if (mapSize.x <= canvasSize.x) maxX = 0;
+        if (mapSize.y <= canvasSize.y) maxY = 0;
+
+        return new Vector2(maxX, maxY);
+    }
+
+    // Public method to manually apply boundary constraints (useful after direct position changes)
+    public void ApplyBoundaryConstraints()
+    {
+        if (enableBoundaries)
+        {
+            mapTransform.anchoredPosition = ConstrainToBoundaries(mapTransform.anchoredPosition);
+        }
     }
 }
