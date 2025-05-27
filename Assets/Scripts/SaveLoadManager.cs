@@ -27,7 +27,9 @@ public class SaveLoadManager : MonoBehaviour
     }
     private void OnApplicationPause(bool pause)
     {
-#if UNITY_ANDROID || UNITY_IOS
+#if UNITY_EDITOR
+        return;
+#elif UNITY_ANDROID || UNITY_IOS
         if (saveOnQuit) Save();
 #endif
     }
