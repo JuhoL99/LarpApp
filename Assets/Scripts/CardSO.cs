@@ -9,7 +9,7 @@ public class CardSO : ScriptableObject
     public int cardId;
     public Sprite cardTopSprite;
     public Sprite cardBottomSprite;
-    MarkerType markerType = MarkerType.Archetype;
+    public MarkerType markerType = MarkerType.Archetype;
     public Sprite[] GetCardVisual()
     {
         return new Sprite[] { cardTopSprite, cardBottomSprite };
