@@ -7,11 +7,12 @@ public abstract class CustomInputField : MonoBehaviour
 {
     public Button editFieldButton;
     protected UserData linkedUser;
+    protected PlayerData linkedPlayer;
     protected TMP_InputField inputField;
     public Color editingColor;
     public Color normalColor;
     protected Image img;
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         inputField = GetComponent<TMP_InputField>();
         img = GetComponent<Image>();
@@ -23,24 +24,30 @@ public abstract class CustomInputField : MonoBehaviour
         inputField.shouldHideMobileInput = true;
         inputField.restoreOriginalTextOnEscape = false;
     }
-    public virtual void OnEnable()
+    protected virtual void OnEnable()
     {
         img.color = normalColor;
         inputField.onDeselect.AddListener(StopTextEdit);
         editFieldButton.onClick.AddListener(EnableTextEdit);
+    }
+    public virtual void AssignPlayer(PlayerData player)
+    {
+        Debug.Log("assigned player");
+        linkedPlayer = player;
+        LoadText();
     }
     public virtual void AssignUser(UserData user)
     {
         linkedUser = user;
         LoadText();
     }
-    public virtual void OnDisable()
+    protected virtual void OnDisable()
     {
         inputField.interactable = false;
         inputField.onDeselect.RemoveListener(StopTextEdit);
         editFieldButton.onClick.RemoveListener(EnableTextEdit);
     }
-    public virtual void Start()
+    protected virtual void Start()
     {
         SaveLoadManager.instance.onGameLoaded.AddListener(LoadText);
     }
@@ -55,7 +62,7 @@ public abstract class CustomInputField : MonoBehaviour
         img.color = editingColor;
         ToggleCaret(true);
         inputField.Select();
-        inputField.caretPosition = inputField.text.Length;
+        inputField.caretPosition = 0;
     }
     public virtual void StopTextEdit(string text = null)
     {
@@ -76,7 +83,7 @@ public abstract class CustomInputField : MonoBehaviour
         }
         inputField.caretColor = new Color(0, 0, 0, 1);
     }
-    public virtual IEnumerator DisableInputNextFrame()
+    protected virtual IEnumerator DisableInputNextFrame()
     {
         yield return null;
         inputField.interactable = false;

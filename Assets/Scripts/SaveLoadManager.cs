@@ -51,6 +51,7 @@ public class SaveLoadManager : MonoBehaviour
         if (playerData == null) playerData = GameManager.instance.player;
         Save save = new Save(
             playerData.playerName,
+            playerData.playerNotes,
             playerData.GetPlayerCardString(),
             playerData.GetUserRelationsString(),
             playerData.GetUserCardString(),
@@ -85,7 +86,7 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
         Save save = JsonUtility.FromJson<Save>(text);
-        playerData = new PlayerData(save.playerName);
+        playerData = new PlayerData(save.playerName, save.playerNotes);
         playerData.LoadUserCardsFromString(save.playerCards);
         playerData.LoadUsersFromString(save.linkedUserNames);
         playerData.LoadUserCardsFromString(save.linkedUserCards);

@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerData
 {
     public string playerName;
+    public string playerNotes;
     public CardSO[] playerArchetypeCards;
     public List<UserData> playerAddedRelations;
     public int maxCardAmount = 2;
 
-    public PlayerData(string name = null, CardSO[] cards = null, List<UserData> addedRelations = null)
+    public PlayerData(string name = null, string notes = null, CardSO[] cards = null, List<UserData> addedRelations = null)
     {
         playerName = name;
+        playerNotes = notes;
         playerArchetypeCards = cards == null ? new CardSO[maxCardAmount] : cards;
         playerAddedRelations = addedRelations == null ? new List<UserData>() : addedRelations;
     }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public WindowManager windowManager;
     public PlayerData player;
     public ConnectionsPanelManager connectionPanelManager;
+    public ProfilePanelManager profilePanelManager;
     [Header("Flags")]
     public bool isLookingForCardToSelect = false;
     [Header("Info")]
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
+        profilePanelManager.cardAddedToProfile.AddListener(() => isLookingForCardToSelect = false);
         if(generateUsersFromStart) StartCoroutine(LateStart());
     }
     private IEnumerator LateStart()

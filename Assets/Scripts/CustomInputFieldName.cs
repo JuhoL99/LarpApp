@@ -2,25 +2,33 @@ using UnityEngine;
 
 public class CustomInputFieldName : CustomInputField
 {
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         inputField.contentType = TMPro.TMP_InputField.ContentType.Standard;
         inputField.characterLimit = 28;
     }
-    public override void OnEnable()
+    protected override void OnEnable()
     {
         base.OnEnable();
         if (inputField != null && linkedUser != null)
         {
             inputField.text = linkedUser.userName;
         }
+        if(linkedPlayer != null)
+        {
+            inputField.text = linkedPlayer.playerName;
+        }
     }
-    public override void OnDisable()
+    protected override void OnDisable()
     {
         if (inputField != null && linkedUser != null)
         {
             linkedUser.userName = inputField.text;
+        }
+        if(linkedPlayer != null)
+        {
+            linkedPlayer.playerName = inputField.text;
         }
         base.OnDisable();
     }
@@ -30,6 +38,10 @@ public class CustomInputFieldName : CustomInputField
         {
             linkedUser.userName = text;
         }
+        if(linkedPlayer != null && text != null)
+        {
+            linkedPlayer.playerName = text;
+        }
         base.StopTextEdit(text);
     }
     public override void LoadText()
@@ -37,6 +49,10 @@ public class CustomInputFieldName : CustomInputField
         if (linkedUser != null && inputField != null)
         {
             inputField.text = linkedUser.userName;
+        }
+        if(linkedPlayer != null)
+        {
+            inputField.text = linkedPlayer.playerName;
         }
     }
 }
