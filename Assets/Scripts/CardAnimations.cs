@@ -42,6 +42,7 @@ public class CardAnimations : MonoBehaviour
     }
     public void PopupEffect(CardSO _card)
     {
+
         card = _card;
         UpdateCardVisuals();
         PopupEffect();
