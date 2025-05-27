@@ -12,10 +12,8 @@ public class Card : MonoBehaviour
     [SerializeField] private int cardIndex;
     private CardSO currentCard;
     private Image img;
-    private Button switchCardButton;
     [Header("Buttons")]
-    [SerializeField] private Button flipButton; //full
-    [SerializeField] private Button rotateButton; //center on top
+    [SerializeField] private Button interactButton;
     private TMP_Text buttonText;
     private bool isEmpty;
     private bool facingTop = true;
@@ -25,14 +23,7 @@ public class Card : MonoBehaviour
     {
         img = GetComponent<Image>();
         currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
-        if(flipButton != null) flipButton.onClick.AddListener(CheckCardSwitch);
-        if (flipButton != null) flipButton.onClick.AddListener(Flip);
-        if (rotateButton != null) rotateButton.onClick.AddListener(CheckCardSwitch);
-        if (rotateButton != null) rotateButton.onClick.AddListener(Rotate);
-        //switchCardButton = transform.parent.GetChild(0).GetComponent<Button>();
-        //buttonText = switchCardButton.transform.GetComponentInChildren<TMP_Text>();
-        //buttonText.text = "Scan Card";
-        //switchCardButton.onClick.AddListener(AllowSwitch);
+        interactButton.onClick.AddListener(CardPopup);
         if(sprites != null) img.sprite = sprites[0];
     }
     private void AllowSwitch()
@@ -62,14 +53,6 @@ public class Card : MonoBehaviour
         currentCard = card;
         UpdateCardVisuals();
     }
-    public void Rotate()
-    {
-        return;
-        if (!canRotate) return;
-        canRotate = false;
-        float rotationZ = transform.rotation.z == 0 ? -180 : 0;
-        transform.DORotate(new Vector3(0, 0, rotationZ), 0.5f).OnComplete(() => canRotate = true);
-    }
     private void CheckCardSwitch()
     {
         if (GameManager.instance.isLookingForCardToSelect)
@@ -80,24 +63,11 @@ public class Card : MonoBehaviour
             return;
         }
     }
-    public void Flip()
+    public void CardPopup()
     {
-        //move elsewhere >
         GameObject popup = GameManager.instance.cardPopup;
         popup.SetActive(true);
         popup.GetComponentInChildren<CardAnimations>().PopupEffect(currentCard);
-
-        return;
-        if (facingTop) img.sprite = sprites[0];
-        else img.sprite = sprites[1];
-        transform.DOScaleX(0, 0.25f).onComplete = Flop;
-    }
-    private void Flop()
-    {
-        facingTop = !facingTop;
-        if (facingTop) img.sprite = sprites[0];
-        else img.sprite = sprites[1];
-        transform.DOScaleX(1, 0.25f);
     }
     private void UpdateCardVisuals()
     {
@@ -107,6 +77,6 @@ public class Card : MonoBehaviour
     }
     public void InteractWithCard()
     {
-        Flip();
+        CardPopup();
     }
 }
