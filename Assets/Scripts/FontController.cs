@@ -1,30 +1,29 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class TextMeshProFontChanger : MonoBehaviour
+public class FontController : MonoBehaviour
 {
     [Header("Font Size Settings")]
-    [SerializeField] private float newFontSize = 72f;
+    private float newFontSize;
+    private float defaultFontSize = 72f;
     [SerializeField] private bool includeInactive = true;
 
     [Header("Slider Settings")]
     [SerializeField] private Slider fontSizeSlider;
     [SerializeField] private float minFontSize = 72f;
     [SerializeField] private float maxFontSize = 100f;
-    [SerializeField] private TextMeshProUGUI sliderValueText; // Optional: Display current value
+    [SerializeField] private TextMeshProUGUI sliderValueText;
 
-    [Header("Controls")]
-    [SerializeField] private bool changeOnStart = false;
+    [Header("Save System")]
+    [SerializeField] private string saveKey = "FontSize";
+    private float lastSavedValue;
 
     void Start()
     {
-        SetupSlider();
+        LoadFontSize(); // Load saved font size on startup
 
-        if (changeOnStart)
-        {
-            ChangeAllFontSizes();
-        }
+        SetupSlider();
     }
 
     void SetupSlider()
@@ -34,7 +33,7 @@ public class TextMeshProFontChanger : MonoBehaviour
             // Configure slider range
             fontSizeSlider.minValue = minFontSize;
             fontSizeSlider.maxValue = maxFontSize;
-            fontSizeSlider.value = minFontSize;
+            fontSizeSlider.value = newFontSize;
 
             fontSizeSlider.onValueChanged.AddListener(OnSliderValueChanged);
 
@@ -48,6 +47,8 @@ public class TextMeshProFontChanger : MonoBehaviour
         newFontSize = value;
         UpdateSliderValueText();
         ChangeAllFontSizes();
+
+        SaveFontSize();
     }
 
     void UpdateSliderValueText()
@@ -58,81 +59,69 @@ public class TextMeshProFontChanger : MonoBehaviour
         }
     }
 
-    [ContextMenu("Change All Font Sizes")]
     public void ChangeAllFontSizes()
     {
         // Find all TextMeshPro components (UI)
         TextMeshProUGUI[] uiTexts = FindObjectsOfType<TextMeshProUGUI>(includeInactive);
 
-        int changedCount = 0;
-
         // Change UI TextMeshPro components
         foreach (TextMeshProUGUI text in uiTexts)
         {
             text.fontSize = newFontSize;
-            changedCount++;
         }
 
-        Debug.Log($"Changed font size to {newFontSize} for {changedCount} TextMeshPro components.");
+        SaveFontSize();
     }
 
-    [ContextMenu("Apply Slider Value")]
-    public void ApplySliderValue()
+    public void SaveFontSize()
     {
-        if (fontSizeSlider != null)
+        PlayerPrefs.SetFloat(saveKey, newFontSize);
+        PlayerPrefs.Save();
+        lastSavedValue = newFontSize;
+        Debug.Log($"Font size {newFontSize} saved to key: {saveKey}");
+    }
+
+    public void LoadFontSize()
+    {
+        if (PlayerPrefs.HasKey(saveKey))
         {
-            newFontSize = fontSizeSlider.value;
+            float savedValue = PlayerPrefs.GetFloat(saveKey, newFontSize);
+            newFontSize = Mathf.Clamp(savedValue, minFontSize, maxFontSize);
+            lastSavedValue = newFontSize;
+
+            // Update slider if it exists
+            if (fontSizeSlider != null)
+            {
+                fontSizeSlider.value = newFontSize;
+            }
+
+            UpdateSliderValueText();
             ChangeAllFontSizes();
+            Debug.Log($"Font size {newFontSize} loaded from key: {saveKey}");
         }
     }
 
-    public void SetSliderValue(float value)
-    {
-        if (fontSizeSlider != null)
-        {
-            fontSizeSlider.value = Mathf.Clamp(value, minFontSize, maxFontSize);
-        }
-    }
-
-    [ContextMenu("Reset All Font Sizes")]
-    public void ResetAllFontSizes()
-    {
-        ChangeAllFontSizesToDefault(18f); // Default TMP font size
-    }
-
-    public void ChangeAllFontSizesToDefault(float defaultSize)
+    // Method to reset all fonts to default if needed
+    public void ChangeAllFontSizesToDefault(float defaultFontSize)
     {
         TextMeshProUGUI[] uiTexts = FindObjectsOfType<TextMeshProUGUI>(includeInactive);
 
-        int changedCount = 0;
-
         foreach (TextMeshProUGUI text in uiTexts)
         {
-            text.fontSize = defaultSize;
-            changedCount++;
+            text.fontSize = defaultFontSize;
         }
 
-        Debug.Log($"Reset font size to {defaultSize} for {changedCount} TextMeshPro components.");
+        SaveFontSize();
     }
-
-    // Method to change font sizes with specific parameters
-    public void ChangeAllFontSizes(float fontSize, bool includeInactiveObjects = true)
-    {
-        TextMeshProUGUI[] uiTexts = FindObjectsOfType<TextMeshProUGUI>(includeInactiveObjects);
-
-        int changedCount = 0;
-
-        foreach (TextMeshProUGUI text in uiTexts)
-        {
-            text.fontSize = fontSize;
-            changedCount++;
-        }
-
-        Debug.Log($"Changed font size to {fontSize} for {changedCount} TextMeshPro components.");
-    }
-
+    
     void OnDestroy()
     {
+        // Final save before destruction if auto-save is enabled and value changed
+        if (Mathf.Abs(newFontSize - lastSavedValue) > 0.1f)
+        {
+            SaveFontSize();
+        }
+
         // Clean up slider listeners
         if (fontSizeSlider != null)
         {
