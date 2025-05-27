@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Jester
   imageName: Jester
   cardId: 36
-  cardTopSprite: {fileID: 21300000, guid: 4d0b6ff440f8a7d45bcd07d2f92a5a19, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 6b8223ba50c00154e8baaaeeeccd89b4, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: b990bd88fb3fbe944b60968fbcad2715, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 001b6188905ff0b44ae9fe6b7da590ec, type: 3}

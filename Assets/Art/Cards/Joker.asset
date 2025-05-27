@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Joker
   imageName: Joker
   cardId: 37
-  cardTopSprite: {fileID: 21300000, guid: 023cbc3c8b299ea4cacc010dfbf4024d, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 6b8223ba50c00154e8baaaeeeccd89b4, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: be2a68cfa8f48f646bf5c1f949a71ca7, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: dc1585f9d538631438bc0f1bd6441067, type: 3}

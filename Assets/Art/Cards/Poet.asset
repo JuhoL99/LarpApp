@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Poet
   imageName: Poet
   cardId: 49
-  cardTopSprite: {fileID: 21300000, guid: e3eb24b4ba6e78e4c8331cf1eab0dcd9, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 3106cb2e9571f7e478c14a01ccd7d0d0, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 894d4e014f8af47429acd751ce76a446, type: 3}

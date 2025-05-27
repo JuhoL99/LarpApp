@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Humanitarian
   imageName: Humanitarian
   cardId: 30
-  cardTopSprite: {fileID: 21300000, guid: cabccc5ecddabc746be71d35de089120, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 23d05b6aa7f57cd4b83ae840c6579edc, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 9ab76e7a0e2fff54c89351c8f502bcdc, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: c5f5059f26508bc4fa0fc1021da640a6, type: 3}

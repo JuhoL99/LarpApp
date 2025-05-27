@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Innocent
   imageName: Innocent
   cardId: 32
-  cardTopSprite: {fileID: 21300000, guid: 7dcf60b97b5abdf48bef0eb958975e0b, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 556515003fe69864da0f24ee15f0e997, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 20e9298f4ae957e4fa5ae4532326a77a, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 5f0def8b251491e4fb6088cfcb9d5d49, type: 3}

@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Outlaw
   imageName: Outlaw
   cardId: 45
-  cardTopSprite: {fileID: 21300000, guid: 464854bef7983de49be36b4df6bf7520, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: d636651fa5b652f42bba3e9b8df9a790, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: a6db814478c70914db9eddb854486f5f, type: 3}

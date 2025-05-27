@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Realist
   imageName: Realist
   cardId: 51
-  cardTopSprite: {fileID: 21300000, guid: 9e9ad11f90b873b4286dae17a1b69177, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 7f66846cc87055a49865e279da9cb104, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 9d43ac52940930649a44fe13869d3e75, type: 3}

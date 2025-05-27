@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Wanderer
   imageName: Wanderer
   cardId: 69
-  cardTopSprite: {fileID: 21300000, guid: ca33083ac06eefd458d266c9b4ba81d1, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 1c038537f4173fb48a21093d8ab1374f, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 28098e6801ee729428048617099f04e1, type: 3}

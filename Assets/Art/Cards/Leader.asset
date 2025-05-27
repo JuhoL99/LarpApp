@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Leader
   imageName: Leader
   cardId: 38
-  cardTopSprite: {fileID: 21300000, guid: 21cf5f889e95ced4cbadc556601888d7, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 0605644a466364345b85da50df584c2f, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: e955fd7c7ed5e3e438614590767435ed, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: af218125bc5624244a011307f805ac08, type: 3}

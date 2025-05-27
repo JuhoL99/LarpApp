@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Survivor
   imageName: Survivor
   cardId: 64
-  cardTopSprite: {fileID: 21300000, guid: 56f7ae297eacd754f9b5285ae199db26, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 7feafe230f7c1244ab1afd9c1bf87afd, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 37c12fa5a47bd3a468eb6b122e4caf8d, type: 3}

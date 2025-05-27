@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Rescuer
   imageName: Rescuer
   cardId: 53
-  cardTopSprite: {fileID: 21300000, guid: 78043fd269b15164ca9218c38c4eb4a0, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 107bec5a1960aaa43b51b735805db9de, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 1722b8ee7b38f034ebcbc846f8860a82, type: 3}

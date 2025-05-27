@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Altruist
   imageName: Altruist
   cardId: 0
-  cardTopSprite: {fileID: 21300000, guid: 99b62bb500f021e44a80217818e95a11, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 9b766f82c4cce6c4199ad8df826bcacd, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 25694cc7cc797214fb1930a945ba2baa, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: e2f28c53ec5b1df4c84814bc17f48c5f, type: 3}

@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Visionary
   imageName: Visionary
   cardId: 68
-  cardTopSprite: {fileID: 21300000, guid: 845c6d52fb51dca40a9552a3a9e1948a, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 3efa6bf48c0a25140912cd379209fca7, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: f0e8da0f3caf81746a920f61383419bb, type: 3}

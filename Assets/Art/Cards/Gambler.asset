@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Gambler
   imageName: Gambler
   cardId: 27
-  cardTopSprite: {fileID: 21300000, guid: a4a25303de714da4392d3fd015c63652, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 474dd7c66c2bb1f44ae2304c0983c345, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 5d38c7439d51e4446a0f4dafef8bd9b2, type: 3}

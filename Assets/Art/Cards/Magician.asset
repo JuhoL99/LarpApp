@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Magician
   imageName: Magician
   cardId: 40
-  cardTopSprite: {fileID: 21300000, guid: 094287df09e7f994083e2299a7573980, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: a07f843079acd444699e0656d604fdd7, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 00453aa0dc95c6346aba51d264e27732, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: bf53d6d7ef06d7144a0e5b4099912367, type: 3}

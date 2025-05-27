@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Enchanter
   imageName: Enchanter
   cardId: 20
-  cardTopSprite: {fileID: 21300000, guid: aeb26823d94f45f4ab9d986156f3f01b, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: ff7dce3a051c36c46a8bf4eb63d4a3a1, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: c7dd0225b2f3c174fb8dfacf5389e3e6, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 1b10868204f8dbf42b280cad5da50c87, type: 3}

@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Martyr
   imageName: Martyr
   cardId: 42
-  cardTopSprite: {fileID: 21300000, guid: 34008e4893255fa4ba59f8ea7008cab2, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: b46c4d376a947e04a80e01e496fbae62, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 527547ea6e6eb4d48989eeba9e46cdb7, type: 3}

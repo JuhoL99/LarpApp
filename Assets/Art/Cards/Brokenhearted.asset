@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Brokenhearted
   imageName: Brokenhearted
   cardId: 2
-  cardTopSprite: {fileID: 21300000, guid: aa383407965d54d4bbc41227e5b75d8a, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 9b766f82c4cce6c4199ad8df826bcacd, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: cb210a328b5a4f24ea4886dad6b1df17, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: d0387fd8e581f8c409ed83b322b76285, type: 3}

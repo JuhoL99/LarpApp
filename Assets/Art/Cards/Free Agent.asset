@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Free Agent
   imageName: Free Agent
   cardId: 26
-  cardTopSprite: {fileID: 21300000, guid: 402a3ad1dd217c04a9ffc057e1fa4e88, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: ab31c36cc9734444783ebf7d91d70acb, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 4fa85d6f770a7d74c9f32d24b997aaa0, type: 3}

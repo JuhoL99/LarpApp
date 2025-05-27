@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Seeker
   imageName: Seeker
   cardId: 60
-  cardTopSprite: {fileID: 21300000, guid: 8baba467e9165634aa5f4b586fbc2f86, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 27ec9b4ab586715419bd0cc2a6980e8d, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 6c38c4090855ef94f9654d04b308ec94, type: 3}

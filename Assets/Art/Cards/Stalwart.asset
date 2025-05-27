@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Stalwart
   imageName: Stalwart
   cardId: 63
-  cardTopSprite: {fileID: 21300000, guid: cb307e222ad17dd4c8d2cb17575c14e3, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: f705659c9bf4d1e4094cae5e2bd282b3, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 3da7d97e84449f64d967f78d1d53ec35, type: 3}

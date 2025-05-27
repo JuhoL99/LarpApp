@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Individual
   imageName: Individual
   cardId: 31
-  cardTopSprite: {fileID: 21300000, guid: 056c530c1fd3f61499f44c932da2b9e0, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 23d05b6aa7f57cd4b83ae840c6579edc, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: fc735c9f79291e5428fc2a9e75ba72d5, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 2afccaea3170e8e4a906b2c1fb7e0bbc, type: 3}

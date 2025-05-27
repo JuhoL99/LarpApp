@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Philosopher
   imageName: Philosopher
   cardId: 47
-  cardTopSprite: {fileID: 21300000, guid: 32eecb622195d5f4cbe0a9250155c9ab, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 1779e3d220c55b949888a4668c9da447, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: fc18ac7b7d9107b43b678a3d855eac0b, type: 3}

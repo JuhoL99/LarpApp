@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Charmer
   imageName: Charmer
   cardId: 7
-  cardTopSprite: {fileID: 21300000, guid: e2df3c8275b7af34586b55972021d2ee, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 25cf1cda9689d7246b94836fc93c082f, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: f50aaeb6c70b8d0439647c5cbd41db68, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: c9a420f1da46c444183b117211b1a15f, type: 3}

@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Confidante
   imageName: Confidante
   cardId: 9
-  cardTopSprite: {fileID: 21300000, guid: 38189c609718ccf43a4f95edce9769c1, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 25cf1cda9689d7246b94836fc93c082f, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 72c9ad139dbbebe46a667bfbb5a6733b, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: d053d370bfe7c4b4698a6dd2012e8ff6, type: 3}

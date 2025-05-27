@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Intriguer
   imageName: Intriguer
   cardId: 34
-  cardTopSprite: {fileID: 21300000, guid: 3de675e5344495b40965c96f24fc98b5, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 62bda101e5bc2c54184c2a2c143298e5, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 8edf725a1dc82914dbb0701505f10cbc, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 7a8e6e3caf56eaa48a6f3dd86283c631, type: 3}

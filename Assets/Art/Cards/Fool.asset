@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Fool
   imageName: Fool
   cardId: 25
-  cardTopSprite: {fileID: 21300000, guid: 924884e9a123d0245908f96b54408ef1, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 924884e9a123d0245908f96b54408ef1, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: c791f3a00279cc74fa685f7d728d271c, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 62529e4c064ebaf4ca52c0448ba7b509, type: 3}

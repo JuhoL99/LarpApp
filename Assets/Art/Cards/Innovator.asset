@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Innovator
   imageName: Innovator
   cardId: 33
-  cardTopSprite: {fileID: 21300000, guid: 5e53c84f6812680418c88037c452205d, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 62bda101e5bc2c54184c2a2c143298e5, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: c7c27f94670d22540aefa832bf6e9456, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 8a3d126c1f085c846938dcd5e7764937, type: 3}

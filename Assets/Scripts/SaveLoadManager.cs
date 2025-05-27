@@ -25,9 +25,15 @@ public class SaveLoadManager : MonoBehaviour
         Load();
         if(autoSave) InvokeRepeating("Save", autoSaveFreq, autoSaveFreq);
     }
+    private void OnApplicationPause(bool pause)
+    {
+#if UNITY_ANDROID || UNITY_IOS
+        if (saveOnQuit) Save();
+#endif
+    }
     private void OnApplicationQuit()
     {
-        if(saveOnQuit) Save();
+        if (saveOnQuit) Save();
     }
     public void ClearAllData()
     {

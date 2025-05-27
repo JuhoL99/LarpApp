@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Snitch
   imageName: Snitch
   cardId: 61
-  cardTopSprite: {fileID: 21300000, guid: 51459bbbda26d1d4e90c9ad046e2d5d2, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 718a1c1e8a77f7140a6f7392cd303256, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: e1d45f6eceed88e4ab3a7ce3f11498a6, type: 3}

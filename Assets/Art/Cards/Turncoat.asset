@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Turncoat
   imageName: Turncoat
   cardId: 67
-  cardTopSprite: {fileID: 21300000, guid: 780be8be95acbbd428085c6d4a46158b, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 4bd0a52c03ca9ac4b964f9aee1526411, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: f4a9d30f4de0fb34198264b1181ea293, type: 3}

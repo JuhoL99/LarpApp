@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Scholar
   imageName: Scholar
   cardId: 59
-  cardTopSprite: {fileID: 21300000, guid: af8d6a115e4d38949bcd2f8979718c1c, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: b5bf5c26d7bd48141a4b487106aa4263, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: b17055e5f3e4ad14b99123ef8fd2a6c0, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 66ea649d9f251a848b7b1a5a4b1deed4, type: 3}

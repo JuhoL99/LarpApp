@@ -4,14 +4,14 @@ using System.Collections;
 using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
-    [Header("Scripts")]
+    [Header("Scripts/Gameobjects")]
     public static GameManager instance;
     public CardDatabase cardDatabase;
     public CardScanner cardScanner;
-    public WindowManager windowManager;
     public PlayerData player;
     public ConnectionsPanelManager connectionPanelManager;
     public ProfilePanelManager profilePanelManager;
+    public GameObject cardPopup;
     [Header("Flags")]
     public bool isLookingForCardToSelect = false;
     [Header("Info")]

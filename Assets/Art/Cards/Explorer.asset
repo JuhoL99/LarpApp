@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Explorer
   imageName: Explorer
   cardId: 23
-  cardTopSprite: {fileID: 21300000, guid: 72fa8b35e647bdf4c80c416843eb3241, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 619ec3265d407db49866b56c86922e63, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: fed056a796269ee4897ea687f26d4518, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: deaef592ff7b9f6488c4d2d22cad0851, type: 3}

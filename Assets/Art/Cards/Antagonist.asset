@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Antagonist
   imageName: Antagonist
   cardId: 1
-  cardTopSprite: {fileID: 21300000, guid: 13b12a284df43f447915891c4f3a872c, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 9b766f82c4cce6c4199ad8df826bcacd, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: c9a033c9e112a3346b485a07dc2c027a, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 1d37a65fdbe34a74f96f2f8c4a710c85, type: 3}

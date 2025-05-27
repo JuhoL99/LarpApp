@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Comedian
   imageName: Comedian
   cardId: 8
-  cardTopSprite: {fileID: 21300000, guid: 2cbfb35ec2fd4134eb87d9c2cb8bbf3b, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 25cf1cda9689d7246b94836fc93c082f, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: dd450e5ad92382e4c80404cc416915c4, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 59a8d8cf870ed394c99a6ab6506abe06, type: 3}

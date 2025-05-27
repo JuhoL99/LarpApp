@@ -15,5 +15,5 @@ MonoBehaviour:
   cardName: Manager
   imageName: Manager
   cardId: 41
-  cardTopSprite: {fileID: 21300000, guid: f4784f6ce3176294c8c1c2f3e46e202a, type: 3}
-  cardBottomSprite: {fileID: 0}
+  cardTopSprite: {fileID: 21300000, guid: 317e9e5563a54394198744fe594a7b29, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: f704f3529d8ad924caaf53e7c68eff9c, type: 3}
