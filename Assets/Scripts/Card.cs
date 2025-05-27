@@ -65,11 +65,12 @@ public class Card : MonoBehaviour
     }
     public void CardPopup()
     {
+        CheckCardSwitch();
         GameObject popup = GameManager.instance.cardPopup;
         popup.SetActive(true);
         popup.GetComponentInChildren<CardAnimations>().PopupEffect(currentCard);
     }
-    private void UpdateCardVisuals()
+    public void UpdateCardVisuals()
     {
         if (currentCard != null) sprites = currentCard.GetCardVisual();
         if (facingTop) img.sprite = sprites[0];

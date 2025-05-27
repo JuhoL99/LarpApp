@@ -17,7 +17,6 @@ public class ProfilePanelManager : MonoBehaviour
     private void Awake()
     {
         scannerPanel = GetComponent<ScannerPanelManager>();
-        foreach (var card in archetypeCards) card.onCardSwitched.AddListener(CardAdded);
     }
     private void Start()
     {
@@ -29,6 +28,13 @@ public class ProfilePanelManager : MonoBehaviour
         yield return null;
         if (playerNameField != null) playerNameField.AssignPlayer(GameManager.instance.player);
         if (playerNoteField != null) playerNoteField.AssignPlayer(GameManager.instance.player);
+        int i = 0;
+        foreach (var card in archetypeCards)
+        {
+            card.onCardSwitched.AddListener(CardAdded);
+            card.SetCurrentCard(GameManager.instance.player.playerArchetypeCards[i]);
+            i++;
+        }
     }
     private void CardAssignRequestToProfile(CardSO card)
     {
@@ -37,6 +43,7 @@ public class ProfilePanelManager : MonoBehaviour
     }
     private void CardAdded(int index)
     {
+        GameManager.instance.player.AddCardToPlayer(archetypeCards[index].GetCurrentCard(),index);
         cardAddedToProfile?.Invoke();
     }
 }

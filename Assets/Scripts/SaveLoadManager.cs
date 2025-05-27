@@ -95,7 +95,7 @@ public class SaveLoadManager : MonoBehaviour
         }
         Save save = JsonUtility.FromJson<Save>(text);
         playerData = new PlayerData(save.playerName, save.playerNotes);
-        playerData.LoadUserCardsFromString(save.playerCards);
+        playerData.LoadPlayerCardsFromString(save.playerCards);
         playerData.LoadUsersFromString(save.linkedUserNames);
         playerData.LoadUserCardsFromString(save.linkedUserCards);
         playerData.LoadUserNoteFromString(save.linkedUserNotesNew);

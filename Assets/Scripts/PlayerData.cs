@@ -95,6 +95,7 @@ public class PlayerData
     }
     public void LoadPlayerCardsFromString(string loadData)
     {
+        Debug.Log($"trying to load player cards {loadData}");
         if (string.IsNullOrEmpty(loadData)) return;
         string s = string.Empty;
         string[] data = loadData.Split("|");
