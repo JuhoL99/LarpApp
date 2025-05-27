@@ -66,7 +66,7 @@ public class Card : MonoBehaviour
     }
     public void CardPopup()
     {
-        Debug.Log($"popup with card {currentCard.name}");
+        if (currentCard == null) currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
         CheckCardSwitch();
         GameObject popup = GameManager.instance.cardPopup;
         popup.SetActive(true);
