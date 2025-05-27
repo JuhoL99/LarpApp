@@ -10,7 +10,7 @@ public class Card : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
     [Header("Card order in hierarchy")]
     [SerializeField] private int cardIndex;
-    private CardSO currentCard;
+    [SerializeField] private CardSO currentCard;
     private Image img;
     [Header("Buttons")]
     [SerializeField] private Button interactButton;
@@ -22,7 +22,7 @@ public class Card : MonoBehaviour
     private void Start()
     {
         img = GetComponent<Image>();
-        currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
+        //currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
         interactButton.onClick.AddListener(CardPopup);
         if(sprites != null) img.sprite = sprites[0];
     }
@@ -51,6 +51,7 @@ public class Card : MonoBehaviour
     {
         if(img == null) img = GetComponent<Image>();
         currentCard = card;
+        Debug.Log($"current card set to: {card}");
         UpdateCardVisuals();
     }
     private void CheckCardSwitch()
@@ -65,6 +66,7 @@ public class Card : MonoBehaviour
     }
     public void CardPopup()
     {
+        Debug.Log($"popup with card {currentCard.name}");
         CheckCardSwitch();
         GameObject popup = GameManager.instance.cardPopup;
         popup.SetActive(true);

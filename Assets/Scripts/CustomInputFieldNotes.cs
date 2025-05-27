@@ -32,7 +32,7 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
         {
             inputField.text = linkedUser.userNotes;
         }
-        if(linkedPlayer != null)
+        if(linkedPlayer != null && inputField != null)
         {
             inputField.text = linkedPlayer.playerNotes;
         }
@@ -48,7 +48,7 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
         {
             linkedUser.userNotes = inputField.text;
         }
-        if (linkedPlayer != null)
+        if (linkedPlayer != null && inputField != null)
         {
             linkedPlayer.playerNotes = inputField.text;
         }
@@ -61,7 +61,7 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
         {
             linkedUser.userNotes = text;
         }
-        if(linkedPlayer != null)
+        if(linkedPlayer != null && text != null)
         {
             linkedPlayer.playerNotes = text;
         }
@@ -73,7 +73,7 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
         {
             inputField.text = linkedUser.userNotes;
         }
-        if(linkedPlayer != null)
+        if(linkedPlayer != null && inputField != null)
         {
             inputField.text = linkedPlayer.playerNotes;
         }

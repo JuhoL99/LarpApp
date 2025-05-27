@@ -15,7 +15,7 @@ public class CustomInputFieldName : CustomInputField
         {
             inputField.text = linkedUser.userName;
         }
-        if(linkedPlayer != null)
+        if(linkedPlayer != null && inputField != null)
         {
             inputField.text = linkedPlayer.playerName;
         }
@@ -50,7 +50,7 @@ public class CustomInputFieldName : CustomInputField
         {
             inputField.text = linkedUser.userName;
         }
-        if(linkedPlayer != null)
+        if(linkedPlayer != null && inputField != null)
         {
             inputField.text = linkedPlayer.playerName;
         }

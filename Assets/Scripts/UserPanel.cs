@@ -34,6 +34,7 @@ public class UserPanel : MonoBehaviour
         noteField.AssignUser(panelUser);
         for(int i = 0; i < cards.Length; i++)
         {
+            Debug.Log($"inside userpanel script: {panelUser.userArchetypeCards[i]}");
             cards[i].SetCurrentCard(panelUser.userArchetypeCards[i]);
         }
     }

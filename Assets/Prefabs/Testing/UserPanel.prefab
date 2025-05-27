@@ -229,6 +229,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
   - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
   cardIndex: 1
+  interactButton: {fileID: 2077938860890118815}
   onCardSwitched:
     m_PersistentCalls:
       m_Calls: []
@@ -275,19 +276,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2012625166748295451}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7822579925203338790}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
-        m_MethodName: Flip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1350595297344650290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1338,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
   - {fileID: 21300000, guid: 54e2731f6b33f2c40a570bc17fdcc391, type: 3}
   cardIndex: 0
+  interactButton: {fileID: 4114504689195406698}
   onCardSwitched:
     m_PersistentCalls:
       m_Calls: []
@@ -1395,19 +1385,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4477068104374234862}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5278386620979399123}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
-        m_MethodName: Flip
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3168050637102589108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,8 +1695,6 @@ MonoBehaviour:
   editFieldButton: {fileID: 7228665325706846124}
   editingColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.47058824}
   normalColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 0.47058824}
-  dragText: {fileID: 1485009505599119035}
-  scrollRect: {fileID: 5053580821462540446}
 --- !u!1 &4628963725705712914
 GameObject:
   m_ObjectHideFlags: 0
