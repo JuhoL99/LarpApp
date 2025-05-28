@@ -23,7 +23,7 @@ public class SaveLoadManager : MonoBehaviour
     private void Start()
     {
         Load();
-        if(autoSave) InvokeRepeating("Save", autoSaveFreq, autoSaveFreq);
+        if (autoSave) InvokeRepeating("Save", autoSaveFreq, autoSaveFreq);
     }
     private void OnApplicationPause(bool pause)
     {
@@ -87,8 +87,9 @@ public class SaveLoadManager : MonoBehaviour
         {
             text = reader.ReadToEnd();
         }
-        if (string.IsNullOrEmpty(text))
-        { 
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            Debug.Log("text null or space");
             CreateDefaultPlayer();
             onGameLoaded?.Invoke(); 
             return;

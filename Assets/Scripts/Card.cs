@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using easyar;
+using Image = UnityEngine.UI.Image;
 
 public class Card : MonoBehaviour
 {
@@ -51,7 +53,7 @@ public class Card : MonoBehaviour
     {
         if(img == null) img = GetComponent<Image>();
         currentCard = card;
-        Debug.Log($"current card set to: {card}");
+        //Debug.Log($"current card set to: {card}");
         UpdateCardVisuals();
     }
     private void CheckCardSwitch()

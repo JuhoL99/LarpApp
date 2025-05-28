@@ -32,7 +32,11 @@ public class ProfilePanelManager : MonoBehaviour
         foreach (var card in archetypeCards)
         {
             card.onCardSwitched.AddListener(CardAdded);
-            card.SetCurrentCard(GameManager.instance.player.playerArchetypeCards[i]);
+            card.SetCurrentCard(
+                GameManager.instance?.player?.playerArchetypeCards[i] == null ?
+                GameManager.instance?.cardDatabase?.GetCardByID(-1) :
+                GameManager.instance?.player?.playerArchetypeCards[i]
+                );
             i++;
         }
     }
