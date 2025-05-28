@@ -2553,7 +2553,6 @@ GameObject:
   - component: {fileID: 478859296}
   - component: {fileID: 478859295}
   - component: {fileID: 478859294}
-  - component: {fileID: 478859297}
   m_Layer: 5
   m_Name: CardsPanel
   m_TagString: Untagged
@@ -2612,8 +2611,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1085938327}
-  - {fileID: 320324813}
   - {fileID: 858882913}
+  - {fileID: 320324813}
   m_Father: {fileID: 1025855300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2621,20 +2620,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &478859297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478859293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e91097d1e47f0a498d4aa5397ccd72d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardDisplayPrefab: {fileID: 3784973142726816913, guid: 76d421752fb7fca469f6c91d78942f84, type: 3}
-  scrollContentObject: {fileID: 157228514}
 --- !u!1 &491173969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5357,6 +5342,7 @@ GameObject:
   - component: {fileID: 1025855303}
   - component: {fileID: 1025855302}
   - component: {fileID: 1025855301}
+  - component: {fileID: 1025855304}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5580,6 +5566,20 @@ MonoBehaviour:
   onMapCardScanned:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1025855304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025855295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e91097d1e47f0a498d4aa5397ccd72d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardDisplayPrefab: {fileID: 3784973142726816913, guid: 76d421752fb7fca469f6c91d78942f84, type: 3}
+  scrollContentObject: {fileID: 157228514}
 --- !u!1 &1058145137
 GameObject:
   m_ObjectHideFlags: 0
@@ -19665,6 +19665,7 @@ MonoBehaviour:
   cardIndex: 1
   currentCard: {fileID: 0}
   interactButton: {fileID: 2921592632434918539}
+  canBeSwitched: 1
   onCardSwitched:
     m_PersistentCalls:
       m_Calls: []
@@ -22260,6 +22261,7 @@ MonoBehaviour:
   cardIndex: 0
   currentCard: {fileID: 0}
   interactButton: {fileID: 3361372541146170856}
+  canBeSwitched: 1
   onCardSwitched:
     m_PersistentCalls:
       m_Calls: []

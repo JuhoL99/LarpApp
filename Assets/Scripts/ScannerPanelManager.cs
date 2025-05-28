@@ -42,6 +42,7 @@ public class ScannerPanelManager : MonoBehaviour
     {
         Debug.Log("Card scanned");
         currentScannedCard = card;
+        ToggleBackground(true);
         scanPanel.SetActive(false);
         MarkerType marker = CheckScannedMarkerType();
         
@@ -65,6 +66,7 @@ public class ScannerPanelManager : MonoBehaviour
     }
     public void EnableScanPanel()
     {
+        ToggleBackground(false);
         scanPanel.SetActive(true);
     }
     private void OpenSelectionPanel()
@@ -108,5 +110,17 @@ public class ScannerPanelManager : MonoBehaviour
     private MarkerType CheckScannedMarkerType()
     {
         return MarkerType.Archetype; //for now
+    }
+    private void ToggleBackground(bool value)
+    {
+        if(bgPanel != null)
+        {
+            Transform[] bgParts = bgPanel.GetComponentsInChildren<Transform>();
+            foreach(Transform part in bgParts)
+            {
+                part.gameObject.SetActive(value);
+                //Debug.Log($"part: {part.name} active: {part.gameObject.activeSelf}");
+            }
+        }
     }
 }
