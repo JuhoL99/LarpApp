@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardAnimations : MonoBehaviour
+public class CardPopup : MonoBehaviour
 {
     [Header("Buttons")]
     [SerializeField] private Button flipButton; //full
@@ -10,6 +10,8 @@ public class CardAnimations : MonoBehaviour
     [SerializeField] private Button qrButton;
     [SerializeField] private CardSO card;
     [SerializeField] private Transform popupBackground;
+    [Header("Open card face or text on popup")]
+    [SerializeField] private bool openCardTextSideOnPopup;
 
     private Image cardImg;
     private Image bgImg;
@@ -31,7 +33,16 @@ public class CardAnimations : MonoBehaviour
     }
     private void OnEnable()
     {
+        ResetTransforms();
         //PopupEffect();
+    }
+    private void ResetTransforms()
+    {
+        transform.localScale = Vector3.one;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        if(!openCardTextSideOnPopup) facingTop = true;
+        else facingTop = false;
+        UpdateCardVisuals();
     }
     private void Rotate()
     {
@@ -54,9 +65,10 @@ public class CardAnimations : MonoBehaviour
         transform.localScale = Vector3.zero;
         transform.DOScale(1f, 1f);
     }
-    private void ClosePopup()
+    public void ClosePopup()
     {
-        transform.DOScale(0f, 1f);
+        transform.parent.gameObject.SetActive(false);
+        //transform.DOScale(0f, 1f);
     }
     public void Flip()
     {

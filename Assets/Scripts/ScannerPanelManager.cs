@@ -23,6 +23,7 @@ public class ScannerPanelManager : MonoBehaviour
     public UnityEvent<CardSO> onCardAssignRequestToNewUser;
     public UnityEvent<CardSO> onCardAssignRequestToExisitingUser;
     public UnityEvent<CardSO> onCardAssignRequestToPlayer;
+    public UnityEvent enableScanSelectionPanel;
     public UnityEvent onMapCardScanned;
     private CardSO currentScannedCard;
 
@@ -31,6 +32,11 @@ public class ScannerPanelManager : MonoBehaviour
         GameManager.instance.cardScanner.onCardScanned.AddListener(HandleCardScanned);
         scanPanel.SetActive(false);
         selectionPanel.SetActive(false);
+    }
+    public void HandleCardManualAssignment(CardSO card)
+    {
+        enableScanSelectionPanel?.Invoke();
+        HandleCardScanned(card);
     }
     private void HandleCardScanned(CardSO card)
     {
@@ -60,12 +66,9 @@ public class ScannerPanelManager : MonoBehaviour
     public void EnableScanPanel()
     {
         scanPanel.SetActive(true);
-        //bgPanel.SetActive(false);
-        //Debug.Log("bg set false");
     }
     private void OpenSelectionPanel()
     {
-        //bgPanel.SetActive(true);
         selectionPanel.SetActive(true);
         AddButtonListeners();
     }

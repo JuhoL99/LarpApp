@@ -72,7 +72,7 @@ public class Card : MonoBehaviour
         CheckCardSwitch();
         GameObject popup = GameManager.instance.cardPopup;
         popup.SetActive(true);
-        popup.GetComponentInChildren<CardAnimations>().PopupEffect(currentCard);
+        popup.GetComponentInChildren<CardPopup>().PopupEffect(currentCard);
     }
     public void UpdateCardVisuals()
     {

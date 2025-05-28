@@ -35,6 +35,7 @@ public class CardScanner : MonoBehaviour
             AddTargetControllerEvents(cardTarget);
         }
     }
+    //need to load targets before they can be detected properly
     private void TargetLoadedCheck(easyar.Target trg, bool val)
     {
         Debug.Log($"Target: {trg.name()}, Value: {val}");
@@ -42,6 +43,7 @@ public class CardScanner : MonoBehaviour
     private void Start()
     {
         onCardScanned.AddListener(SetCurrentSelectedCard);
+        ToggleTracking(false);
     }
     public void EnableScanning()
     {
@@ -58,6 +60,7 @@ public class CardScanner : MonoBehaviour
     }
     public void ToggleTracking(bool val)
     {
+        cameraDevice.enabled = val;
         imageTracker.enabled = val;
     }
     private void AddTargetControllerEvents(ImageTargetController controller)

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
+//just a general place to access different scripts and more
 public class GameManager : MonoBehaviour
 {
     [Header("Scripts/Gameobjects")]
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public PlayerData player;
     public ConnectionsPanelManager connectionPanelManager;
     public ProfilePanelManager profilePanelManager;
+    public ScannerPanelManager scannerPanelManager;
     public GameObject cardPopup;
     [Header("Flags")]
     public bool isLookingForCardToSelect = false;
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        //disable card switch option when card selection detected
         connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
         profilePanelManager.cardAddedToProfile.AddListener(() => isLookingForCardToSelect = false);
         if(generateUsersFromStart) StartCoroutine(LateStart());
@@ -43,6 +46,7 @@ public class GameManager : MonoBehaviour
             player.AddUserToRelations(user);
         }
     }
+    //when card is clicked after this is called, change that cards
     public void LookingForCardToSelect(CardSO card)
     {
         isLookingForCardToSelect = true;

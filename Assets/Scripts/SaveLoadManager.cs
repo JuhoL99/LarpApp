@@ -25,6 +25,7 @@ public class SaveLoadManager : MonoBehaviour
         Load();
         if (autoSave) InvokeRepeating("Save", autoSaveFreq, autoSaveFreq);
     }
+    //android doesnt always invoke "on application close" but pause runs when closed
     private void OnApplicationPause(bool pause)
     {
 #if UNITY_EDITOR
@@ -37,15 +38,16 @@ public class SaveLoadManager : MonoBehaviour
     {
         if (saveOnQuit) Save();
     }
+    //in case you quickly want to delete save file
     public void ClearAllData()
     {
-        PlayerPrefs.DeleteAll();
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
         using(StreamWriter sw = new StreamWriter(savePath))
         {
             sw.Write(string.Empty);
         }
     }
+    //call from anywhere you need
     public void Save()
     {
         SaveToFile();
@@ -54,6 +56,7 @@ public class SaveLoadManager : MonoBehaviour
     {
         LoadFromFile();
     }
+    //turns all the info in PlayerData class to a Save object and converts it to json
     private void SaveToFile()
     {
         if (playerData == null) playerData = GameManager.instance.player;
@@ -72,6 +75,7 @@ public class SaveLoadManager : MonoBehaviour
             write.Write(text);
         }
     }
+    //turns json Save object back into player data
     private void LoadFromFile()
     {
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
