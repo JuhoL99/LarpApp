@@ -10,6 +10,7 @@ public class ARCameraManager : MonoBehaviour
 
     private void Start()
     {
+        return; //temporary
         // Disable camera at startup
         cameraDevice = session.GetComponentInChildren<CameraDeviceFrameSource>();
         EnableCamera(false);
@@ -22,6 +23,7 @@ public class ARCameraManager : MonoBehaviour
 
     public void EnableCamera(bool enable)
     {
+        return; //temporary
         cameraDevice.enabled = enable;
     }
 }

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6601700413442213427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3477115397114816018}
+  - component: {fileID: 5486627960805316838}
+  - component: {fileID: 2552996437671039922}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3477115397114816018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601700413442213427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5486627960805316838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601700413442213427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a4a8e872d8d9a4cb9f74d3900121f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardDatabase: {fileID: 11400000, guid: e7ad2bcf59b68d446905c8fda07d1ead, type: 2}
+  cardScanner: {fileID: 0}
+  connectionPanelManager: {fileID: 0}
+  profilePanelManager: {fileID: 0}
+  cardPopup: {fileID: 0}
+  isLookingForCardToSelect: 0
+  currentScannedCard: {fileID: 0}
+  generateNamesForScriptableObjects: 0
+  generateUsersFromStart: 0
+--- !u!114 &2552996437671039922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601700413442213427}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915c919547240544ba02f3817c43736d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createUserButton: {fileID: 0}
+  verificationButton: {fileID: 0}
+  userCreationPanel: {fileID: 0}
+  verificationPopup: {fileID: 0}
+  userNameInputField: {fileID: 0}
+  warningText: {fileID: 0}
+  maxNameLength: 15
+  minNameLength: 3

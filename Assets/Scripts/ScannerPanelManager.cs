@@ -7,6 +7,8 @@ using System;
 
 public class ScannerPanelManager : MonoBehaviour
 {
+    [Header("Background")]
+    [SerializeField] private GameObject bgPanel;
     [Header("Panel Object")]
     [SerializeField] private GameObject mainPanel;
     [Header("Scan Frame")]
@@ -58,9 +60,12 @@ public class ScannerPanelManager : MonoBehaviour
     public void EnableScanPanel()
     {
         scanPanel.SetActive(true);
+        //bgPanel.SetActive(false);
+        //Debug.Log("bg set false");
     }
     private void OpenSelectionPanel()
     {
+        //bgPanel.SetActive(true);
         selectionPanel.SetActive(true);
         AddButtonListeners();
     }
