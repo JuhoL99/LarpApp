@@ -18,6 +18,7 @@ public class CardDisplayHandler : MonoBehaviour
     public void InstantiatePrefab(CardSO _card)
     {
         card.SetCurrentCard(_card);
+        card.canBeSwitched = false;
         cardSO = _card;
         UpdateDisplay();
     }

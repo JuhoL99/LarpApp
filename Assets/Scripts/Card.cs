@@ -20,6 +20,7 @@ public class Card : MonoBehaviour
     private bool isEmpty;
     private bool facingTop = true;
     private bool canRotate = true;
+    public bool canBeSwitched = true;
     public UnityEvent<int> onCardSwitched;
     private void Start()
     {
@@ -58,6 +59,7 @@ public class Card : MonoBehaviour
     }
     private void CheckCardSwitch()
     {
+        if(!canBeSwitched) return;
         if (GameManager.instance.isLookingForCardToSelect)
         {
             currentCard = GameManager.instance.currentScannedCard;
