@@ -11,8 +11,10 @@ public class UserPanel : MonoBehaviour
     [SerializeField] private Button removeUserButton;
     [Header("Note Input Field")]
     [SerializeField] private TMP_InputField noteInputField;
-    [Header("Cards")]
+    [Header("Archetype Cards")]
     [SerializeField] private Card[] cards;
+    [Header("Fate Cards")]
+    [SerializeField] private Card[] fateCards;
     [Header("User Notes")]
     [SerializeField] private CustomInputFieldNotes noteField;
     [Header("User Name")]
@@ -22,6 +24,10 @@ public class UserPanel : MonoBehaviour
     {
         removeUserButton.onClick.AddListener(RemoveUser);
         foreach(Card card in cards)
+        {
+            card.onCardSwitched.AddListener(AddCardToUser);
+        }
+        foreach(Card card in fateCards)
         {
             card.onCardSwitched.AddListener(AddCardToUser);
         }
@@ -37,11 +43,18 @@ public class UserPanel : MonoBehaviour
             Debug.Log($"inside userpanel script: {panelUser.userArchetypeCards[i]}");
             cards[i].SetCurrentCard(panelUser.userArchetypeCards[i]);
         }
+        for(int i = 0; i < fateCards.Length; i++)
+        {
+            Debug.Log($"inside userpanel script: {panelUser.userFateCards[i]}");
+            fateCards[i].SetCurrentCard(panelUser.userFateCards[i]);
+        }
     }
     //rewrite a bit
     private void AddCardToUser(int index, MarkerType type)
     {
-        CardSO card = cards[index].GetCurrentCard();
+        CardSO card = new CardSO();
+        if (type == MarkerType.Archetype) card = cards[index].GetCurrentCard();
+        else if(type == MarkerType.Fate) card = fateCards[index].GetCurrentCard();
         panelUser.AddCardToUser(card, index);
         manager.someoneAddedCard?.Invoke();
     }
