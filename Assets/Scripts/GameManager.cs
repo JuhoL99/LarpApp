@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         if(generateNamesForScriptableObjects) cardDatabase.NamesFromImageFile();
+        RefreshRate refreshRate = Screen.currentResolution.refreshRateRatio;
+        Application.targetFrameRate = refreshRate.value > 0 ? Mathf.RoundToInt((float)refreshRate.value) : 60;
+        Debug.Log(Application.targetFrameRate);
     }
     private void Start()
     {

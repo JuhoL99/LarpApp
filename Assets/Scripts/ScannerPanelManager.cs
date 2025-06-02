@@ -72,6 +72,7 @@ public class ScannerPanelManager : MonoBehaviour
     public void EnableScanPanel()
     {
         ToggleBackground(false);
+        selectionPanel.SetActive(false);
         scanPanel.SetActive(true);
     }
     public void DisableScanPanel()

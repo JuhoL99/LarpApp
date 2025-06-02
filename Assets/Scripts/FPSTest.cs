@@ -7,7 +7,6 @@ public class FPSTest : MonoBehaviour
     {
         // Get device refresh rate
         int refreshRate = Screen.currentResolution.refreshRate;
-
         // Set target frame rate to device refresh rate
         // If we can't detect it, default to 60
         Application.targetFrameRate = refreshRate > 0 ? refreshRate : 60;
