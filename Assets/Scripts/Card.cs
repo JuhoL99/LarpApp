@@ -55,6 +55,11 @@ public class Card : MonoBehaviour
     }
     public void SetCurrentCard(CardSO card)
     {
+        if(card == null)
+        {
+            Debug.Log("card null");
+            return;
+        }
         if(img == null) img = GetComponent<Image>();
         currentCard = card;
         //show fate card back since top is same for all

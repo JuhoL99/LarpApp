@@ -15,6 +15,7 @@ public class ScannerPanelManager : MonoBehaviour
     [SerializeField] private GameObject scanPanel;
     [Header("Selection Menu")]
     [SerializeField] private GameObject selectionPanel;
+    [SerializeField] private Image scannedCardPreviewImage;
     [Header("Buttons")]
     [SerializeField] private Button assignToSelfButton;
     [SerializeField] private Button assignToExistingButton;
@@ -27,6 +28,7 @@ public class ScannerPanelManager : MonoBehaviour
     public UnityEvent onMapCardScanned;
     private CardSO currentScannedCard;
 
+    //disable scanning on back button and action later so no unexpected card switches
     private void Start()
     {
         GameManager.instance.cardScanner.onCardScanned.AddListener(HandleCardScanned);
@@ -52,7 +54,7 @@ public class ScannerPanelManager : MonoBehaviour
         switch(marker)
         {
             case(MarkerType.Archetype):
-                OpenSelectionPanel();
+                OpenSelectionPanel(card);
                 break;
             case(MarkerType.Map):
                 //open map
@@ -72,8 +74,11 @@ public class ScannerPanelManager : MonoBehaviour
         ToggleBackground(false);
         scanPanel.SetActive(true);
     }
-    private void OpenSelectionPanel()
+    private void OpenSelectionPanel(CardSO card = null)
     {
+        if (card != null)
+            scannedCardPreviewImage.sprite = card.GetCardVisual()[0];
+        else scannedCardPreviewImage.sprite = null;
         selectionPanel.SetActive(true);
         AddButtonListeners();
     }

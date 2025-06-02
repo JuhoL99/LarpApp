@@ -23,8 +23,8 @@ public class CardScanner : MonoBehaviour
     private bool isScanning;
     private CardSO currentSelectedCard;
     private InputAction backAction = new InputAction("Back", InputActionType.Button, "<Keyboard>/escape");
-    //Add cancel scanning mode on back button
 
+    //disable scanning on back button and action later so no unexpected card switches
     private void Awake()
     {
         imageTracker = session.GetComponentInChildren<ImageTrackerFrameFilter>();
