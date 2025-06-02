@@ -67,6 +67,8 @@ public abstract class CustomInputField : MonoBehaviour
     public virtual void StopTextEdit(string text = null)
     {
         img.color = normalColor;
+        inputField.MoveTextStart(true);
+        inputField.ForceLabelUpdate();
         ToggleCaret(false);
         StartCoroutine(DisableInputNextFrame());
     }

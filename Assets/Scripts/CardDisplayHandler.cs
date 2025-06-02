@@ -24,6 +24,6 @@ public class CardDisplayHandler : MonoBehaviour
     }
     private void UpdateDisplay()
     {
-        cardNameText.text = card.GetCurrentCard().name;
+        cardNameText.text = card.GetCurrentCard().cardName;
     }
 }

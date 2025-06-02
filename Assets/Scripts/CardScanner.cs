@@ -4,6 +4,7 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class CardScanner : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class CardScanner : MonoBehaviour
     private CameraDeviceFrameSource cameraDevice;
     private bool isScanning;
     private CardSO currentSelectedCard;
+    private InputAction backAction = new InputAction("Back", InputActionType.Button, "<Keyboard>/escape");
+    //Add cancel scanning mode on back button
 
     private void Awake()
     {
@@ -35,15 +38,21 @@ public class CardScanner : MonoBehaviour
             AddTargetControllerEvents(cardTarget);
         }
     }
+    private void Start()
+    {
+        onCardScanned.AddListener(SetCurrentSelectedCard);
+        ToggleTracking(false);
+        backAction.Enable();
+        backAction.performed += HandleInput;
+    }
     //need to load targets before they can be detected properly
     private void TargetLoadedCheck(easyar.Target trg, bool val)
     {
         Debug.Log($"Target: {trg.name()}, Value: {val}");
     }
-    private void Start()
+    private void HandleInput(InputAction.CallbackContext ctx)
     {
-        onCardScanned.AddListener(SetCurrentSelectedCard);
-        ToggleTracking(false);
+        if(ctx.performed && isScanning == true) DisableScanning();
     }
     public void EnableScanning()
     {

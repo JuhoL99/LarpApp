@@ -32,6 +32,9 @@ public class ScannerPanelManager : MonoBehaviour
         GameManager.instance.cardScanner.onCardScanned.AddListener(HandleCardScanned);
         scanPanel.SetActive(false);
         selectionPanel.SetActive(false);
+
+        //temp >>
+        GameManager.instance.cardScanner.onScanToggled.AddListener(HandleScanCanceled);
     }
     public void HandleCardManualAssignment(CardSO card)
     {
@@ -111,16 +114,14 @@ public class ScannerPanelManager : MonoBehaviour
     {
         return MarkerType.Archetype; //for now
     }
+    //temporary >>
+    private void HandleScanCanceled(bool toggle)
+    {
+        if(toggle == false) ToggleBackground(true);
+    }
     private void ToggleBackground(bool value)
     {
-        if(bgPanel != null)
-        {
-            Transform[] bgParts = bgPanel.GetComponentsInChildren<Transform>();
-            foreach(Transform part in bgParts)
-            {
-                part.gameObject.SetActive(value);
-                //Debug.Log($"part: {part.name} active: {part.gameObject.activeSelf}");
-            }
-        }
+        bgPanel.SetActive(value);
     }
+    //<<
 }

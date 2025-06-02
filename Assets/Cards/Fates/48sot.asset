@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03982ad141640647962c00dee14187c, type: 3}
   m_Name: 48sot
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Survivors of Trauma
   imageName: 
-  cardId: 0
+  cardId: 100
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 9a8f29dc033b5644c9c7e66cf6758d37, type: 3}
   markerType: 1

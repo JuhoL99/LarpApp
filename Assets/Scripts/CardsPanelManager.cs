@@ -3,17 +3,44 @@ using UnityEngine;
 public class CardsPanelManager : MonoBehaviour
 {
     [SerializeField] private GameObject cardDisplayPrefab;
-    [SerializeField] private Transform scrollContentObject;
+    [SerializeField] private Transform scrollContentObjectArchetype;
+    [SerializeField] private Transform scrollContentObjectFate;
+
+    [SerializeField] private Transform archetypeView;
+    [SerializeField] private Transform fateView;
+    private bool showingArchetype;
+
+    private int archetypeLastIndex = 70; //archetypes first in db, fates after
     private void Start()
     {
-        PopulateCardDisplays();
+        PopulateArchetypeCardDisplays();
+        PopulateFateCardDisplays();
+        fateView.gameObject.SetActive(false);
+        showingArchetype = true;
     }
-    private void PopulateCardDisplays()
+    public void SwitchView()
+    {
+        fateView.gameObject.SetActive(showingArchetype);
+        archetypeView.gameObject.SetActive(!showingArchetype);
+        showingArchetype = !showingArchetype;
+    }
+    private void PopulateArchetypeCardDisplays()
     {
         CardDatabase cardDB = GameManager.instance.cardDatabase;
         for(int i = 0; i < cardDB.cards.Length; i++)
         {
-            GameObject go = Instantiate(cardDisplayPrefab, scrollContentObject);
+            if (cardDB.cards[i].name == "Default") continue;
+            GameObject go = Instantiate(cardDisplayPrefab, scrollContentObjectArchetype);
+            go.GetComponent<CardDisplayHandler>().InstantiatePrefab(cardDB.cards[i]);
+        }
+    }
+    private void PopulateFateCardDisplays()
+    {
+        CardDatabase cardDB = GameManager.instance.cardDatabase;
+        for(int i = archetypeLastIndex + 1; i < cardDB.cards.Length; i++)
+        {
+            if (cardDB.cards[i].name == "Default") continue;
+            GameObject go = Instantiate(cardDisplayPrefab, scrollContentObjectFate);
             go.GetComponent<CardDisplayHandler>().InstantiatePrefab(cardDB.cards[i]);
         }
     }
