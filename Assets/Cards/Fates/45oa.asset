@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03982ad141640647962c00dee14187c, type: 3}
   m_Name: 45oa
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Opposites Attract
   imageName: 
-  cardId: 0
+  cardId: 100
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: e4bcd070ae90405488c28f304bd2d15a, type: 3}
   markerType: 1

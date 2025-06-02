@@ -7,6 +7,8 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
 {
     //[SerializeField] protected TMP_Text dragText;
     //[SerializeField] protected ScrollRect scrollRect;
+    public float totalTextPixelHeight { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();

@@ -5,9 +5,12 @@ using UnityEngine.Events;
 using TMPro;
 using easyar;
 using Image = UnityEngine.UI.Image;
+using Unity.VisualScripting;
 
 public class Card : MonoBehaviour
 {
+    [Header("Card Type: Archetype - Faith")]
+    [SerializeField] private MarkerType cardSlotType;
     [Header("Card base visuals")]
     [SerializeField] private Sprite[] sprites;
     [Header("Card order in hierarchy")]
@@ -62,6 +65,7 @@ public class Card : MonoBehaviour
         if(!canBeSwitched) return;
         if (GameManager.instance.isLookingForCardToSelect)
         {
+            if (GameManager.instance.currentScannedCard.markerType != cardSlotType) return;
             currentCard = GameManager.instance.currentScannedCard;
             onCardSwitched?.Invoke(cardIndex);
             UpdateCardVisuals();
@@ -70,8 +74,11 @@ public class Card : MonoBehaviour
     }
     public void CardPopup()
     {
+        //move elsewhere>>
         if (currentCard == null) currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
         CheckCardSwitch();
+        //<<
+        if (currentCard.cardId < 0) return; //cant interact with default card ids -1 && -2
         GameObject popup = GameManager.instance.cardPopup;
         popup.SetActive(true);
         popup.GetComponentInChildren<CardPopup>().PopupEffect(currentCard);

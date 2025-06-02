@@ -32,6 +32,9 @@ public class ScannerPanelManager : MonoBehaviour
         GameManager.instance.cardScanner.onCardScanned.AddListener(HandleCardScanned);
         scanPanel.SetActive(false);
         selectionPanel.SetActive(false);
+
+        //temp >>
+        GameManager.instance.cardScanner.onScanToggled.AddListener(HandleScanCanceled);
     }
     public void HandleCardManualAssignment(CardSO card)
     {
@@ -42,6 +45,7 @@ public class ScannerPanelManager : MonoBehaviour
     {
         Debug.Log("Card scanned");
         currentScannedCard = card;
+        ToggleBackground(true);
         scanPanel.SetActive(false);
         MarkerType marker = CheckScannedMarkerType();
         
@@ -65,6 +69,7 @@ public class ScannerPanelManager : MonoBehaviour
     }
     public void EnableScanPanel()
     {
+        ToggleBackground(false);
         scanPanel.SetActive(true);
     }
     private void OpenSelectionPanel()
@@ -109,4 +114,14 @@ public class ScannerPanelManager : MonoBehaviour
     {
         return MarkerType.Archetype; //for now
     }
+    //temporary >>
+    private void HandleScanCanceled(bool toggle)
+    {
+        if(toggle == false) ToggleBackground(true);
+    }
+    private void ToggleBackground(bool value)
+    {
+        bgPanel.SetActive(value);
+    }
+    //<<
 }

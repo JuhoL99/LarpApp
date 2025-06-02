@@ -45,7 +45,7 @@ public class MenuController : MonoBehaviour
     void Update()
     {
         // Set device camera active when needed
-        SetCamera();
+        //SetCamera();
     }
 
     // Method to handle back button functionality

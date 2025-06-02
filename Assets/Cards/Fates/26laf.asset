@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03982ad141640647962c00dee14187c, type: 3}
   m_Name: 26laf
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Leader and Follower
   imageName: 
-  cardId: 0
+  cardId: 100
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 9e03d361ef7121d43951581c05b6944c, type: 3}
   markerType: 1

@@ -7,14 +7,17 @@ public class PlayerData
     public string playerName;
     public string playerNotes;
     public CardSO[] playerArchetypeCards;
+    public CardSO[] playerFateCards;
     public List<UserData> playerAddedRelations;
-    public int maxCardAmount = 2;
+    public int maxArchetypeCardAmount = 2;
+    public int maxFateCardAmount = 3;
 
-    public PlayerData(string name = null, string notes = null, CardSO[] cards = null, List<UserData> addedRelations = null)
+    public PlayerData(string name = null, string notes = null, CardSO[] cards = null, CardSO[] fateCards = null, List<UserData> addedRelations = null)
     {
         playerName = name;
         playerNotes = notes;
-        playerArchetypeCards = cards == null ? new CardSO[maxCardAmount] : cards;
+        playerArchetypeCards = cards == null ? new CardSO[maxArchetypeCardAmount] : cards;
+        playerFateCards = cards == null ? new CardSO[maxFateCardAmount] : fateCards;
         playerAddedRelations = addedRelations == null ? new List<UserData>() : addedRelations;
     }
     public void ChangePlayerName(string newName)
@@ -40,15 +43,25 @@ public class PlayerData
     }
     public void AddCardToPlayer(CardSO card, int index)
     {
-        if(playerArchetypeCards != null && index < maxCardAmount)
+        if(playerArchetypeCards != null && index < maxArchetypeCardAmount)
         {
             playerArchetypeCards[index] = card;
         }
     }
+    public string GetPlayerFateCardString()
+    {
+        string s = string.Empty;
+        for(int i = 0; i < maxFateCardAmount;  i++)
+        {
+            if (playerFateCards[i] == null) s += "-2|";
+            else s += $"{playerFateCards[i].cardId}";
+        }
+        return s.Length > 0 ? s.Substring(0,s.Length - 1) : string.Empty;
+    }
     public string GetPlayerCardString()
     {
         string s = string.Empty;
-        for (int i = 0; i < maxCardAmount; i++)
+        for (int i = 0; i < maxArchetypeCardAmount; i++)
         {
             if (playerArchetypeCards[i] == null) s += "-1|";
             else s += $"{playerArchetypeCards[i].cardId}|";
