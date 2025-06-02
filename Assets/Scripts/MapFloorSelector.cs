@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
-public class ImageDropdown : MonoBehaviour
+public class MapFloorSelector : MonoBehaviour
 {
     [Header("Main Button")]
     public Button mainButton;
