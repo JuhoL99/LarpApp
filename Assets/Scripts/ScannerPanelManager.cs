@@ -74,6 +74,11 @@ public class ScannerPanelManager : MonoBehaviour
         ToggleBackground(false);
         scanPanel.SetActive(true);
     }
+    public void DisableScanPanel()
+    {
+        ToggleBackground(true);
+        scanPanel.SetActive(false);
+    }
     private void OpenSelectionPanel(CardSO card = null)
     {
         if (card != null)
@@ -94,7 +99,7 @@ public class ScannerPanelManager : MonoBehaviour
         assignToExistingButton.onClick.RemoveListener(AssignToExistingUser);
         assignToNewButton.onClick.RemoveListener(AssignToNewUser);
     }
-    private void HideSelectionPanel()
+    public void HideSelectionPanel()
     {
         RemoveButtonListeners();
         currentScannedCard = null;

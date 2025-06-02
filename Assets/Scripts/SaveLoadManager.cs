@@ -31,7 +31,7 @@ public class SaveLoadManager : MonoBehaviour
 #if UNITY_EDITOR
         return;
 #elif UNITY_ANDROID || UNITY_IOS
-        if (saveOnQuit) Save();
+        if (saveOnQuit && pause) Save();
 #endif
     }
     private void OnApplicationQuit()
