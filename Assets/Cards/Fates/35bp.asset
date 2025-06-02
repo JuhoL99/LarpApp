@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Business Partners
   imageName: 
-  cardId: 100
+  cardId: 135
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: b029f80c857d56345bbf0843c722f104, type: 3}
   markerType: 1

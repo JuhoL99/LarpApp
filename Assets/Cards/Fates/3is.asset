@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Inseparable Siblings
   imageName: 
-  cardId: 100
+  cardId: 103
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: b61042315ac48df4bb7ca191de0952a0, type: 3}
   markerType: 1

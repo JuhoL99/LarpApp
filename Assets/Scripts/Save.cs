@@ -12,13 +12,15 @@ public class Save
     public string linkedUserNotes;
     public string linkedUserNotesNew;
 
-    public Save(string playerName, string playerNotes, string playerCards, string linkedUserNames, string linkedUserCards, string linkedUserNotesNew)
+    public Save(string playerName, string playerNotes, string playerCards,string playerFateCards, string linkedUserNames, string linkedUserCards,string linkedUserFateCards, string linkedUserNotesNew)
     {
         this.playerName = playerName;
         this.playerNotes = playerNotes;
         this.playerCards = playerCards;
+        this.playerFateCards = playerFateCards;
         this.linkedUserNames = linkedUserNames;
         this.linkedUserCards = linkedUserCards;
+        this.linkedUserFateCards = linkedUserFateCards;
         this.linkedUserNotesNew = linkedUserNotesNew;
     }
 }

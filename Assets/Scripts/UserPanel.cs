@@ -39,7 +39,7 @@ public class UserPanel : MonoBehaviour
         }
     }
     //rewrite a bit
-    private void AddCardToUser(int index)
+    private void AddCardToUser(int index, MarkerType type)
     {
         CardSO card = cards[index].GetCurrentCard();
         panelUser.AddCardToUser(card, index);

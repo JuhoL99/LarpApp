@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Criminal past
   imageName: 
-  cardId: 100
+  cardId: 122
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 0455a43260d7add4493f85c09d19b922, type: 3}
   markerType: 1

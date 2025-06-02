@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Detective and Informant
   imageName: 
-  cardId: 100
+  cardId: 132
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 8a0b7253ea064144794de23562682644, type: 3}
   markerType: 1

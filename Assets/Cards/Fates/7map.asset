@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: "Mentor and Prot\xE9g\xE9"
   imageName: 
-  cardId: 100
+  cardId: 107
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 6154ca36e1952ba49a05965ba1edf177, type: 3}
   markerType: 1

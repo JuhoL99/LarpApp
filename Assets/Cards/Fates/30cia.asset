@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Comrades in Arms
   imageName: 
-  cardId: 100
+  cardId: 130
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: acb772a9ff54bb14981f3fb15684f8a2, type: 3}
   markerType: 1

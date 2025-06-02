@@ -27,7 +27,7 @@ public class CardsPanelManager : MonoBehaviour
     private void PopulateArchetypeCardDisplays()
     {
         CardDatabase cardDB = GameManager.instance.cardDatabase;
-        for(int i = 0; i < cardDB.cards.Length; i++)
+        for(int i = 0; i < archetypeLastIndex; i++)
         {
             if (cardDB.cards[i].name == "Default") continue;
             GameObject go = Instantiate(cardDisplayPrefab, scrollContentObjectArchetype);

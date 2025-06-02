@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Estranged Siblings
   imageName: 
-  cardId: 100
+  cardId: 104
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 00922dadbe21c964e8c53d4a56b0c717, type: 3}
   markerType: 1

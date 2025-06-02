@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Pen Pals
   imageName: 
-  cardId: 100
+  cardId: 138
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 45a20b559a82f4c4f88d8fc098492b9c, type: 3}
   markerType: 1

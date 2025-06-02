@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Childhood Bully and Victim
   imageName: 
-  cardId: 100
+  cardId: 150
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 0ec883218b9fde244a3a572e6e42d690, type: 3}
   markerType: 1

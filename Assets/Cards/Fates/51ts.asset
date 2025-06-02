@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Terrible Secret
   imageName: 
-  cardId: 100
+  cardId: 151
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 66fe93a09d26b134ca65b20fa720b18c, type: 3}
   markerType: 1

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Survivors of Trauma
   imageName: 
-  cardId: 100
+  cardId: 148
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 9a8f29dc033b5644c9c7e66cf6758d37, type: 3}
   markerType: 1

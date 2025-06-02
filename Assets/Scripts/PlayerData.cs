@@ -43,9 +43,13 @@ public class PlayerData
     }
     public void AddCardToPlayer(CardSO card, int index)
     {
-        if(playerArchetypeCards != null && index < maxArchetypeCardAmount)
+        if(playerArchetypeCards != null && index < maxArchetypeCardAmount && card.markerType == MarkerType.Archetype)
         {
             playerArchetypeCards[index] = card;
+        }
+        if(playerFateCards != null && index < maxFateCardAmount && card.markerType == MarkerType.Fate)
+        {
+            playerFateCards[index] = card;
         }
     }
     public string GetPlayerFateCardString()
@@ -54,7 +58,7 @@ public class PlayerData
         for(int i = 0; i < maxFateCardAmount;  i++)
         {
             if (playerFateCards[i] == null) s += "-2|";
-            else s += $"{playerFateCards[i].cardId}";
+            else s += $"{playerFateCards[i].cardId}|";
         }
         return s.Length > 0 ? s.Substring(0,s.Length - 1) : string.Empty;
     }
@@ -65,6 +69,21 @@ public class PlayerData
         {
             if (playerArchetypeCards[i] == null) s += "-1|";
             else s += $"{playerArchetypeCards[i].cardId}|";
+        }
+        return s.Length > 0 ? s.Substring(0, s.Length - 1) : string.Empty;
+    }
+    public string GetUserFateCardString()
+    {
+        string s = string.Empty;
+        foreach(UserData user in playerAddedRelations)
+        {
+            for(int i = 0; i < user.maxFateCardAmount; i++)
+            {
+                if (user.userFateCards[i] == null) s += "-2|";
+                else s += $"{user.userFateCards[i].cardId}|";
+            }
+            s = s.Substring(0, s.Length - 1);
+            s += ",";
         }
         return s.Length > 0 ? s.Substring(0, s.Length - 1) : string.Empty;
     }
@@ -119,6 +138,19 @@ public class PlayerData
             i++;
         }
     }
+    public void LoadPlayerFateCardsFromString(string loadData)
+    {
+        Debug.Log($"trying to load player fate cards {loadData}");
+        if (string.IsNullOrEmpty(loadData)) return;
+        string s = string.Empty;
+        string[] data = loadData.Split("|");
+        int i = 0;
+        foreach (string element in data)
+        {
+            playerFateCards[i] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(element));
+            i++;
+        }
+    }
     public void LoadUsersFromString(string loadData)
     {
         if(string.IsNullOrEmpty(loadData)) return;
@@ -143,6 +175,24 @@ public class PlayerData
             foreach(string part in parts)
             {
                 user.userArchetypeCards[j] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(part));
+                j++;
+            }
+            i++;
+        }
+    }
+    public void LoadUserFateCardsFromString(string loadData)
+    {
+        if (string.IsNullOrEmpty(loadData)) return;
+        string s = string.Empty;
+        string[] data = loadData.Split(",");
+        int i = 0;
+        foreach (UserData user in playerAddedRelations)
+        {
+            string[] parts = data[i].Split("|");
+            int j = 0;
+            foreach (string part in parts)
+            {
+                user.userFateCards[j] = GameManager.instance.cardDatabase.GetCardByID(int.Parse(part));
                 j++;
             }
             i++;

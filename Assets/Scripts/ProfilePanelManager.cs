@@ -9,6 +9,8 @@ public class ProfilePanelManager : MonoBehaviour
     [SerializeField] private GameObject profilePanel;
     [Header("Profile Archetype Cards")]
     [SerializeField] private Card[] archetypeCards = new Card[2];
+    [Header("Profile Fate Cards")]
+    [SerializeField] private Card[] fateCards = new Card[3];
     [Header("Card Added Event")]
     public UnityEvent cardAddedToProfile;
     [Header("Input Fields")]
@@ -39,15 +41,27 @@ public class ProfilePanelManager : MonoBehaviour
                 );
             i++;
         }
+        i = 0;
+        foreach (var card in fateCards)
+        {
+            card.onCardSwitched.AddListener(CardAdded);
+            card.SetCurrentCard(
+                GameManager.instance?.player?.playerFateCards[i] == null ?
+                GameManager.instance?.cardDatabase?.GetCardByID(-2) :
+                GameManager.instance?.player?.playerFateCards[i]
+                );
+            i++;
+        }
     }
     private void CardAssignRequestToProfile(CardSO card)
     {
         if(!profilePanel.activeSelf) profilePanel.SetActive(true);
         GameManager.instance.LookingForCardToSelect(card);
     }
-    private void CardAdded(int index)
+    private void CardAdded(int index, MarkerType type)
     {
-        GameManager.instance.player.AddCardToPlayer(archetypeCards[index].GetCurrentCard(),index);
+        if(type == MarkerType.Archetype) GameManager.instance.player.AddCardToPlayer(archetypeCards[index].GetCurrentCard(),index);
+        else GameManager.instance.player.AddCardToPlayer(fateCards[index].GetCurrentCard(),index);
         cardAddedToProfile?.Invoke();
     }
 }

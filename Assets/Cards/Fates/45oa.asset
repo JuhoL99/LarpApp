@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Opposites Attract
   imageName: 
-  cardId: 100
+  cardId: 145
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: e4bcd070ae90405488c28f304bd2d15a, type: 3}
   markerType: 1

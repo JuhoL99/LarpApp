@@ -24,13 +24,13 @@ public class Card : MonoBehaviour
     private bool facingTop = true;
     private bool canRotate = true;
     public bool canBeSwitched = true;
-    public UnityEvent<int> onCardSwitched;
+    public UnityEvent<int, MarkerType> onCardSwitched;
     private void Start()
     {
         img = GetComponent<Image>();
         //currentCard = GameManager.instance.cardDatabase.GetCardByID(-1);
         interactButton.onClick.AddListener(CardPopup);
-        if(sprites != null) img.sprite = sprites[0];
+        if(sprites != null) UpdateCardVisuals();
     }
     private void AllowSwitch()
     {
@@ -46,7 +46,7 @@ public class Card : MonoBehaviour
     {
         GameManager.instance.cardScanner.onCardScanned.RemoveListener(GetScannedCard);
         currentCard = card;
-        onCardSwitched?.Invoke(cardIndex);
+        onCardSwitched?.Invoke(cardIndex, card.markerType);
         UpdateCardVisuals();
     }
     public CardSO GetCurrentCard()
@@ -57,7 +57,8 @@ public class Card : MonoBehaviour
     {
         if(img == null) img = GetComponent<Image>();
         currentCard = card;
-        //Debug.Log($"current card set to: {card}");
+        //show fate card back since top is same for all
+        if (card.markerType == MarkerType.Fate) facingTop = false;
         UpdateCardVisuals();
     }
     private void CheckCardSwitch()
@@ -67,7 +68,7 @@ public class Card : MonoBehaviour
         {
             if (GameManager.instance.currentScannedCard.markerType != cardSlotType) return;
             currentCard = GameManager.instance.currentScannedCard;
-            onCardSwitched?.Invoke(cardIndex);
+            onCardSwitched?.Invoke(cardIndex, currentCard.markerType);
             UpdateCardVisuals();
             return;
         }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Idol and Fan
   imageName: 
-  cardId: 100
+  cardId: 142
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: bd3f9208d7f992f4b9b0342c791f46ef, type: 3}
   markerType: 1

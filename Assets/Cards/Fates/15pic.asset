@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Partners in Crime
   imageName: 
-  cardId: 100
+  cardId: 115
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 0eef63e8326c66f46b91e0599af319e5, type: 3}
   markerType: 1

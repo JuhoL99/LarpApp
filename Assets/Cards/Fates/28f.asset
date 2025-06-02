@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Frenemies
   imageName: 
-  cardId: 100
+  cardId: 128
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 3dd9b150d73d40a4a8ddaff34918b9de, type: 3}
   markerType: 1

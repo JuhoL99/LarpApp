@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Found Family
   imageName: 
-  cardId: 100
+  cardId: 143
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: be754a03918f8a644ac01088c35a9a9c, type: 3}
   markerType: 1

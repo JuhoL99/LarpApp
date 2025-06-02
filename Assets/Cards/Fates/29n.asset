@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Neighbors
   imageName: 
-  cardId: 100
+  cardId: 129
   cardTopSprite: {fileID: 21300000, guid: 77c486b1d21205f4bb71706368f103a5, type: 3}
   cardBottomSprite: {fileID: 21300000, guid: 278e417b6029f764aa15602c4fa681e5, type: 3}
   markerType: 1

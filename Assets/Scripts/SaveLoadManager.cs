@@ -64,8 +64,10 @@ public class SaveLoadManager : MonoBehaviour
             playerData.playerName,
             playerData.playerNotes,
             playerData.GetPlayerCardString(),
+            playerData.GetPlayerFateCardString(),
             playerData.GetUserRelationsString(),
             playerData.GetUserCardString(),
+            playerData.GetUserFateCardString(),
             playerData.GetUserNoteString()
             );
         string text = JsonUtility.ToJson(save);
@@ -104,6 +106,8 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUsersFromString(save.linkedUserNames);
         playerData.LoadUserCardsFromString(save.linkedUserCards);
         playerData.LoadUserNoteFromString(save.linkedUserNotesNew);
+        playerData.LoadPlayerFateCardsFromString(save.playerFateCards);
+        playerData.LoadUserFateCardsFromString(save.linkedUserFateCards);
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
     }
