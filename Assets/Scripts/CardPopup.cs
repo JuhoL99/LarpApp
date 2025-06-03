@@ -120,6 +120,10 @@ public class CardPopup : MonoBehaviour
         if (card != null) cardSides = card.GetCardVisual();
         if (facingTop) cardImg.sprite = cardSides[0];
         else cardImg.sprite = cardSides[1];
+
+        // Show/hide QR button based on card type
+        if (qrButton != null)
+            qrButton.gameObject.SetActive(card != null && card.markerType == MarkerType.Archetype);
     }
 
     public void InteractWithCard()
