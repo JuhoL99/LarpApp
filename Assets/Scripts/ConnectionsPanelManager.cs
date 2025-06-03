@@ -17,6 +17,16 @@ public class ConnectionsPanelManager : MonoBehaviour
     [SerializeField] private TMP_InputField nameInputField;
     [Header("Name Warning Text")]
     [SerializeField] private TMP_Text nameWarningText;
+    [Header("User Detail Panel")]
+    [SerializeField] private GameObject detailViewPanel;
+    [SerializeField] private CustomInputField detailViewNotes;
+    [SerializeField] private CustomInputField detailViewName;
+    [SerializeField] private Card[] detailArchetypeCards;
+    [SerializeField] private Card[] detailFateCards;
+
+    private MenuController menuController;
+
+
     private ScannerPanelManager scannerPanelManager;
     private List<GameObject> allInstantiatedUserPanels;
     public UnityEvent someoneAddedCard;
@@ -97,6 +107,24 @@ public class ConnectionsPanelManager : MonoBehaviour
         foreach(GameObject panel in allInstantiatedUserPanels)
         {
             Destroy(panel);
+        }
+    }
+    public void LoadDetails(UserData userToLoad)
+    {
+        if (menuController == null)
+            menuController = gameObject.GetComponent<MenuController>();
+        menuController.ShowScreen(detailViewPanel);
+        detailViewNotes.AssignUser(userToLoad);
+        detailViewNotes.inputField.text = userToLoad.userNotes;
+        detailViewName.AssignUser(userToLoad);
+        detailViewName.inputField.text = userToLoad.userName;
+        for(int i = 0; i < userToLoad.userArchetypeCards.Length; i++)
+        {
+            detailArchetypeCards[i].SetCurrentCard(userToLoad.userArchetypeCards[i]);
+        }
+        for(int i = 0; i < userToLoad.userFateCards.Length; i++)
+        {
+            detailFateCards[i].SetCurrentCard(userToLoad.userFateCards[i]);
         }
     }
 }

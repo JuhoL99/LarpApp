@@ -67,6 +67,8 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
         {
             linkedPlayer.playerNotes = text;
         }
+        inputField.MoveTextStart(true);
+        inputField.ForceLabelUpdate();
         base.StopTextEdit(text);
     }
     public override void LoadText()
