@@ -326,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &125492320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12355,7 +12355,7 @@ GameObject:
   - component: {fileID: 1881485509}
   - component: {fileID: 1881485508}
   m_Layer: 5
-  m_Name: Image
+  m_Name: AddContact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12377,9 +12377,9 @@ RectTransform:
   - {fileID: 1249274227256606681}
   m_Father: {fileID: 1718184176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 960}
   m_SizeDelta: {x: 1080, y: 275}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1881485508
