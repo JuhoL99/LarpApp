@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class CardsPanelManager : MonoBehaviour
 {
+    [Header("Card Display Template")]
     [SerializeField] private GameObject cardDisplayPrefab;
+    [Header("Content Object Of Scroll View")]
     [SerializeField] private Transform scrollContentObjectArchetype;
     [SerializeField] private Transform scrollContentObjectFate;
-
+    [Header("Main Card Display Panels")]
     [SerializeField] private Transform archetypeView;
     [SerializeField] private Transform fateView;
     private bool showingArchetype;

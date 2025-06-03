@@ -9,6 +9,7 @@ public class UserPanel : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Button addNoteButton;
     [SerializeField] private Button removeUserButton;
+    [SerializeField] private Button viewDetailsButton;
     [Header("Note Input Field")]
     [SerializeField] private TMP_InputField noteInputField;
     [Header("Archetype Cards")]
@@ -23,6 +24,7 @@ public class UserPanel : MonoBehaviour
     private void Start()
     {
         removeUserButton.onClick.AddListener(RemoveUser);
+        viewDetailsButton.onClick.AddListener(OnViewDetailsClicked);
         foreach(Card card in cards)
         {
             card.onCardSwitched.AddListener(AddCardToUser);
@@ -61,6 +63,10 @@ public class UserPanel : MonoBehaviour
     private void RemoveUser()
     {
         manager.RemoveUser(panelUser, this.gameObject);
+    }
+    private void OnViewDetailsClicked()
+    {
+        manager.LoadDetails(panelUser);
     }
 
 }

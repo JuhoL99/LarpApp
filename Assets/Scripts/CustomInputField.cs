@@ -8,7 +8,7 @@ public abstract class CustomInputField : MonoBehaviour
     public Button editFieldButton;
     protected UserData linkedUser;
     protected PlayerData linkedPlayer;
-    protected TMP_InputField inputField;
+    public TMP_InputField inputField;
     public Color editingColor;
     public Color normalColor;
     protected Image img;
