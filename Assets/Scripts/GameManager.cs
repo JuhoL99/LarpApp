@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
+using TMPro;
 //just a general place to access different scripts and more
 public class GameManager : MonoBehaviour
 {
@@ -21,14 +22,13 @@ public class GameManager : MonoBehaviour
     [Header("Testing")]
     [SerializeField] private bool generateNamesForScriptableObjects = false; //temporary
     [SerializeField] private bool generateUsersFromStart = false;
-
+    //private TMP_Text fpsText;
     private void Awake()
     {
         if (instance == null) instance = this;
         if(generateNamesForScriptableObjects) cardDatabase.NamesFromImageFile();
         RefreshRate refreshRate = Screen.currentResolution.refreshRateRatio;
         Application.targetFrameRate = refreshRate.value > 0 ? Mathf.RoundToInt((float)refreshRate.value) : 60;
-        Debug.Log(Application.targetFrameRate);
     }
     private void Start()
     {
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
         profilePanelManager.cardAddedToProfile.AddListener(() => isLookingForCardToSelect = false);
         if(generateUsersFromStart) StartCoroutine(LateStart());
+        //fpsText = GetComponentInChildren<TMP_Text>();
     }
     private IEnumerator LateStart()
     {
