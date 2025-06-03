@@ -8,9 +8,11 @@ public class AnimateText : MonoBehaviour
     [SerializeField] private float animationFrequency = 0.3f;
     private int animIndex = 0;
     [Header("Text sequence to play")]
-    [SerializeField] private string[] textSequence = new string[4] {"SCANNING","SCANNING .","SCANNING . .","SCANNING . . ."};
+    [SerializeField] private string[] textSequence;
     private void Start()
     {
+        if(textSequence == null || textSequence.Length == 0) textSequence = 
+                new string[4] { "SCANNING", "SCANNING .", "SCANNING . .", "SCANNING . . ." };
         textToAnimate = GetComponent<TMP_Text>();
         InvokeRepeating("Animate", 0f, animationFrequency);
     }

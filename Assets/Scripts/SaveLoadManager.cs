@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class SaveLoadManager : MonoBehaviour
         {
             sw.Write(string.Empty);
         }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     //call from anywhere you need
     public void Save()
