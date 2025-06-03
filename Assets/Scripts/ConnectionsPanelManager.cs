@@ -120,11 +120,15 @@ public class ConnectionsPanelManager : MonoBehaviour
         detailViewName.inputField.text = userToLoad.userName;
         for(int i = 0; i < userToLoad.userArchetypeCards.Length; i++)
         {
-            detailArchetypeCards[i].SetCurrentCard(userToLoad.userArchetypeCards[i]);
+            CardSO cardToSet = userToLoad.userArchetypeCards[i];
+            if (cardToSet == null) cardToSet = GameManager.instance.cardDatabase.GetCardByID(-1);
+            detailArchetypeCards[i].SetCurrentCard(cardToSet);
         }
         for(int i = 0; i < userToLoad.userFateCards.Length; i++)
         {
-            detailFateCards[i].SetCurrentCard(userToLoad.userFateCards[i]);
+            CardSO cardToSet = userToLoad.userFateCards[i];
+            if (cardToSet == null) cardToSet = GameManager.instance.cardDatabase.GetCardByID(-2);
+            detailFateCards[i].SetCurrentCard(cardToSet);
         }
     }
 }

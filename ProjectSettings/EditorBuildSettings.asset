@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SCENE_Juho.unity
     guid: a4db26375ad5a874e972fecbb69f6e66
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene_Juho2.unity
     guid: 4e995e02e4d448b42a458d79d02c67f6
+  - enabled: 1
+    path: Assets/Scenes/Scene_Main.unity
+    guid: 7ef490633aa404b4f9e733c7e9cd86db
   m_configObjects:
     EasyAR.Settings: {fileID: 11400000, guid: 7f160fed56816824ba1aa7387c1f35db, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: b61917fb4bc093543a2144d65d8d1dee, type: 2}
