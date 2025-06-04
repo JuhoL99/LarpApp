@@ -71,6 +71,7 @@ public class Card : MonoBehaviour
         if(!canBeSwitched) return;
         if (GameManager.instance.isLookingForCardToSelect)
         {
+            Debug.Log(GameManager.instance.currentScannedCard);
             if (GameManager.instance.currentScannedCard.markerType != cardSlotType) return;
             currentCard = GameManager.instance.currentScannedCard;
             onCardSwitched?.Invoke(cardIndex, currentCard.markerType);
