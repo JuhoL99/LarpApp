@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityEngine.Events;
 //just a general place to access different scripts and more
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +24,10 @@ public class GameManager : MonoBehaviour
     [Header("Testing")]
     [SerializeField] private bool generateNamesForScriptableObjects = false; //temporary
     [SerializeField] private bool generateUsersFromStart = false;
-    //private TMP_Text fpsText;
+
+    private InputAction backAction = new InputAction("Back", InputActionType.Button, "<Keyboard>/escape");
+    public UnityEvent onBackAction;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -32,11 +37,21 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        backAction.Enable();
+        backAction.performed += HandleInput;
+
         //disable card switch option when card selection detected
         connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
         profilePanelManager.cardAddedToProfile.AddListener(() => isLookingForCardToSelect = false);
         if(generateUsersFromStart) StartCoroutine(LateStart());
-        //fpsText = GetComponentInChildren<TMP_Text>();
+    }
+    private void HandleInput(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            onBackAction?.Invoke();
+            if(cardPopup.activeInHierarchy) cardPopup.SetActive(false);
+        }
     }
     private IEnumerator LateStart()
     {
