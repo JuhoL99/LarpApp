@@ -93,7 +93,9 @@ public class GameManager : MonoBehaviour
     }
     public int GetKeyboardSize()
     {
-#if UNITY_ANDROID
+    #if UNITY_EDITOR
+        return 0;
+    #elif UNITY_ANDROID
         using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
         {
             AndroidJavaObject View = UnityClass.GetStatic<AndroidJavaObject>("currentActivity").Get<AndroidJavaObject>("mUnityPlayer").Call<AndroidJavaObject>("getView");
@@ -105,6 +107,6 @@ public class GameManager : MonoBehaviour
                 return Screen.height - Rct.Call<int>("height");
             }
         }
-#endif
+    #endif
     }
 }
