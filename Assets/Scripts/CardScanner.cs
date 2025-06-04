@@ -22,7 +22,6 @@ public class CardScanner : MonoBehaviour
     private CameraDeviceFrameSource cameraDevice;
     private bool isScanning;
     private CardSO currentSelectedCard;
-    private InputAction backAction = new InputAction("Back", InputActionType.Button, "<Keyboard>/escape");
 
     //disable scanning on back button and action later so no unexpected card switches
     private void Awake()
@@ -42,17 +41,16 @@ public class CardScanner : MonoBehaviour
     {
         onCardScanned.AddListener(SetCurrentSelectedCard);
         ToggleTracking(false);
-        backAction.Enable();
-        backAction.performed += HandleInput;
+        GameManager.instance.onBackAction.AddListener(HandleInput);
     }
     //need to load targets before they can be detected properly
     private void TargetLoadedCheck(easyar.Target trg, bool val)
     {
         Debug.Log($"Target: {trg.name()}, Value: {val}");
     }
-    private void HandleInput(InputAction.CallbackContext ctx)
+    private void HandleInput()
     {
-        if(ctx.performed && isScanning == true) DisableScanning();
+        if(isScanning) DisableScanning();
     }
     public void EnableScanning()
     {

@@ -40,6 +40,7 @@ public class ScannerPanelManager : MonoBehaviour
     }
     public void HandleCardManualAssignment(CardSO card)
     {
+        Debug.Log($"In manual assignent with card: {card}");
         enableScanSelectionPanel?.Invoke();
         HandleCardScanned(card);
     }
@@ -47,6 +48,7 @@ public class ScannerPanelManager : MonoBehaviour
     {
         Debug.Log("Card scanned");
         currentScannedCard = card;
+        Debug.Log($"currentscannedcard: {currentScannedCard}");
         ToggleBackground(true);
         scanPanel.SetActive(false);
         MarkerType marker = CheckScannedMarkerType();
@@ -82,6 +84,7 @@ public class ScannerPanelManager : MonoBehaviour
     }
     private void OpenSelectionPanel(CardSO card = null)
     {
+        Debug.Log($"opened selection panel with card: {card}");
         if (card != null)
             scannedCardPreviewImage.sprite = card.GetCardVisual()[0];
         else scannedCardPreviewImage.sprite = null;
@@ -103,7 +106,7 @@ public class ScannerPanelManager : MonoBehaviour
     public void HideSelectionPanel()
     {
         RemoveButtonListeners();
-        currentScannedCard = null;
+        //currentScannedCard = null;
         selectionPanel.SetActive(false);
     }
     public void AssignToSelf()
