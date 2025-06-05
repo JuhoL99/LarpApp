@@ -23,12 +23,12 @@ public class CardPopup : MonoBehaviour
     private Image bgImg;
     private Sprite[] cardSides;
     private bool facingTop = true;
-    public bool canRotate = true;
+    private bool canRotate = true;
 
     // Store original values for reset
     private Vector3 originalScale;
     private Vector3 originalPosition;
-    public bool isZoomed = false;
+    private bool isZoomed = false;
 
     private void Awake()
     {
