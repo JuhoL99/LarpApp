@@ -4,11 +4,9 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CustomInputFieldNotes : CustomInputField
 {
-    //[SerializeField] protected TMP_Text dragText;
-    //[SerializeField] protected ScrollRect scrollRect;
-    public float totalTextPixelHeight { get; private set; }
+    //add to base class if als needed in name input field
     public UnityEvent<RectTransform> onFieldEditStarted = new UnityEvent<RectTransform>();
 
     protected override void Awake()
@@ -16,18 +14,6 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
         base.Awake();
         inputField.contentType = TMP_InputField.ContentType.Standard;
         inputField.lineType = TMP_InputField.LineType.MultiLineNewline;
-    }
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        //dragText.text = $"drag start";
-    }
-    public void OnDrag(PointerEventData eventData)
-    {
-        //dragText.text = $"dragging: {eventData.dragging}";
-    }
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        //dragText.text = $"drag over";
     }
     protected override void OnEnable()
     {

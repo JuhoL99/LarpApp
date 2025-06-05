@@ -13,7 +13,7 @@ public class InputFieldExtension : MonoBehaviour
     private Vector3 worldPos;
 
     private RectTransform currentEditedField;
-    [Header("Note input fields")]
+    [Header("Note Input Fields")]
     [SerializeField] private CustomInputFieldNotes[] fieldsEnabledOn;
 
     private void Start()
