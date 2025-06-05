@@ -69,6 +69,7 @@ public class InputFieldExtension : MonoBehaviour
     {
         open = false;
         currentEditedField.anchoredPosition = originalPos;
+        currentEditedField = null;
     }
     private void SetCurrentEditedField(RectTransform field)
     {
