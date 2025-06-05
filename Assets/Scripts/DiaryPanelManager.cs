@@ -9,11 +9,15 @@ public class DiaryPanelManager : MonoBehaviour
     [SerializeField] private DiaryContent diaryContent;
     [SerializeField] private GameObject diaryEntryPrefab;
     [SerializeField] private Transform scrollContentObject;
+
+    //add button with input field to create new diary entry objects
+    //add similar inputfield and saving as in profile and connections to write into diary entry
     private void Start()
     {
         diaryEntries = GenerateFakeEntries();
         LoadEntriesFromFile();
         PopulateEntries();
+        diaryContent.ClosePage();
     }
     private List<DiaryEntry> GenerateFakeEntries()
     {
@@ -33,7 +37,7 @@ public class DiaryPanelManager : MonoBehaviour
             DiaryEntryManager mgr = go.GetComponent<DiaryEntryManager>();
             mgr.UpdateEntry(diaryEntries[i]);
             mgr.onEnableContent.AddListener(diaryContent.SetupDiaryContent);
-            //set diarycontent to entry manager here and enable/disable listeners in script l8r
+            //set diarycontent to entry manager here and enable/disable listeners in script l8r to reduce simultaneous listeners
         }
     }
     private void LoadEntriesFromFile()

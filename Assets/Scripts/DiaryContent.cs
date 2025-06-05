@@ -11,17 +11,17 @@ public class DiaryContent : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.onBackAction.AddListener(ClosePanel);
+        GameManager.instance.onBackAction.AddListener(ClosePage);
     }
     private void OnEnable()
     {
-        if(GameManager.instance != null) GameManager.instance.onBackAction.AddListener(ClosePanel);
-        closePanelButton.onClick.AddListener(ClosePanel);
+        if(GameManager.instance != null) GameManager.instance.onBackAction.AddListener(ClosePage);
+        closePanelButton.onClick.AddListener(ClosePage);
     }
     private void OnDisable()
     {
-        GameManager.instance.onBackAction.RemoveListener(ClosePanel);
-        closePanelButton.onClick.RemoveListener(ClosePanel);
+        GameManager.instance.onBackAction.RemoveListener(ClosePage);
+        closePanelButton.onClick.RemoveListener(ClosePage);
     }
     public void SetupDiaryContent(DiaryEntry entry)
     {
@@ -29,7 +29,7 @@ public class DiaryContent : MonoBehaviour
         contentText.text = entry.entryText;
         page.SetActive(true);
     }
-    private void ClosePanel()
+    public void ClosePage()
     {
         titleText.text = string.Empty;
         contentText.text = string.Empty;
