@@ -22,14 +22,13 @@ public class CardPopup : MonoBehaviour
     private Image cardImg;
     private Image bgImg;
     private Sprite[] cardSides;
-    private bool isQRShowing = false;
     private bool facingTop = true;
-    private bool canRotate = true;
+    public bool canRotate = true;
 
     // Store original values for reset
     private Vector3 originalScale;
     private Vector3 originalPosition;
-    private bool isZoomed = false;
+    public bool isZoomed = false;
 
     private void Awake()
     {
@@ -45,7 +44,6 @@ public class CardPopup : MonoBehaviour
         if (rotateButton != null) rotateButton.onClick.AddListener(Rotate);
         if (qrButton != null) qrButton.onClick.AddListener(ToggleQR);
 
-        isQRShowing = false;
         popupBackground.gameObject.SetActive(false);
     }
 
@@ -65,7 +63,6 @@ public class CardPopup : MonoBehaviour
         else facingTop = false;
 
         isZoomed = false;
-        isQRShowing = false;
         UpdateCardVisuals();
     }
 
@@ -109,6 +106,8 @@ public class CardPopup : MonoBehaviour
 
     private void Flop()
     {
+        if (isZoomed) return;
+
         facingTop = !facingTop;
         if (facingTop) cardImg.sprite = cardSides[0];
         else cardImg.sprite = cardSides[1];
@@ -133,6 +132,8 @@ public class CardPopup : MonoBehaviour
 
     private void ToggleQR()
     {
+        if (!canRotate) return;
+
         if (!facingTop && !isZoomed)
         {
             ZoomToQR();
@@ -164,10 +165,10 @@ public class CardPopup : MonoBehaviour
         Vector2 qrAnchoredPos = qrCodeRect.anchoredPosition;
 
         // Account for card rotation - if rotated 180 degrees, flip the QR position
-        bool isRotated180 = Mathf.Abs(transform.rotation.eulerAngles.z - 180f) < 1f ||
+        bool isRotated = Mathf.Abs(transform.rotation.eulerAngles.z - 180f) < 1f ||
                             Mathf.Abs(transform.rotation.eulerAngles.z + 180f) < 1f;
 
-        if (isRotated180)
+        if (isRotated)
         {
             qrAnchoredPos = -qrAnchoredPos; // Flip the position for 180-degree rotation
         }
