@@ -71,6 +71,7 @@ public class SaveLoadManager : MonoBehaviour
             playerData.GetUserCardString(),
             playerData.GetUserFateCardString(),
             playerData.GetUserNoteString()
+            //get diary
             );
         string text = JsonUtility.ToJson(save);
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
@@ -110,6 +111,7 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUserNoteFromString(save.linkedUserNotesNew);
         playerData.LoadPlayerFateCardsFromString(save.playerFateCards);
         playerData.LoadUserFateCardsFromString(save.linkedUserFateCards);
+        //load diary
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
     }
