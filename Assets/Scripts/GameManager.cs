@@ -24,6 +24,15 @@ public class GameManager : MonoBehaviour
     [Header("Testing")]
     [SerializeField] private bool generateNamesForScriptableObjects = false; //temporary
     [SerializeField] private bool generateUsersFromStart = false;
+    [SerializeField] private TMP_Text posx;
+    [SerializeField] private TMP_Text posy;
+    [SerializeField] private TMP_Text posz;
+    [SerializeField] private TMP_Text width;
+    [SerializeField] private TMP_Text height;
+    [SerializeField] private TMP_Text anchorx;
+    [SerializeField] private TMP_Text anchory;
+
+
 
     private InputAction backAction = new InputAction("Back", InputActionType.Button, "<Keyboard>/escape");
     public UnityEvent onBackAction;
@@ -70,5 +79,23 @@ public class GameManager : MonoBehaviour
     {
         isLookingForCardToSelect = true;
         currentScannedCard = card;
+    }
+    public int GetKeyboardSize()
+    {
+    #if UNITY_EDITOR || UNITY_IOS
+        return 0;
+    #elif UNITY_ANDROID
+        using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        {
+            AndroidJavaObject View = UnityClass.GetStatic<AndroidJavaObject>("currentActivity").Get<AndroidJavaObject>("mUnityPlayer").Call<AndroidJavaObject>("getView");
+
+            using (AndroidJavaObject Rct = new AndroidJavaObject("android.graphics.Rect"))
+            {
+                View.Call("getWindowVisibleDisplayFrame", Rct);
+
+                return Screen.height - Rct.Call<int>("height");
+            }
+        }
+    #endif
     }
 }

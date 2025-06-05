@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,6 @@ public class UserPanel : MonoBehaviour
     [SerializeField] private CustomInputFieldNotes noteField;
     [Header("User Name")]
     [SerializeField] private CustomInputFieldName nameField;
-
     private void Start()
     {
         removeUserButton.onClick.AddListener(RemoveUser);
