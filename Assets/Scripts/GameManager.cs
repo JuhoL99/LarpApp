@@ -31,8 +31,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text height;
     [SerializeField] private TMP_Text anchorx;
     [SerializeField] private TMP_Text anchory;
-    [SerializeField] private RectTransform InputFieldExtension;
-    [SerializeField] private bool isKeyboardOpen = false;
 
 
 
@@ -84,7 +82,7 @@ public class GameManager : MonoBehaviour
     }
     public int GetKeyboardSize()
     {
-    #if UNITY_EDITOR
+    #if UNITY_EDITOR || UNITY_IOS
         return 0;
     #elif UNITY_ANDROID
         using (AndroidJavaClass UnityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
