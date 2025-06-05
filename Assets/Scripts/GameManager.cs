@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
     [Header("Testing")]
     [SerializeField] private bool generateNamesForScriptableObjects = false; //temporary
     [SerializeField] private bool generateUsersFromStart = false;
-
-    [Header("Temporary Testing Text")]
     [SerializeField] private TMP_Text posx;
     [SerializeField] private TMP_Text posy;
     [SerializeField] private TMP_Text posz;
@@ -33,6 +31,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text height;
     [SerializeField] private TMP_Text anchorx;
     [SerializeField] private TMP_Text anchory;
+    [SerializeField] private RectTransform InputFieldExtension;
+    [SerializeField] private bool isKeyboardOpen = false;
 
 
 
@@ -81,15 +81,6 @@ public class GameManager : MonoBehaviour
     {
         isLookingForCardToSelect = true;
         currentScannedCard = card;
-    }
-
-    private void Update()
-    {
-        TestFunction();
-    }
-    private void TestFunction()
-    {
-        height.text = $"height: {GetKeyboardSize()}";
     }
     public int GetKeyboardSize()
     {

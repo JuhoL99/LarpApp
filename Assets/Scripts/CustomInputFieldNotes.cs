@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
     //[SerializeField] protected TMP_Text dragText;
     //[SerializeField] protected ScrollRect scrollRect;
     public float totalTextPixelHeight { get; private set; }
+    public UnityEvent<RectTransform> onFieldEditStarted = new UnityEvent<RectTransform>();
 
     protected override void Awake()
     {
@@ -41,7 +43,7 @@ public class CustomInputFieldNotes : CustomInputField, IBeginDragHandler, IDragH
     }
     public override void EnableTextEdit()
     {
-        //scrollRect.enabled = false;
+        onFieldEditStarted?.Invoke(GetComponent<RectTransform>());
         base.EnableTextEdit();
     }
     protected override void OnDisable()
