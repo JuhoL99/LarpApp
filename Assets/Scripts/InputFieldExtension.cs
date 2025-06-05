@@ -13,6 +13,7 @@ public class InputFieldExtension : MonoBehaviour
     private Vector3 worldPos;
 
     private RectTransform currentEditedField;
+    [Header("Note input fields")]
     [SerializeField] private CustomInputFieldNotes[] fieldsEnabledOn;
 
     private void Start()
@@ -52,6 +53,7 @@ public class InputFieldExtension : MonoBehaviour
         } 
 #endif
     }
+    //this only works if anchor is in the middle of the inputfield, if somewhere else change position calc
     private void OpenInputExtension()
     {
         open = true;
