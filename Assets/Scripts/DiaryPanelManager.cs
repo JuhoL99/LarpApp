@@ -40,8 +40,13 @@ public class DiaryPanelManager : MonoBehaviour
             //set diarycontent to entry manager here and enable/disable listeners in script l8r to reduce simultaneous listeners
         }
     }
+    private void SaveDiaryEntries()
+    {
+        //add stuff 
+    }
     private void LoadEntriesFromFile()
     {
+        if(GameManager.instance != null) diaryEntries = GameManager.instance.player.diaryEntries;
         return;
     }
     public void AddEntry(DiaryEntry entry)
