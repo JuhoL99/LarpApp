@@ -39,6 +39,7 @@ public class DiaryPanelManager : MonoBehaviour
     }
     private void PopulateEntries()
     {
+        Debug.Log(diaryEntries.Count);
         for(int i = 0; i < diaryEntries.Count; i++)
         {
             GameObject go = Instantiate(diaryEntryPrefab,scrollContentObject);
@@ -55,12 +56,13 @@ public class DiaryPanelManager : MonoBehaviour
     }
     public void AddEntry(DiaryEntry entry)
     {
-        diaryEntries.Add(entry);
+        //diaryEntries.Add(entry); //if you copy player.diaryEntries instead of referencing to it
         GameObject go = Instantiate(diaryEntryPrefab, scrollContentObject);
         DiaryEntryManager mgr = go.GetComponent<DiaryEntryManager>();
         mgr.UpdateEntry(entry);
         mgr.onEnableContent.AddListener(diaryContent.SetupDiaryContent);
         GameManager.instance.player.AddDiaryEntry(entry);
+        
     }
     public void SaveTest()
     {
