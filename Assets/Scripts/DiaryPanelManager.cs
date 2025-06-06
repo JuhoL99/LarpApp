@@ -13,7 +13,7 @@ public class DiaryPanelManager : MonoBehaviour
     [SerializeField] private Transform scrollContentObject;
 
     //add button with input field to create new diary entry objects
-    //add similar inputfield and saving as in profile and connections to write into diary entry
+    //add inputfield and check active diaryentry change text based on field/load text into field
     private void Start()
     {
         //diaryEntries = GenerateFakeEntries();

@@ -140,7 +140,7 @@ public class PlayerData
             DiaryEntryWrapper w = new DiaryEntryWrapper();
             w.text = entry.entryText;
             w.title = entry.entryTitle;
-            w.time = entry.entryTime;
+            w.time = entry.entryTime.ToString();
             allEntries.entries.Add(w);
         }
         string data = JsonUtility.ToJson(allEntries);
@@ -153,7 +153,7 @@ public class PlayerData
         AllDiaryEntryWrapper entriesW = JsonUtility.FromJson<AllDiaryEntryWrapper>(loadData);
         foreach(DiaryEntryWrapper entry in entriesW.entries)
         {
-            DiaryEntry loadedEntry = new DiaryEntry(entry.title, entry.text, entry.time);
+            DiaryEntry loadedEntry = new DiaryEntry(entry.title, entry.text, DateTime.Parse(entry.time));
             diaryEntries.Add(loadedEntry);
         }
     }
