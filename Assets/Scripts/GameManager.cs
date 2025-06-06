@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     [Header("Info")]
     public CardSO currentScannedCard;
     [Header("Testing")]
-    [SerializeField] private bool generateNamesForScriptableObjects = false; //temporary
-    [SerializeField] private bool generateUsersFromStart = false;
     [SerializeField] private TMP_Text posx;
     [SerializeField] private TMP_Text posy;
     [SerializeField] private TMP_Text posz;
@@ -40,7 +38,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
-        if(generateNamesForScriptableObjects) cardDatabase.NamesFromImageFile();
         RefreshRate refreshRate = Screen.currentResolution.refreshRateRatio;
         Application.targetFrameRate = refreshRate.value > 0 ? Mathf.RoundToInt((float)refreshRate.value) : 60;
     }
@@ -52,7 +49,6 @@ public class GameManager : MonoBehaviour
         //disable card switch option when card selection detected
         connectionPanelManager.someoneAddedCard.AddListener(() => isLookingForCardToSelect = false);
         profilePanelManager.cardAddedToProfile.AddListener(() => isLookingForCardToSelect = false);
-        if(generateUsersFromStart) StartCoroutine(LateStart());
     }
     private void HandleInput(InputAction.CallbackContext ctx)
     {
@@ -60,18 +56,6 @@ public class GameManager : MonoBehaviour
         {
             onBackAction?.Invoke();
             if(cardPopup.activeInHierarchy) cardPopup.SetActive(false);
-        }
-    }
-    private IEnumerator LateStart()
-    {
-        yield return new WaitForSeconds(1f);
-        for (int i = 0; i < 10; i++)
-        {
-            UserData user = new UserData($"name{i}");
-            user.AddCardToUser(cardDatabase.GetCardByID(Random.Range(0, 69)), 0);
-            user.AddCardToUser(cardDatabase.GetCardByID(Random.Range(0, 69)), 1);
-            user.AddUserNotes("notenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenotenote");
-            player.AddUserToRelations(user);
         }
     }
     //when card is clicked after this is called, change that cards

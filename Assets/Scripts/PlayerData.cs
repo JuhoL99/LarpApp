@@ -8,6 +8,7 @@ public class PlayerData
     public string playerNotes;
     public CardSO[] playerArchetypeCards;
     public CardSO[] playerFateCards;
+    public List<DiaryEntry> diaryEntries;
     public List<UserData> playerAddedRelations;
     public int maxArchetypeCardAmount = 2;
     public int maxFateCardAmount = 3;
@@ -124,6 +125,31 @@ public class PlayerData
         }
         string data = JsonUtility.ToJson(userRelations);
         return data;
+    }
+    public string GetDiaryEntriesString()
+    {
+        List<DiaryEntryWrapper> entries = new List<DiaryEntryWrapper>();
+        foreach(DiaryEntry entry in diaryEntries)
+        {
+            DiaryEntryWrapper w = new DiaryEntryWrapper();
+            w.text = entry.entryText;
+            w.title = entry.entryTitle;
+            w.time = entry.entryTime;
+            entries.Add(w);
+        }
+        string data = JsonUtility.ToJson(entries);
+        return data;
+
+    }
+    public void LoadDiaryEntriesFromString(string loadData)
+    {
+        if(string.IsNullOrEmpty(loadData)) return;
+        List<DiaryEntryWrapper> entries = JsonUtility.FromJson<List<DiaryEntryWrapper>>(loadData);
+        foreach(DiaryEntryWrapper entry in entries)
+        {
+            DiaryEntry loadedEntry = new DiaryEntry(entry.title, entry.text, entry.time);
+            diaryEntries.Add(loadedEntry);
+        }
     }
     public void LoadPlayerCardsFromString(string loadData)
     {
