@@ -62,6 +62,7 @@ public class SaveLoadManager : MonoBehaviour
     private void SaveToFile()
     {
         if (playerData == null) playerData = GameManager.instance.player;
+        Debug.Log(playerData.GetDiaryEntriesString());
         Save save = new Save(
             playerData.playerName,
             playerData.playerNotes,
@@ -70,8 +71,8 @@ public class SaveLoadManager : MonoBehaviour
             playerData.GetUserRelationsString(),
             playerData.GetUserCardString(),
             playerData.GetUserFateCardString(),
-            playerData.GetUserNoteString()
-            //get diary
+            playerData.GetUserNoteString(),
+            playerData.GetDiaryEntriesString()
             );
         string text = JsonUtility.ToJson(save);
         string savePath = Path.Combine(Application.persistentDataPath, "save.json");
@@ -111,7 +112,7 @@ public class SaveLoadManager : MonoBehaviour
         playerData.LoadUserNoteFromString(save.linkedUserNotesNew);
         playerData.LoadPlayerFateCardsFromString(save.playerFateCards);
         playerData.LoadUserFateCardsFromString(save.linkedUserFateCards);
-        //load diary
+        playerData.LoadDiaryEntriesFromString(save.diaryEntries);
         GameManager.instance.player = playerData;
         onGameLoaded?.Invoke();
     }

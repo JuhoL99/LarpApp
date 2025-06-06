@@ -13,13 +13,14 @@ public class PlayerData
     public int maxArchetypeCardAmount = 2;
     public int maxFateCardAmount = 3;
 
-    public PlayerData(string name = null, string notes = null, CardSO[] cards = null, CardSO[] fateCards = null, List<UserData> addedRelations = null)
+    public PlayerData(string name = null, string notes = null, CardSO[] cards = null, CardSO[] fateCards = null, List<UserData> addedRelations = null, List<DiaryEntry> entries = null)
     {
         playerName = name;
         playerNotes = notes;
         playerArchetypeCards = cards == null ? new CardSO[maxArchetypeCardAmount] : cards;
         playerFateCards = cards == null ? new CardSO[maxFateCardAmount] : fateCards;
         playerAddedRelations = addedRelations == null ? new List<UserData>() : addedRelations;
+        diaryEntries = entries == null ? new List<DiaryEntry>() : entries;
     }
     public void ChangePlayerName(string newName)
     {
@@ -52,6 +53,10 @@ public class PlayerData
         {
             playerFateCards[index] = card;
         }
+    }
+    public void AddDiaryEntry(DiaryEntry entryToAdd)
+    {
+        diaryEntries.Add(entryToAdd);
     }
     public string GetPlayerFateCardString()
     {
@@ -128,24 +133,25 @@ public class PlayerData
     }
     public string GetDiaryEntriesString()
     {
-        List<DiaryEntryWrapper> entries = new List<DiaryEntryWrapper>();
+        AllDiaryEntryWrapper allEntries = new AllDiaryEntryWrapper();
+        allEntries.entries = new List<DiaryEntryWrapper>();
         foreach(DiaryEntry entry in diaryEntries)
         {
             DiaryEntryWrapper w = new DiaryEntryWrapper();
             w.text = entry.entryText;
             w.title = entry.entryTitle;
             w.time = entry.entryTime;
-            entries.Add(w);
+            allEntries.entries.Add(w);
         }
-        string data = JsonUtility.ToJson(entries);
+        string data = JsonUtility.ToJson(allEntries);
         return data;
 
     }
     public void LoadDiaryEntriesFromString(string loadData)
     {
         if(string.IsNullOrEmpty(loadData)) return;
-        List<DiaryEntryWrapper> entries = JsonUtility.FromJson<List<DiaryEntryWrapper>>(loadData);
-        foreach(DiaryEntryWrapper entry in entries)
+        AllDiaryEntryWrapper entriesW = JsonUtility.FromJson<AllDiaryEntryWrapper>(loadData);
+        foreach(DiaryEntryWrapper entry in entriesW.entries)
         {
             DiaryEntry loadedEntry = new DiaryEntry(entry.title, entry.text, entry.time);
             diaryEntries.Add(loadedEntry);

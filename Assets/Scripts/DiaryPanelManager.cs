@@ -1,6 +1,8 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Collections;
+using easyar;
 
 public class DiaryPanelManager : MonoBehaviour
 {
@@ -14,10 +16,16 @@ public class DiaryPanelManager : MonoBehaviour
     //add similar inputfield and saving as in profile and connections to write into diary entry
     private void Start()
     {
-        diaryEntries = GenerateFakeEntries();
+        //diaryEntries = GenerateFakeEntries();
+        StartCoroutine(DelayStart());
+    }
+    private IEnumerator DelayStart()
+    {
+        yield return null;
         LoadEntriesFromFile();
         PopulateEntries();
         diaryContent.ClosePage();
+
     }
     private List<DiaryEntry> GenerateFakeEntries()
     {
@@ -40,13 +48,9 @@ public class DiaryPanelManager : MonoBehaviour
             //set diarycontent to entry manager here and enable/disable listeners in script l8r to reduce simultaneous listeners
         }
     }
-    private void SaveDiaryEntries()
-    {
-        //add stuff 
-    }
     private void LoadEntriesFromFile()
     {
-        if(GameManager.instance != null) diaryEntries = GameManager.instance.player.diaryEntries;
+        diaryEntries = GameManager.instance.player.diaryEntries;
         return;
     }
     public void AddEntry(DiaryEntry entry)
@@ -56,5 +60,10 @@ public class DiaryPanelManager : MonoBehaviour
         DiaryEntryManager mgr = go.GetComponent<DiaryEntryManager>();
         mgr.UpdateEntry(entry);
         mgr.onEnableContent.AddListener(diaryContent.SetupDiaryContent);
+        GameManager.instance.player.AddDiaryEntry(entry);
+    }
+    public void SaveTest()
+    {
+        AddEntry(new DiaryEntry("title", "text", DateTime.Now));
     }
 }
