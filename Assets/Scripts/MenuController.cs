@@ -20,8 +20,6 @@ public class MenuController : MonoBehaviour
     // Input System action reference for back button
     private InputAction backAction;
 
-    public ARCameraManager arCameraManager;
-
     void Awake()
     {
         // Enable enhanced touch support
@@ -39,13 +37,11 @@ public class MenuController : MonoBehaviour
         // Make sure start panel is always active first
         mainScreen.SetActive(false);
         ShowStartScreen();
-        arCameraManager = FindAnyObjectByType<ARCameraManager>();
     }
 
     void Update()
     {
-        // Set device camera active when needed
-        //SetCamera();
+
     }
 
     // Method to handle back button functionality
@@ -129,20 +125,6 @@ public class MenuController : MonoBehaviour
         foreach (GameObject otherScreen in otherScreens)
         {
             otherScreen.SetActive(otherScreen == screen);
-        }
-    }
-
-    void SetCamera()
-    {
-        if (scannerPanel.activeSelf)
-        {
-            arCameraManager.EnableCamera(true);
-            backgroundImage.SetActive(false);
-        }
-        else
-        {
-            arCameraManager.EnableCamera(false);
-            backgroundImage.SetActive(true);
         }
     }
 

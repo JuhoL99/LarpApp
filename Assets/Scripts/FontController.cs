@@ -6,7 +6,6 @@ public class FontController : MonoBehaviour
 {
     [Header("Font Size Settings")]
     private float newFontSize;
-    private float defaultFontSize = 72f;
     [SerializeField] private bool includeInactive = true;
 
     [Header("Slider Settings")]

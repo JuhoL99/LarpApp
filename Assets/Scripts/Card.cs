@@ -19,10 +19,7 @@ public class Card : MonoBehaviour
     private Image img;
     [Header("Buttons")]
     [SerializeField] private Button interactButton;
-    private TMP_Text buttonText;
-    private bool isEmpty;
     private bool facingTop = true;
-    private bool canRotate = true;
     public bool canBeSwitched = true;
     public UnityEvent<int, MarkerType> onCardSwitched;
     private void Start()

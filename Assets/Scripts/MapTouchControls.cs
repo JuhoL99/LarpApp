@@ -30,8 +30,6 @@ public class MapTouchController : MonoBehaviour
     private float lastTouchDistance;
     private float lastTouchAngle;
     private bool isPanning = false;
-    private Vector3 initialScale;
-    private float initialRotation;
 
     // Gesture detection variables
     private enum GestureType { None, Zoom, Rotation }
@@ -51,9 +49,6 @@ public class MapTouchController : MonoBehaviour
     {
         if (mapTransform == null)
             mapTransform = GetComponent<RectTransform>();
-
-        initialScale = mapTransform.localScale;
-        initialRotation = mapTransform.eulerAngles.z;
 
         // Get input devices
         touchscreen = Touchscreen.current;
@@ -86,7 +81,7 @@ public class MapTouchController : MonoBehaviour
 
     private void ShowFloor(int floorIndex)
     {
-        // Hide all floor images
+        // Hide all floor images, set selected active
         for (int i = 0; i < mapImages.Count; i++)
         {
             if (mapImages[i] != null)
