@@ -9,6 +9,8 @@ public class ProfilePanelManager : MonoBehaviour
     [SerializeField] private GameObject profilePanel;
     [Header("Profile Archetype Cards")]
     [SerializeField] private Card[] archetypeCards = new Card[2];
+    [Header("Additional Archetype Displays")]
+    [SerializeField] private Card[] linkedArchetypeCards = new Card[2];
     [Header("Profile Fate Cards")]
     [SerializeField] private Card[] fateCards = new Card[3];
     [Header("Card Added Event")]
@@ -51,6 +53,20 @@ public class ProfilePanelManager : MonoBehaviour
                 GameManager.instance?.player?.playerFateCards[i]
                 );
             i++;
+        }
+
+        // Link the cards on main screen to display the same cards as profile panel
+        for (int j = 0; j < archetypeCards.Length && j < linkedArchetypeCards.Length; j++)
+        {
+            if (linkedArchetypeCards[j] != null && archetypeCards[j] != null)
+            {
+                linkedArchetypeCards[j].SetCurrentCard(archetypeCards[j].GetCurrentCard());
+
+                int capturedIndex = j;
+                archetypeCards[j].onCardSwitched.AddListener((idx, type) => {
+                    linkedArchetypeCards[capturedIndex].SetCurrentCard(archetypeCards[capturedIndex].GetCurrentCard());
+                });
+            }
         }
     }
     private void CardAssignRequestToProfile(CardSO card)

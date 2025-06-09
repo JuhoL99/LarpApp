@@ -12,7 +12,7 @@ public class CardsPanelManager : MonoBehaviour
     [SerializeField] private Transform fateView;
     private bool showingArchetype;
 
-    private int archetypeLastIndex = 70; //archetypes first in db, fates after
+    private int archetypeLastIndex = 60; //archetypes first in db, fates after
     private void Start()
     {
         PopulateArchetypeCardDisplays();
