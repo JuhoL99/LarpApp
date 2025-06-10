@@ -256,7 +256,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2694011600424001424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3198929910084314251}
+        m_TargetAssemblyTypeName: DiaryEntryManager, Assembly-CSharp
+        m_MethodName: EditEntry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4656202996283320580
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,12 +532,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b772b490c97ad4ebe60c1201b4c104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onEnableContent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEditEntry:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeleteEntry:
+    m_PersistentCalls:
+      m_Calls: []
   titleText: {fileID: 4473924437421824705}
   timeText: {fileID: 8098511972171430859}
-  entryText: {fileID: 0}
-  entryTextContentObject: {fileID: 0}
   openDiaryEntryButton: {fileID: 4953554280097431671}
-  closeDiaryEntryButton: {fileID: 0}
+  editButton: {fileID: 0}
+  deleteButton: {fileID: 0}
 --- !u!1 &8634474396781212401
 GameObject:
   m_ObjectHideFlags: 0

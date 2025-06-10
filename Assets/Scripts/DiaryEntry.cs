@@ -13,5 +13,4 @@ public class DiaryEntry
         entryText = text;
         entryTime = time;
     }
-
 }
