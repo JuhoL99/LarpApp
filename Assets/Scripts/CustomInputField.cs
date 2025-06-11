@@ -22,7 +22,7 @@ public abstract class CustomInputField : MonoBehaviour
         inputField.customCaretColor = true;
         inputField.onFocusSelectAll = false;
         inputField.resetOnDeActivation = false;
-        inputField.shouldHideMobileInput = true;
+        inputField.shouldHideMobileInput = false;
         inputField.restoreOriginalTextOnEscape = false;
     }
     protected virtual void OnEnable()

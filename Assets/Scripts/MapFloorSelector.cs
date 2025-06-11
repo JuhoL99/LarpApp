@@ -24,7 +24,7 @@ public class MapFloorSelector : MonoBehaviour
     public AnimationCurve animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     private bool isDropdownOpen = false;
-    private int selectedIndex = 0;
+    public int selectedIndex = 0;
 
     [System.Serializable]
     public class DropdownOption
@@ -47,12 +47,6 @@ public class MapFloorSelector : MonoBehaviour
         // Setup main button
         mainButton.onClick.AddListener(ToggleDropdown);
 
-        // Set initial image if we have options
-        if (options.Count > 0 && options[selectedIndex].sprite != null)
-        {
-            mainButtonImage.sprite = options[selectedIndex].sprite;
-        }
-
         // Setup option buttons
         for (int i = 0; i < options.Count; i++)
         {
@@ -60,12 +54,6 @@ public class MapFloorSelector : MonoBehaviour
 
             if (options[i].button != null)
             {
-                // Set the image for the option button
-                if (options[i].buttonImage != null && options[i].sprite != null)
-                {
-                    options[i].buttonImage.sprite = options[i].sprite;
-                }
-
                 // Add click listener
                 options[i].button.onClick.AddListener(() => SelectOption(index));
             }

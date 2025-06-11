@@ -16,13 +16,14 @@ public class DiaryPanelManager : MonoBehaviour
     [SerializeField] private Transform scrollContentObject;
 
     [Header("Entry Creation UI")]
-    [SerializeField] private GameObject createEntryPanel;
+    [SerializeField] private GameObject entryPanel;
     [SerializeField] private TMP_InputField titleInputField;
     [SerializeField] private TMP_InputField contentInputField;
     [SerializeField] private Button addEntryButton;
     [SerializeField] private Button saveEntryButton;
     [SerializeField] private Button cancelEntryButton;
-    [SerializeField] private TMP_Text panelTitleText; // Add this reference
+    [SerializeField] private Button deleteEntryButton;
+    [SerializeField] private TMP_Text panelTitleText;
 
     [Header("Currently Editing")]
     private DiaryEntry currentlyEditingEntry;
@@ -39,6 +40,7 @@ public class DiaryPanelManager : MonoBehaviour
     {
         addEntryButton.onClick.AddListener(OpenCreateEntryPanel);
         saveEntryButton.onClick.AddListener(SaveEntry);
+        deleteEntryButton.onClick.AddListener(DeleteCurrentEntry);
         cancelEntryButton.onClick.AddListener(CancelEntry);
     }
 
@@ -48,7 +50,7 @@ public class DiaryPanelManager : MonoBehaviour
         LoadEntriesFromFile();
         PopulateEntries();
         diaryContent.ClosePage();
-        createEntryPanel.SetActive(false);
+        entryPanel.SetActive(false);
     }
 
     private void PopulateEntries()
@@ -74,7 +76,7 @@ public class DiaryPanelManager : MonoBehaviour
         mgr.UpdateEntry(entry);
         mgr.onEnableContent.AddListener(diaryContent.SetupDiaryContent);
 
-        // Connect edit and delete functionality for this specific entry
+        // Enable edit and delete functionality for this specific entry
         mgr.onEditEntry.AddListener(OpenEditEntryPanel);
         mgr.onDeleteEntry.AddListener(DeleteEntry);
     }
@@ -92,11 +94,14 @@ public class DiaryPanelManager : MonoBehaviour
 
         titleInputField.text = "";
         contentInputField.text = "";
-        createEntryPanel.SetActive(true);
+        entryPanel.SetActive(true);
 
         // Focus on title field
         titleInputField.Select();
         panelTitleText.text = "New Entry";
+
+        // Hide delete button when creating new entry
+        deleteEntryButton.gameObject.SetActive(false);
     }
 
     public void OpenEditEntryPanel(DiaryEntry entry, DiaryEntryManager manager)
@@ -107,10 +112,13 @@ public class DiaryPanelManager : MonoBehaviour
 
         titleInputField.text = entry.entryTitle;
         contentInputField.text = entry.entryText;
-        createEntryPanel.SetActive(true);
+        entryPanel.SetActive(true);
 
         titleInputField.Select();
         panelTitleText.text = "Edit Entry";
+
+        // Show delete button when editing existing entry
+        deleteEntryButton.gameObject.SetActive(true);
     }
 
     public void SaveEntry()
@@ -121,7 +129,6 @@ public class DiaryPanelManager : MonoBehaviour
         // Validate input
         if (string.IsNullOrEmpty(title))
         {
-            Debug.LogWarning("Title cannot be empty!");
             return;
         }
 
@@ -134,23 +141,29 @@ public class DiaryPanelManager : MonoBehaviour
 
             // Update the UI
             currentlyEditingManager.UpdateEntry(currentlyEditingEntry);
-
-            Debug.Log("Entry updated successfully!");
         }
         else
         {
             // Create new entry
             DiaryEntry newEntry = new DiaryEntry(title, content, DateTime.Now);
             AddEntry(newEntry);
-            Debug.Log("New entry created successfully!");
         }
 
         CancelEntry(); // Close the panel
     }
 
+    public void DeleteCurrentEntry()
+    {
+        if (isEditingMode && currentlyEditingEntry != null)
+        {
+            DeleteEntry(currentlyEditingEntry);
+            CancelEntry(); // Close the panel after deletion
+        }
+    }
+
     public void CancelEntry()
     {
-        createEntryPanel.SetActive(false);
+        entryPanel.SetActive(false);
         isEditingMode = false;
         currentlyEditingEntry = null;
         currentlyEditingManager = null;
@@ -172,11 +185,5 @@ public class DiaryPanelManager : MonoBehaviour
 
         // Refresh the UI
         PopulateEntries();
-    }
-
-    // Test method - you can remove this later
-    public void SaveTest()
-    {
-        AddEntry(new DiaryEntry("Test Entry", "This is a test entry created programmatically.", DateTime.Now));
     }
 }
