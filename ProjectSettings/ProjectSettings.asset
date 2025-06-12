@@ -566,7 +566,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
+  cameraUsageDescription: Camera is used for scanning QR-codes.
   locationUsageDescription: 
   microphoneUsageDescription: 
   bluetoothUsageDescription: 

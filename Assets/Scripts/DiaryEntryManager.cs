@@ -12,25 +12,18 @@ public class DiaryEntryManager : MonoBehaviour
 
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text timeText;
-    [SerializeField] private Button openDiaryEntryButton;
-    [SerializeField] private Button deleteButton; // Optional: dedicated delete button
+    [SerializeField] private Button openDiaryEntryButton; 
 
     private DiaryEntry assignedEntry;
 
     private void OnEnable()
     {
         openDiaryEntryButton.onClick.AddListener(EnableContent);
-
-        if (deleteButton != null)
-            deleteButton.onClick.AddListener(DeleteEntry);
     }
 
     private void OnDisable()
     {
         openDiaryEntryButton.onClick.RemoveListener(EnableContent);
-
-        if (deleteButton != null)
-            deleteButton.onClick.RemoveListener(DeleteEntry);
     }
 
     public void UpdateEntry(DiaryEntry diaryEntry)

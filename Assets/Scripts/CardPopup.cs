@@ -44,7 +44,7 @@ public class CardPopup : MonoBehaviour
         if (rotateButton != null) rotateButton.onClick.AddListener(Rotate);
         if (qrButton != null) qrButton.onClick.AddListener(ToggleQR);
 
-        popupBackground.gameObject.SetActive(false);
+        popupBackground.gameObject.SetActive(true);
     }
 
     private void OnEnable()
