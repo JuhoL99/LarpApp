@@ -57,15 +57,15 @@ public class InputFieldExtension : MonoBehaviour
     private void OpenInputExtension()
     {
         open = true;
-//#if UNITY_ANDROID
-//        currentEditedField.anchoredPosition =
-//            new Vector2(0f, GameManager.instance.GetKeyboardSize()
-//            - (worldPos.y - currentEditedField.rect.height/2));
-//#elif UNITY_IOS
-//         currentEditedField.anchoredPosition =
-//            new Vector2(0f, TouchScreenKeyboard.area.height
-//            - (worldPos.y - currentEditedField.rect.height/2));
-//#endif
+#if UNITY_ANDROID
+        currentEditedField.anchoredPosition =
+            new Vector2(0f, GameManager.instance.GetKeyboardSize()
+            - (worldPos.y - currentEditedField.rect.height/2));
+#elif UNITY_IOS
+         currentEditedField.anchoredPosition =
+            new Vector2(0f, TouchScreenKeyboard.area.height
+            - (worldPos.y - currentEditedField.rect.height/2));
+#endif
     }
     private void CloseInputExtension()
     {
