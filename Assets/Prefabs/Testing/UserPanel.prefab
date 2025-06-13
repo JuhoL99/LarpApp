@@ -1938,6 +1938,9 @@ MonoBehaviour:
   inputField: {fileID: 0}
   editingColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.47058824}
   normalColor: {r: 0.32156864, g: 0.32156864, b: 0.32156864, a: 0.47058824}
+  onFieldEditStarted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4562936819619396811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,7 +2744,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1060, y: 535}
+  m_SizeDelta: {x: 1020, y: 535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3007283072735067538
 CanvasRenderer:
@@ -2764,7 +2767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -49,7 +49,7 @@ public class ConnectionsPanelManager : MonoBehaviour
     }
     private void OnInputFieldChanged(string txt)
     {
-        if (string.IsNullOrWhiteSpace(txt)) nameWarningText.text = "Name empty";
+        if (string.IsNullOrWhiteSpace(txt)) nameWarningText.text = string.Empty;
         else if (txt.Length < 1) nameWarningText.text = "Name too short";
         else if (txt.Length > 20) nameWarningText.text = "Name too long";
         else nameWarningText.text = string.Empty;
