@@ -17946,7 +17946,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1279473281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a0a66a8cb8432644a5228b9168c5020, type: 3}
+  m_Script: {fileID: 11500000, guid: 77be2a4af6b0cb042a62d0cbafe71013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   editFieldButton: {fileID: 2001890277}
@@ -19613,7 +19613,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1396876812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a0a66a8cb8432644a5228b9168c5020, type: 3}
+  m_Script: {fileID: 11500000, guid: 847afd8a3fda06441bd133802ac5651f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   editFieldButton: {fileID: 1610893969}
@@ -24597,7 +24597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldsEnabledOn:
   - {fileID: 973772800}
-  - {fileID: 1396876817}
+  - {fileID: 0}
 --- !u!1 &1864730000
 GameObject:
   m_ObjectHideFlags: 0
@@ -27696,7 +27696,7 @@ PrefabInstance:
     - target: {fileID: 215046768055233031, guid: 495da5fe568fe804cba7eed16f1b8f49, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 84a670d888b069447a577b63af5b9447, type: 3}
+      objectReference: {fileID: 21300000, guid: 7568b10b403152745a50cdd514b36853, type: 3}
     - target: {fileID: 285105714843372391, guid: 495da5fe568fe804cba7eed16f1b8f49, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
@@ -27832,11 +27832,11 @@ PrefabInstance:
     - target: {fileID: 6675669786280750931, guid: 495da5fe568fe804cba7eed16f1b8f49, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4c5d8f7d0cad9ea45b0936d4aff2e687, type: 3}
+      objectReference: {fileID: 21300000, guid: c6c0c86591a04bd41b47e6a16b96a549, type: 3}
     - target: {fileID: 6701436997526527553, guid: 495da5fe568fe804cba7eed16f1b8f49, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 87169d0d48aab4f45b3ab5a7392dcdec, type: 3}
+      objectReference: {fileID: 21300000, guid: 0b3eb50d99af5ff4b89df024b9a7df8c, type: 3}
     - target: {fileID: 6748579428016675730, guid: 495da5fe568fe804cba7eed16f1b8f49, type: 3}
       propertyPath: m_Name
       value: MapPanel
@@ -28558,7 +28558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

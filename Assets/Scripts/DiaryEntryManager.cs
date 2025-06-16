@@ -12,7 +12,7 @@ public class DiaryEntryManager : MonoBehaviour
 
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text timeText;
-    [SerializeField] private Button openDiaryEntryButton; 
+    [SerializeField] private Button openDiaryEntryButton;
 
     private DiaryEntry assignedEntry;
 
@@ -50,7 +50,6 @@ public class DiaryEntryManager : MonoBehaviour
 
     public void DeleteEntry()
     {
-        // You might want to add a confirmation dialog here
         if (ShowDeleteConfirmation())
         {
             onDeleteEntry?.Invoke(assignedEntry);
@@ -59,8 +58,15 @@ public class DiaryEntryManager : MonoBehaviour
 
     private bool ShowDeleteConfirmation()
     {
-        // For now, just return true. You could implement a proper confirmation dialog
-        // or use Unity's EditorUtility.DisplayDialog for testing
+        // Placeholder if confirmation is implemented in the future
         return true;
+    }
+
+    public void RefreshVisuals()
+    {
+        if (assignedEntry != null)
+        {
+            UpdateVisuals();
+        }
     }
 }
