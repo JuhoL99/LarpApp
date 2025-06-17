@@ -14,7 +14,7 @@ public class CardPopup : MonoBehaviour
     [Header("QR Code Settings")]
     [SerializeField] private RectTransform qrCodeRect; // Assign the QR code's RectTransform
     [SerializeField] private float zoomScale = 3f; // How much to zoom
-    [SerializeField] private float zoomDuration = 0.5f; // Animation duration
+    [SerializeField] private float zoomDuration = 0.25f; // Animation duration
 
     [Header("Open card face or text on popup")]
     [SerializeField] private bool openCardTextSideOnPopup;
@@ -86,7 +86,7 @@ public class CardPopup : MonoBehaviour
         bgImg.color = new Color(0f, 0f, 0f, 0f);
         bgImg.DOColor(new Color(0f, 0f, 0f, 0.75f), 1f);
         transform.localScale = Vector3.zero;
-        transform.DOScale(1f, 1f);
+        transform.DOScale(1f, 0.25f);
     }
 
     public void ClosePopup()

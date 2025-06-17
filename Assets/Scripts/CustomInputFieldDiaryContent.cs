@@ -14,33 +14,30 @@ public class CustomInputFieldDiaryText : CustomInputField
         inputField.contentType = TMP_InputField.ContentType.Standard;
         inputField.lineType = TMP_InputField.LineType.MultiLineNewline;
     }
-
-    public void SetLinkedDiaryEntry(DiaryEntry entry)
-    {
-        linkedDiaryEntry = entry;
-        LoadText();
-    }
-
     protected override void OnEnable()
     {
         base.OnEnable();
-        LoadText();
+        if (inputField != null && linkedDiaryEntry != null)
+        {
+            inputField.text = linkedDiaryEntry.entryText;
+        }
     }
-
     public override void EnableTextEdit()
     {
         onFieldEditStarted?.Invoke(GetComponent<RectTransform>());
         base.EnableTextEdit();
     }
-
     protected override void OnDisable()
     {
-        SaveText();
+        if (inputField != null && linkedDiaryEntry != null)
+        {
+            linkedDiaryEntry.entryText = inputField.text;
+        }
         base.OnDisable();
     }
-
     public override void StopTextEdit(string text = null)
     {
+        //scrollRect.enabled = true;
         if (linkedDiaryEntry != null && text != null)
         {
             linkedDiaryEntry.entryText = text;
@@ -49,20 +46,11 @@ public class CustomInputFieldDiaryText : CustomInputField
         inputField.ForceLabelUpdate();
         base.StopTextEdit(text);
     }
-
     public override void LoadText()
     {
         if (linkedDiaryEntry != null && inputField != null)
         {
             inputField.text = linkedDiaryEntry.entryText;
-        }
-    }
-
-    private void SaveText()
-    {
-        if (inputField != null && linkedDiaryEntry != null)
-        {
-            linkedDiaryEntry.entryText = inputField.text;
         }
     }
 }

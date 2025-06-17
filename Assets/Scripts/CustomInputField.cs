@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public abstract class CustomInputField : MonoBehaviour
 {
-    public Button editFieldButton;
     protected UserData linkedUser;
     protected PlayerData linkedPlayer;
     public TMP_InputField inputField;
@@ -18,7 +17,7 @@ public abstract class CustomInputField : MonoBehaviour
         inputField = GetComponent<TMP_InputField>();
         img = GetComponent<Image>();
         img.color = normalColor;
-        inputField.interactable = false;
+        inputField.interactable = true;
         inputField.customCaretColor = true;
         inputField.onFocusSelectAll = false;
         inputField.resetOnDeActivation = false;
@@ -29,7 +28,6 @@ public abstract class CustomInputField : MonoBehaviour
     {
         img.color = normalColor;
         inputField.onDeselect.AddListener(StopTextEdit);
-        editFieldButton.onClick.AddListener(EnableTextEdit);
     }
     public virtual void AssignPlayer(PlayerData player)
     {
@@ -44,9 +42,7 @@ public abstract class CustomInputField : MonoBehaviour
     }
     protected virtual void OnDisable()
     {
-        inputField.interactable = false;
         inputField.onDeselect.RemoveListener(StopTextEdit);
-        editFieldButton.onClick.RemoveListener(EnableTextEdit);
     }
     protected virtual void Start()
     {
@@ -59,7 +55,6 @@ public abstract class CustomInputField : MonoBehaviour
             StopTextEdit();
             return;
         }
-        inputField.interactable = true;
         img.color = editingColor;
         ToggleCaret(true);
         inputField.Select();
@@ -87,6 +82,5 @@ public abstract class CustomInputField : MonoBehaviour
     protected virtual IEnumerator DisableInputNextFrame()
     {
         yield return null;
-        inputField.interactable = false;
     }
 }

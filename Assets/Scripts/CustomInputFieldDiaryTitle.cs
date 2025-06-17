@@ -11,59 +11,38 @@ public class CustomInputFieldDiaryTitle : CustomInputField
     protected override void Awake()
     {
         base.Awake();
-        inputField.contentType = TMP_InputField.ContentType.Standard;
-        inputField.lineType = TMP_InputField.LineType.SingleLine;
+        inputField.contentType = TMPro.TMP_InputField.ContentType.Standard;
         inputField.characterLimit = 28;
     }
-
-    public void SetLinkedDiaryEntry(DiaryEntry entry)
-    {
-        linkedDiaryEntry = entry;
-        LoadText();
-    }
-
     protected override void OnEnable()
     {
         base.OnEnable();
-        LoadText();
+        if (inputField != null && linkedDiaryEntry != null)
+        {
+            inputField.text = linkedDiaryEntry.entryTitle;
+        }
     }
-
-    public override void EnableTextEdit()
-    {
-        onFieldEditStarted?.Invoke(GetComponent<RectTransform>());
-        base.EnableTextEdit();
-    }
-
     protected override void OnDisable()
     {
-        SaveText();
+        if (inputField != null && linkedDiaryEntry != null)
+        {
+            inputField.text = linkedDiaryEntry.entryTitle;
+        }
         base.OnDisable();
     }
-
     public override void StopTextEdit(string text = null)
     {
         if (linkedDiaryEntry != null && text != null)
         {
             linkedDiaryEntry.entryTitle = text;
         }
-        inputField.MoveTextStart(true);
-        inputField.ForceLabelUpdate();
         base.StopTextEdit(text);
     }
-
     public override void LoadText()
     {
         if (linkedDiaryEntry != null && inputField != null)
         {
             inputField.text = linkedDiaryEntry.entryTitle;
-        }
-    }
-
-    private void SaveText()
-    {
-        if (inputField != null && linkedDiaryEntry != null)
-        {
-            linkedDiaryEntry.entryTitle = inputField.text;
         }
     }
 }
