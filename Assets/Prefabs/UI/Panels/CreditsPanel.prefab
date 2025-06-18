@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5444814655049841456
 RectTransform:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<size=80><b>Lumen App Development</b></size>\n\n<b>Project Manager</b>\n\n<size=60>Taisto
-    Suominen</size>\n\n<b>Programming</b>\n\n<size=60>Juho-Emil Lauren\nTino Voutilainen</size>\n\n<b>Artists</b>\n\n<size=60>Milla
+    Suominen</size>\n\n<b>Programmers</b>\n\n<size=60>Juho-Emil Lauren\nTino Voutilainen</size>\n\n<b>Artists</b>\n\n<size=60>Milla
     P\xF6yry\nJohannes Ojala</size>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
