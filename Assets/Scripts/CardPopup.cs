@@ -72,6 +72,9 @@ public class CardPopup : MonoBehaviour
         canRotate = false;
         float rotationZ = transform.rotation.z == 0 ? -180 : 0;
         transform.DORotate(new Vector3(0, 0, rotationZ), 0.5f).OnComplete(() => canRotate = true);
+
+        // Play sound effect
+        SoundFXManager.instance.PlayCardSound();
     }
 
     public void PopupEffect(CardSO _card)
@@ -87,12 +90,18 @@ public class CardPopup : MonoBehaviour
         bgImg.DOColor(new Color(0f, 0f, 0f, 0.75f), 1f);
         transform.localScale = Vector3.zero;
         transform.DOScale(1f, 0.25f);
+
+        // Play sound effect
+        SoundFXManager.instance.PlayZoomSound();
     }
 
     public void ClosePopup()
     {
         transform.parent.gameObject.SetActive(false);
         //transform.DOScale(0f, 1f);
+
+        // Play sound effect
+        SoundFXManager.instance.PlayButtonSound();
     }
 
     public void Flip()
@@ -102,6 +111,9 @@ public class CardPopup : MonoBehaviour
         if (facingTop) cardImg.sprite = cardSides[0];
         else cardImg.sprite = cardSides[1];
         transform.DOScaleX(0, 0.25f).onComplete = Flop;
+
+        // Play sound effect
+        SoundFXManager.instance.PlayCardSound();
     }
 
     private void Flop()
@@ -112,6 +124,9 @@ public class CardPopup : MonoBehaviour
         if (facingTop) cardImg.sprite = cardSides[0];
         else cardImg.sprite = cardSides[1];
         transform.DOScaleX(1, 0.25f);
+
+        // Play sound effect
+        //SoundFXManager.instance.PlayCardSound();
     }
 
     private void UpdateCardVisuals()
@@ -182,5 +197,8 @@ public class CardPopup : MonoBehaviour
         zoomSequence.Append(transform.DOLocalMove(targetPosition, zoomDuration));
         zoomSequence.Join(transform.DOScale(originalScale * zoomScale, zoomDuration));
         zoomSequence.SetEase(Ease.OutCubic);
+
+        // Sound effect
+        SoundFXManager.instance.PlayZoomSound();
     }
 }
