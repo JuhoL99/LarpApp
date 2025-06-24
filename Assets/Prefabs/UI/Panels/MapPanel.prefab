@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 5712936912607760593}
   - component: {fileID: 9141717206483948451}
   - component: {fileID: 5019193569333224648}
+  - component: {fileID: 1340230514782251633}
   m_Layer: 5
   m_Name: Floor3Button
   m_TagString: Untagged
@@ -299,6 +300,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1340230514782251633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319089257204364518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0bd9b6e2fe2f4681a6d8928d18bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3074119744456299992
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +324,7 @@ GameObject:
   - component: {fileID: 2712082726193035879}
   - component: {fileID: 6835350653022447376}
   - component: {fileID: 1997688292530487736}
+  - component: {fileID: 473455973082424328}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -431,6 +445,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &473455973082424328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3074119744456299992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0bd9b6e2fe2f4681a6d8928d18bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4909964774096838353
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +544,7 @@ GameObject:
   - component: {fileID: 5669229578251993213}
   - component: {fileID: 9223350539715993274}
   - component: {fileID: 7572070578551409061}
+  - component: {fileID: 6697035903542271270}
   m_Layer: 5
   m_Name: FloorSelectorButton
   m_TagString: Untagged
@@ -626,6 +653,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6697035903542271270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082224360209617991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0bd9b6e2fe2f4681a6d8928d18bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5683223748937757885
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +752,7 @@ GameObject:
   - component: {fileID: 3482349483591028436}
   - component: {fileID: 6126193510419403021}
   - component: {fileID: 285105714843372391}
+  - component: {fileID: 6649784742165532743}
   m_Layer: 5
   m_Name: Floor2Button
   m_TagString: Untagged
@@ -833,6 +873,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6649784742165532743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692206311979980108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0bd9b6e2fe2f4681a6d8928d18bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6231302414251332385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1097,7 @@ GameObject:
   - component: {fileID: 5251259415937931932}
   - component: {fileID: 7306600373344305188}
   - component: {fileID: 1225383121407632626}
+  - component: {fileID: 6971644496315201627}
   m_Layer: 5
   m_Name: Floor1Button
   m_TagString: Untagged
@@ -1165,6 +1218,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6971644496315201627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583327524555473511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0bd9b6e2fe2f4681a6d8928d18bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8334687678676371296
 GameObject:
   m_ObjectHideFlags: 0

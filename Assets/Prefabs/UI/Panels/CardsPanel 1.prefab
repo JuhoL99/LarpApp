@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 8133354824842735825}
   - component: {fileID: 482730348266721134}
   - component: {fileID: 4121239702001129763}
+  - component: {fileID: 4017288330291721230}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -574,6 +575,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4017288330291721230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3763129094715939301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0bd9b6e2fe2f4681a6d8928d18bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3841178122368671108
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +936,7 @@ GameObject:
   - component: {fileID: 6260046727302977851}
   - component: {fileID: 2936907737047612983}
   - component: {fileID: 1431295300937862271}
+  - component: {fileID: 6248698175999120498}
   m_Layer: 5
   m_Name: SwitchCardsButton
   m_TagString: Untagged
@@ -1043,3 +1057,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6248698175999120498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7362162848655936974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca0bd9b6e2fe2f4681a6d8928d18bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
