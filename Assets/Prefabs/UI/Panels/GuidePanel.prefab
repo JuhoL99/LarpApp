@@ -32,9 +32,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -16150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -15979}
   m_SizeDelta: {x: 1080, y: 1078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6674869291984323304
@@ -197,9 +197,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -1427}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1076, y: 814}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6062028999000709261
@@ -272,9 +272,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -3785}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3214}
   m_SizeDelta: {x: 1000, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5157625228420529696
@@ -412,9 +412,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -15461}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -15290}
   m_SizeDelta: {x: 1000, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1886207914485326643
@@ -445,9 +445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    When adding a card to a user, tap the card slot to assign the card'
+  m_text: When adding a card to a user, tap a card slot to assign the card
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
   m_sharedMaterial: {fileID: 5362840818329480169, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
@@ -550,9 +548,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -520}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2726353676504214916
@@ -583,17 +581,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'User Guide
+  m_text: '<b><size=120>User Guide</size></b>
 
 
-    Profile
+    <b>Profile</b>
 
 
-    <size=72>1. Tap the name field to enter
-    your characters name
+    <size=72>1.
+    Tap the name field to enter your characters name
 
 
-    2. Tap the note field to enter notes about your character</size>'
+    2. Tap the note field
+    to enter notes about your character</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
   m_sharedMaterial: {fileID: 5362840818329480169, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
@@ -696,9 +695,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -6315}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -5794}
   m_SizeDelta: {x: 1000, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3041200183164995005
@@ -729,11 +728,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Diary
+  m_text: '<b>Diary</b>
 
 
-    <size=72>1. Tap the "Add entry" button to add a new diary
-    entry
+    <size=72>1. Tap the "Add entry" button to add a new
+    diary entry
 
 
     2. Tap the "Open entry" button to view diary entry</size>'
@@ -839,10 +838,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -2209}
-  m_SizeDelta: {x: 1000, y: 850}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2234}
+  m_SizeDelta: {x: 1000, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6883151010896454736
 CanvasRenderer:
@@ -872,15 +871,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Contacts
+  m_text: '<b>Contacts</b>
 
 
-    <size=72> 1. To add a new contact, enter a name and tap
-    the "add new contact" button
+    <size=72> 1. To add a new contact, enter a name
+    and tap the "add new contact" button
 
 
-    2. To view contact''s details, tap the "view
-    details" button</size>'
+    2. To view contact''s details, tap
+    the "view details" button</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
   m_sharedMaterial: {fileID: 5362840818329480169, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
@@ -983,9 +982,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -12107}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -11836}
   m_SizeDelta: {x: 1080.1055, y: 2376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &411240169083751337
@@ -1058,9 +1057,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -3034.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2774}
   m_SizeDelta: {x: 1080, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &140049891209120624
@@ -1157,7 +1156,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -540, y: 0}
-  m_SizeDelta: {x: 1080.1055, y: 19295}
+  m_SizeDelta: {x: 0, y: 19424}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8702699053795127272
 MonoBehaviour:
@@ -1269,9 +1268,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -18417}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -18546}
   m_SizeDelta: {x: 1080, y: 1716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3735293359610473051
@@ -1344,10 +1343,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -13845}
-  m_SizeDelta: {x: 1000, y: 1100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -13624}
+  m_SizeDelta: {x: 1000, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7363381603289896778
 CanvasRenderer:
@@ -1493,10 +1492,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -7915}
-  m_SizeDelta: {x: 1000, y: 1200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -7494}
+  m_SizeDelta: {x: 1000, y: 1300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3435497143490904067
 CanvasRenderer:
@@ -1790,9 +1789,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -6965}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -6494}
   m_SizeDelta: {x: 1080, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3966372337482802029
@@ -1865,9 +1864,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -17409}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -17388}
   m_SizeDelta: {x: 1000, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6894442829900240698
@@ -2008,9 +2007,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -5050}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -4479}
   m_SizeDelta: {x: 1080, y: 1930}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3974817155725232352
@@ -2160,9 +2159,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -9317}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -8946}
   m_SizeDelta: {x: 1080, y: 1604}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3539003891793480017
@@ -2342,9 +2341,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -16974}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -16803}
   m_SizeDelta: {x: 1080, y: 570}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5763915875307691237
@@ -2417,10 +2416,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -10519}
-  m_SizeDelta: {x: 1000, y: 800}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -10198}
+  m_SizeDelta: {x: 1000, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8722435522092686511
 CanvasRenderer:
@@ -2450,18 +2449,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=100>Cards</size>
+  m_text: '<b><size=100>Cards</size></b>
 
 
-    1. Tap the card to open up the specific card
+    1. Tap the card to open up the specific
+    card
 
 
-    2.
-    Tap the plus button to open up the assign menu
+    2. Tap the plus button to open up the assign menu
 
 
-    3. Tap the Switch button
-    to change the view to Fate cards'
+    3. Tap the
+    Switch button to change the view to Fate cards'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
   m_sharedMaterial: {fileID: 5362840818329480169, guid: ca34875debb9cfd4794dbfa5215c7648, type: 2}
@@ -2564,9 +2563,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1661953224079023028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540.05273, y: -14853}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -14682}
   m_SizeDelta: {x: 1080, y: 916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2806000171669015040
