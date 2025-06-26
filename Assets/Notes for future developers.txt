@@ -1,0 +1,11 @@
+HIERARCHY IN SCENE
+
+1. Canvas has the managers for navigating menus, scanner panel, connections panel, profile panel, cards panel and diary panel
+
+CHANGING EASY AR LICENSE KEY
+
+1. Go to your EasyAR account.
+2. Go to developer center.
+3. Create a new license key/open up an existing license key
+4. Copy package name and Bundle ID from Unity to the corresponding Fields.
+5. Copy the new license key to Unity Project (Project Settings > EasyAR)

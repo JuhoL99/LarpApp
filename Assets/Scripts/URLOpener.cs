@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class URLOpener : MonoBehaviour
 {
+    // Call this method from buttons
     public void OpenURL(string url)
     {
         Application.OpenURL(url);

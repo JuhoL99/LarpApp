@@ -11,8 +11,8 @@ public class MenuController : MonoBehaviour
     private bool isMenuOpen = false;
 
     [Header("Screen Settings")]
-    [SerializeField] private GameObject mainScreen;
-    [SerializeField] private List<GameObject> otherScreens = new List<GameObject>();
+    [SerializeField] private GameObject mainScreen; // Reference to main panel
+    [SerializeField] private List<GameObject> otherScreens = new List<GameObject>(); // References to all other screens the user can navigate to
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject scannerPanel;
     [SerializeField] private GameObject backgroundImage;
@@ -87,6 +87,7 @@ public class MenuController : MonoBehaviour
         return true;
     }
 
+    // Call this method from UI buttons that return to main screen
     public void ShowMainScreen()
     {
         // Activate main screen and deactivate all others
@@ -110,7 +111,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    // Public methods to be called from UI buttons
+    // Call this method from UI buttons that navigate to other screens
     public void ShowScreen(GameObject screen)
     {
         if (screen == mainScreen)
@@ -140,7 +141,6 @@ public class MenuController : MonoBehaviour
         activity.Call<bool>("moveTaskToBack", true);
 #elif UNITY_IOS
         // On iOS, there's no direct API to minimize
-        // We can just print a debug message for now
         Debug.Log("iOS cannot directly minimize apps due to platform restrictions");
 #else
         // On other platforms, fallback to Application.Quit()
