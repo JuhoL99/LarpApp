@@ -55,7 +55,7 @@ public class DiaryPanelManager : MonoBehaviour
 
     private void PopulateEntries()
     {
-        Debug.Log(diaryEntries.Count);
+        //Debug.Log(diaryEntries.Count);
 
         // Clear existing entries first
         foreach (Transform child in scrollContentObject)

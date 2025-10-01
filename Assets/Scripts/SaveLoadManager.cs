@@ -99,7 +99,7 @@ public class SaveLoadManager : MonoBehaviour
         }
         if (string.IsNullOrWhiteSpace(text))
         {
-            Debug.Log("text null or space");
+            //Debug.Log("text null or space");
             CreateDefaultPlayer();
             onGameLoaded?.Invoke(); 
             return;

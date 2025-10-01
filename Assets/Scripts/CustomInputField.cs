@@ -31,7 +31,7 @@ public abstract class CustomInputField : MonoBehaviour
     }
     public virtual void AssignPlayer(PlayerData player)
     {
-        Debug.Log("assigned player");
+        //Debug.Log("assigned player");
         linkedPlayer = player;
         LoadText();
     }

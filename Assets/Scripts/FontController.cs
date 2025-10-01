@@ -77,7 +77,7 @@ public class FontController : MonoBehaviour
         PlayerPrefs.SetFloat(saveKey, newFontSize);
         PlayerPrefs.Save();
         lastSavedValue = newFontSize;
-        Debug.Log($"Font size {newFontSize} saved to key: {saveKey}");
+        //Debug.Log($"Font size {newFontSize} saved to key: {saveKey}");
     }
 
     public void LoadFontSize()
@@ -96,7 +96,7 @@ public class FontController : MonoBehaviour
 
             UpdateSliderValueText();
             ChangeAllFontSizes();
-            Debug.Log($"Font size {newFontSize} loaded from key: {saveKey}");
+            //Debug.Log($"Font size {newFontSize} loaded from key: {saveKey}");
         }
     }
 

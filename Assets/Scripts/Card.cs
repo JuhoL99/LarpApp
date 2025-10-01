@@ -54,7 +54,7 @@ public class Card : MonoBehaviour
     {
         if(card == null)
         {
-            Debug.Log("card null");
+            //Debug.Log("card null");
             return;
         }
         if(img == null) img = GetComponent<Image>();
@@ -68,7 +68,7 @@ public class Card : MonoBehaviour
         if(!canBeSwitched) return;
         if (GameManager.instance.isLookingForCardToSelect)
         {
-            Debug.Log(GameManager.instance.currentScannedCard);
+            //Debug.Log(GameManager.instance.currentScannedCard);
             if (GameManager.instance.currentScannedCard.markerType != cardSlotType) return;
             currentCard = GameManager.instance.currentScannedCard;
             onCardSwitched?.Invoke(cardIndex, currentCard.markerType);

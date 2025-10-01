@@ -44,7 +44,7 @@ public class ConnectionsPanelManager : MonoBehaviour
     }
     private void EnableCardAssigning(CardSO card)
     {
-        Debug.Log("enabled card assigning");
+        //Debug.Log("enabled card assigning");
         GameManager.instance.LookingForCardToSelect(card);
     }
     private void OnInputFieldChanged(string txt)

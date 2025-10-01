@@ -46,7 +46,7 @@ public class CardScanner : MonoBehaviour
     //need to load targets before they can be detected properly
     private void TargetLoadedCheck(easyar.Target trg, bool val)
     {
-        Debug.Log($"Target: {trg.name()}, Value: {val}");
+        //Debug.Log($"Target: {trg.name()}, Value: {val}");
     }
     private void HandleInput()
     {

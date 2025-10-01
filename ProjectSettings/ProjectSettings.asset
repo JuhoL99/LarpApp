@@ -142,9 +142,16 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.0
+  bundleVersion: 1.1
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  - {fileID: 4800000, guid: ea9a295053a0dc440b9698a7f41d9741, type: 3}
+  - {fileID: 4800000, guid: 1499e61b3897c4a4b9318a56ca931b8a, type: 3}
+  - {fileID: 4800000, guid: 798d6e253a35a144d94205b80c8fd48b, type: 3}
+  - {fileID: 4800000, guid: ae539cb2b258bd047a57837fd579cc80, type: 3}
+  - {fileID: 4800000, guid: 58841e6e22debfc43ba09a0cf58cd92d, type: 3}
+  - {fileID: 4800000, guid: a336f422ffebbec4c89b4dac26022d5f, type: 3}
+  - {fileID: 11400000, guid: 7f160fed56816824ba1aa7387c1f35db, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -175,7 +182,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 2
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 28
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -269,7 +276,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/voutilainen.tino/Documents/LumenAR Bundle/LumenAR
+  AndroidKeystoreName: C:/Users/lauren.juho-emil/Documents/Lumen/Keystore/LumenAR
     Keystore.keystore
   AndroidKeyaliasName: tgl
   AndroidEnableArmv9SecurityFeatures: 0
