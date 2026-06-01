@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Detective
   imageName: Detective
   cardId: 14
-  cardTopSprite: {fileID: 21300000, guid: abc130e80dee1f3498e1d55401b23887, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 335ae88abcfde6e4bb3a9f3d50246591, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 7cb1274f7e4caac4a969529daa54bf3a, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 67f70f973f18c8d48bcb915db1d9ca3c, type: 3}
+  markerType: 0

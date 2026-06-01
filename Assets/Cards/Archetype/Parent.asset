@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Parent
   imageName: Parent
   cardId: 46
-  cardTopSprite: {fileID: 21300000, guid: 9faa23284889ee84dae3e11ae9aee746, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 05804a2346573fc41ad77135a9039f0f, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 07b94d1178c1a73439bf48b7c5107778, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 64e1820b57d4658408aa2b3abecc78db, type: 3}
+  markerType: 0

@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Gang Boss
   imageName: Gang Boss
   cardId: 28
-  cardTopSprite: {fileID: 21300000, guid: bcb036ebecf859c4b8bab46287fc9280, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: f02f8b52546e76049a5d8b17525a4d6d, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 4ad0dd315678ce14b92001661435b651, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 7ac4c4e4dc4530742b1940959c513ae3, type: 3}
+  markerType: 0

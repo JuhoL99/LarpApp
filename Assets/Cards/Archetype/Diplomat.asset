@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Diplomat
   imageName: Diplomat
   cardId: 16
-  cardTopSprite: {fileID: 21300000, guid: 567acedf3b4d9864085bbbe247eab1ea, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: b85e292969b614441b39148b5e0fef0e, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 1462152a7f23d3149bdceab3d4c1762a, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 7d075c8b71c69584f9fe7ee1ad505f90, type: 3}
+  markerType: 0

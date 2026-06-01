@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Despot
   imageName: Despot
   cardId: 13
-  cardTopSprite: {fileID: 21300000, guid: e5bd5630ce6f69b4fbb32604d48d7ccb, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 39a077fa88c015b4c993b9ac73fdc19f, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 5d6b86b0fe1eafe408c59e59710908d2, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: db1503d87d078d642b9fa70973496a99, type: 3}
+  markerType: 0

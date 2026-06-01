@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Creator
   imageName: Creator
   cardId: 10
-  cardTopSprite: {fileID: 21300000, guid: a1662c4671a14a6459adc7ed427ed911, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: e07c09a7a87571d4fbdb2c439442095d, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 5ebe385b0e3d3194389086f36d7b606a, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 2d6b3fefb7fc79c44a0b2c3975b42750, type: 3}
+  markerType: 0

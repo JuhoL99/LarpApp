@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Catalyst
   imageName: Catalyst
   cardId: 5
-  cardTopSprite: {fileID: 21300000, guid: 5eff2ccb5b66fc34bb0a09e1d613d317, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 81394770d8b0e2c48b9ff20a0e4aa385, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: b4bca96e4c9e54a449b5578218a5cfc9, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: 20a40df75bdd170479d82e9b98be6f26, type: 3}
+  markerType: 0

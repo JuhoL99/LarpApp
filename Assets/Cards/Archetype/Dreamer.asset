@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Dreamer
   imageName: Dreamer
   cardId: 18
-  cardTopSprite: {fileID: 21300000, guid: a1ea249f7ea8bfc4d95821c82b397689, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 291d51e17f795fd4688e8d4e22dd3045, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: 78dea9f0534f2c4468ede67c56b8c26d, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: b5f455595950f224dac38a1d22dc695b, type: 3}
+  markerType: 0

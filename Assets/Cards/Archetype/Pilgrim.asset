@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Pilgrim
   imageName: Pilgrim
   cardId: 48
-  cardTopSprite: {fileID: 21300000, guid: 26b46cfe2e6c0e94bb478d5ba11f5026, type: 3}
-  cardBottomSprite: {fileID: 21300000, guid: 5bc995afe0e47bc41aee9645dc28fc1b, type: 3}
+  cardTopSprite: {fileID: 21300000, guid: de7e8e6ec67cd824fa4a23de579056b0, type: 3}
+  cardBottomSprite: {fileID: 21300000, guid: f76a9628ba81ba048b0575b4437bf1f9, type: 3}
+  markerType: 0
